@@ -113,8 +113,10 @@ for f in findings_doc.get("findings", []):
     key = f"{catn}␟{f['brand']}"
     b = brands.setdefault(key, {"id": key, "brand": f["brand"], "category": catn,
                                 "base": {}, "note": "", "signal": "", "merchants": [],
-                                "typ": "Kategori-uppstickare"})
+                                "demand": set(), "typ": "Kategori-uppstickare"})
     b["base"][f["market"]] = "in" if f.get("in_cdon") else "gap"
+    if f.get("demand"):
+        b["demand"].add(f["market"])
     if f.get("typ"):
         b["typ"] = f["typ"]
     if f.get("signal") and not b["signal"]:
@@ -166,7 +168,7 @@ if st.sidebar.button("Uppdatera data", use_container_width=True,
     st.session_state.pop("state", None)
     st.rerun()
 st.sidebar.header("Filter")
-view = st.sidebar.radio("Vy", ["Per marknad", "Per merchant"])
+view = st.sidebar.radio("Vy", ["Per marknad", "Per merchant", "Marknadsbredd"])
 mkt = st.sidebar.selectbox("Marknad", ["Alla"] + markets)
 cats = sorted({b["category"] for b in brands.values()})
 cat = st.sidebar.selectbox("Kategori", ["Alla"] + cats)
@@ -214,8 +216,8 @@ def market_view():
         if cat != "Alla" and b["category"] != cat:
             continue
         for m in vis:
-            if b["base"].get(m) != "gap":
-                continue
+            if b["base"].get(m) != "gap" or m not in b.get("demand", set()):
+                continue  # arbetsvyn visar bara GAP+trend (demand) — bredden finns i Marknadsbredd-vyn
             sellers = sorted({x["merchant"] for x in b["merchants"] if x["market"] == m})
             slabel = LABEL[cell_state(b, m)]
             rows.append({"id": b["id"], "Brand": b["brand"], "Kategori": b["category"],
@@ -256,8 +258,8 @@ def merchant_view():
         if cat != "Alla" and b["category"] != cat:
             continue
         for m in markets:
-            if b["base"].get(m) != "gap":
-                continue
+            if b["base"].get(m) != "gap" or m not in b.get("demand", set()):
+                continue  # bara GAP+trend i arbetsvyn
             sellers = [x for x in b["merchants"] if x["market"] == m]
             if sellers:
                 for s in sellers:
@@ -317,7 +319,43 @@ def merchant_view():
                                mime="text/csv", key="d_" + slug(name))
 
 
+def breadth_cell(b, m):
+    base = b["base"].get(m)
+    if base == "in":
+        return "finns"
+    if base == "gap":
+        return "GAP+trend" if m in b.get("demand", set()) else "GAP"
+    return "-"
+
+
+def breadth_view():
+    st.caption("finns = i CDON  ·  GAP+trend = saknas + stigande efterfrågan (agera)  ·  "
+               "GAP = saknas men ingen trend ännu (bredd-potential)")
+    rows = []
+    for b in brands.values():
+        if cat != "Alla" and b["category"] != cat:
+            continue
+        r = {"Brand": b["brand"], "Kategori": b["category"], "Signal": b.get("signal", "")}
+        for m in markets:
+            r[m] = breadth_cell(b, m)
+        r["GAP+trend (antal)"] = sum(1 for m in markets if r[m] == "GAP+trend")
+        rows.append(r)
+    if not rows:
+        st.info("Inga brands för valt filter.")
+        return
+    df = pd.DataFrame(rows).sort_values(
+        ["GAP+trend (antal)", "Brand"], ascending=[False, True]).reset_index(drop=True)
+    c1, c2 = st.columns(2)
+    c1.metric("Brands", len(df))
+    c2.metric("Brett (GAP+trend i ≥2 marknader)", int((df["GAP+trend (antal)"] >= 2).sum()))
+    st.dataframe(df, hide_index=True, use_container_width=True)
+    st.download_button("Exportera marknadsbredd CSV", df.to_csv(index=False).encode("utf-8"),
+                       file_name=f"gap_radar_bredd_{datetime.date.today()}.csv", mime="text/csv")
+
+
 if view == "Per marknad":
     market_view()
-else:
+elif view == "Per merchant":
     merchant_view()
+else:
+    breadth_view()
