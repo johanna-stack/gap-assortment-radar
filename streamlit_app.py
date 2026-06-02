@@ -1,25 +1,28 @@
 #!/usr/bin/env python3
-"""GAP Assortment Radar - Streamlit-app.
+"""GAP Assortment Radar - Streamlit-app (repo-backad läs/skriv).
 
-Speglar HTML-dashboarden men i Streamlit. Läser och SKRIVER mot Aurora-backend
-(/api/gap-radar) så status + audit delas med HTML-vyn. Backend-URL via AURORA_URL.
+Läser findings.json (gaps, pushas av Aurora) + state.json (status) från GitHub-repot
+johanna-stack/gap-assortment-radar, och skriver status tillbaka till state.json via
+GitHub Contents-API:t med GAP_RADAR_PAT. Ingen backend/Mac behövs.
 
-Kör lokalt:
-    pip install streamlit requests pandas
-    export AURORA_URL=http://127.0.0.1:5174        # default
-    streamlit run streamlit_app.py
+VIKTIGT: GAP_RADAR_PAT är scopad till BARA detta repo. cdon-trackers rörs aldrig.
 
-Deploy (Streamlit Cloud): sätt AURORA_URL till en nåbar backend (ej localhost).
+Lokalt:  export GAP_RADAR_PAT=...   &&  streamlit run streamlit_app.py
+Cloud:   sätt secret  GAP_RADAR_PAT = "github_pat_..."
+Utan token: read-only mot bundlad findings.json (status kan inte sparas).
 """
 import os
 import re
+import json
+import base64
 import datetime
 
 import requests
 import pandas as pd
 import streamlit as st
 
-AURORA = os.environ.get("AURORA_URL", "http://127.0.0.1:5174").rstrip("/")
+REPO = "johanna-stack/gap-assortment-radar"
+API = f"https://api.github.com/repos/{REPO}/contents"
 ACQ = "Merchant Acquisition"
 LABEL = {"gap": "GAP", "kontaktad": "Kontaktad", "live": "Live"}
 INV = {v: k for k, v in LABEL.items()}
@@ -27,55 +30,84 @@ INV = {v: k for k, v in LABEL.items()}
 st.set_page_config(page_title="GAP Assortment Radar", layout="wide")
 
 
-@st.cache_data(ttl=10)
-def fetch():
-    r = requests.get(f"{AURORA}/api/gap-radar", timeout=20)
+def _token():
+    try:
+        if "GAP_RADAR_PAT" in st.secrets:
+            return str(st.secrets["GAP_RADAR_PAT"])
+    except Exception:
+        pass
+    return os.environ.get("GAP_RADAR_PAT")
+
+
+TOKEN = _token()
+READONLY = TOKEN is None
+
+
+def _headers():
+    h = {"Accept": "application/vnd.github+json"}
+    if TOKEN:
+        h["Authorization"] = f"Bearer {TOKEN}"
+    return h
+
+
+@st.cache_data(ttl=15)
+def gh_get(path):
+    r = requests.get(f"{API}/{path}?ref=main", headers=_headers(), timeout=20)
+    if r.status_code == 404:
+        return None, None
     r.raise_for_status()
-    return r.json()
+    j = r.json()
+    return json.loads(base64.b64decode(j["content"]).decode("utf-8")), j["sha"]
 
 
-def post_state(bid, market=None, status=None, comment=None):
-    if READONLY:
-        return
-    body = {"id": bid}
-    if market and status:
-        body.update(market=market, status=status)
-    if comment is not None:
-        body["comment"] = comment
-    requests.post(f"{AURORA}/api/gap-radar/state", json=body, timeout=20).raise_for_status()
+def gh_put(path, obj, sha, message):
+    body = {"message": message,
+            "content": base64.b64encode(json.dumps(obj, ensure_ascii=False, indent=2).encode()).decode(),
+            "branch": "main"}
+    if sha:
+        body["sha"] = sha
+    r = requests.put(f"{API}/{path}", headers=_headers(), json=body, timeout=20)
+    r.raise_for_status()
+    return r.json()["content"]["sha"]
 
 
 def slug(s):
     return re.sub(r"[^a-z0-9]+", "-", (s or "x").lower()).strip("-")[:40]
 
 
-import json as _json
-DATA_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "findings.json")
-READONLY = False
-try:
-    doc = fetch()
-except Exception:  # noqa: BLE001
-    # Fallback: bundlad findings.json (read-only — ingen delad state/skrivning)
-    READONLY = True
+# --- findings (gaps) ---
+findings_doc = None
+if TOKEN:
     try:
-        with open(DATA_FILE, encoding="utf-8") as fh:
-            local = _json.load(fh)
+        findings_doc, _ = gh_get("findings.json")
     except Exception as e:  # noqa: BLE001
-        st.title("GAP Assortment Radar")
-        st.error(f"Aurora-backend ej nåbar ({AURORA}) och ingen lokal findings.json: {e}")
-        st.stop()
-    doc = {"markets": local.get("markets", ["SE", "NO", "DK", "FI"]),
-           "category": local.get("category", ""),
-           "findings": local.get("findings", []),
-           "state": local.get("state", {})}
+        st.warning(f"Kunde inte läsa findings.json från repo: {e}")
+if findings_doc is None:
+    try:
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "findings.json"), encoding="utf-8") as fh:
+            findings_doc = json.load(fh)
+    except Exception:  # noqa: BLE001
+        findings_doc = {"markets": ["SE", "NO", "DK", "FI"], "category": "", "findings": []}
 
-markets = doc.get("markets") or ["SE", "NO", "DK", "FI"]
-state = doc.get("state") or {}
+markets = findings_doc.get("markets") or ["SE", "NO", "DK", "FI"]
+
+# --- state (status) i session ---
+if "state" not in st.session_state:
+    s, sha = ({}, None)
+    if TOKEN:
+        try:
+            s, sha = gh_get("state.json")
+            s = s or {}
+        except Exception:  # noqa: BLE001
+            s, sha = {}, None
+    st.session_state.state = s
+    st.session_state.state_sha = sha
+STATE = st.session_state.state
 
 # pivotera findings -> en post per (kategori, brand)
 brands = {}
-for f in doc.get("findings", []):
-    catn = f.get("category") or doc.get("category") or "-"
+for f in findings_doc.get("findings", []):
+    catn = f.get("category") or findings_doc.get("category") or "-"
     key = f"{catn}␟{f['brand']}"
     b = brands.setdefault(key, {"id": key, "brand": f["brand"], "category": catn,
                                 "base": {}, "note": "", "merchants": []})
@@ -91,14 +123,35 @@ def cell_state(b, m):
         return "in"
     if b["base"].get(m) != "gap":
         return "na"
-    return state.get(b["id"], {}).get("markets", {}).get(m, "gap")
+    return STATE.get(b["id"], {}).get("markets", {}).get(m, "gap")
 
 
 def comment_of(b):
-    return state.get(b["id"], {}).get("comment", "")
+    return STATE.get(b["id"], {}).get("comment", "")
 
 
-# --- Sidofält / filter ---
+def set_status(bid, market, status):
+    STATE.setdefault(bid, {"markets": {}, "comment": ""})["markets"][market] = status
+
+
+def set_comment(bid, comment):
+    STATE.setdefault(bid, {"markets": {}, "comment": ""})["comment"] = comment
+
+
+def save_state(message):
+    try:
+        st.session_state.state_sha = gh_put("state.json", STATE, st.session_state.state_sha, message)
+        gh_get.clear()
+    except requests.HTTPError as e:
+        code = e.response.status_code if e.response is not None else None
+        if code == 409:
+            st.error("Statuskonflikt - någon sparade samtidigt. Laddar om, försök igen.")
+            del st.session_state["state"]; st.rerun()
+        else:
+            st.error(f"Kunde inte spara status: {e}")
+
+
+# --- Sidofält ---
 st.sidebar.header("Filter")
 view = st.sidebar.radio("Vy", ["Per marknad", "Per merchant"])
 mkt = st.sidebar.selectbox("Marknad", ["Alla"] + markets)
@@ -107,12 +160,11 @@ cat = st.sidebar.selectbox("Kategori", ["Alla"] + cats)
 q = st.sidebar.text_input("Sök merchant")
 
 st.title("GAP Assortment Radar")
-st.caption(f"{len(brands)} brands · marknader {', '.join(markets)} · källa "
-           + ("bundlad findings.json (read-only)" if READONLY else AURORA)
-           + (f" · uppdaterad {doc.get('updated')}" if doc.get("updated") else ""))
+st.caption(f"{len(brands)} brands · marknader {', '.join(markets)} · repo {REPO}"
+           + (f" · uppdaterad {findings_doc.get('updated')}" if findings_doc.get("updated") else ""))
 if READONLY:
-    st.warning("Read-only: Aurora-backend ej nåbar. Status sparas inte. "
-               "Sätt AURORA_URL (Streamlit secret) till en nåbar backend för läs/skriv.")
+    st.warning("Read-only: ingen GAP_RADAR_PAT-secret satt. Lägg secret GAP_RADAR_PAT i Streamlit "
+               "(eller env lokalt) för att kunna spara status till repot.")
 
 
 def market_view():
@@ -125,12 +177,9 @@ def market_view():
             if b["base"].get(m) != "gap":
                 continue
             sellers = sorted({x["merchant"] for x in b["merchants"] if x["market"] == m})
-            rows.append({
-                "id": b["id"], "Brand": b["brand"], "Kategori": b["category"], "Marknad": m,
-                "Status": LABEL[cell_state(b, m)],
-                "Merchant": ", ".join(sellers) or ACQ,
-                "Kommentar": comment_of(b),
-            })
+            rows.append({"id": b["id"], "Brand": b["brand"], "Kategori": b["category"], "Marknad": m,
+                         "Status": LABEL[cell_state(b, m)], "Merchant": ", ".join(sellers) or ACQ,
+                         "Kommentar": comment_of(b)})
     if not rows:
         st.info("Inga GAP för valt filter.")
         return
@@ -139,7 +188,6 @@ def market_view():
     c1.metric("GAP-rader", len(df))
     c2.metric("Live", int((df["Status"] == "Live").sum()))
     c3.metric("Brands", df["Brand"].nunique())
-
     edited = st.data_editor(
         df, hide_index=True, use_container_width=True, key="ed_market", disabled=READONLY,
         column_config={
@@ -151,16 +199,16 @@ def market_view():
             "Merchant": st.column_config.TextColumn(disabled=True),
         },
     )
-    changes = 0
-    for i in ([] if READONLY else range(len(df))):
-        o, n = df.iloc[i], edited.iloc[i]
-        if n["Status"] != o["Status"]:
-            post_state(o["id"], market=o["Marknad"], status=INV[n["Status"]]); changes += 1
-        if n["Kommentar"] != o["Kommentar"]:
-            post_state(o["id"], comment=n["Kommentar"]); changes += 1
-    if changes:
-        st.cache_data.clear(); st.rerun()
-
+    if not READONLY:
+        dirty = False
+        for i in range(len(df)):
+            o, n = df.iloc[i], edited.iloc[i]
+            if n["Status"] != o["Status"]:
+                set_status(o["id"], o["Marknad"], INV[n["Status"]]); dirty = True
+            if n["Kommentar"] != o["Kommentar"]:
+                set_comment(o["id"], n["Kommentar"]); dirty = True
+        if dirty:
+            save_state("status-uppdatering"); st.rerun()
     st.download_button("Exportera Allt CSV",
                        df.drop(columns=["id"]).to_csv(index=False).encode("utf-8"),
                        file_name=f"gap_radar_{datetime.date.today()}.csv", mime="text/csv")
@@ -200,8 +248,8 @@ def merchant_view():
             if not READONLY and c1.button("Markera alla Kontaktad", key="k_" + slug(name)):
                 for b, m in g["lines"]:
                     if cell_state(b, m) == "gap":
-                        post_state(b["id"], market=m, status="kontaktad")
-                st.cache_data.clear(); st.rerun()
+                        set_status(b["id"], m, "kontaktad")
+                save_state(f"kontaktad: {name}"); st.rerun()
             c2.download_button("Ladda ned Merchant", df.to_csv(index=False).encode("utf-8"),
                                file_name=f"gap_radar_{slug(name)}_{datetime.date.today()}.csv",
                                mime="text/csv", key="d_" + slug(name))

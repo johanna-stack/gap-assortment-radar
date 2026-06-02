@@ -1,1 +1,32 @@
-{"version":1,"updated":"2026-06-02","category":"robotdammsugare","markets":["FI"],"findings":[{"brand":"Norada","market":"FI","category":"robotdammsugare","note":"rising +850% (FI)","in_cdon":false,"cdon_hits":0,"cdon_links":[],"merchants_selling":[{"merchant":"e-ville.com","site":"https://www.verkkokauppa.com/","hits":7,"links":["https://www.verkkokauppa.com/fi/catalog/textile-washers/tekstiilipesurit","https://www.verkkokauppa.com/fi/catalog/humidifiers/ilmankostuttimet","https://www.verkkokauppa.com/fi/etusivu"],"manager":"TBD"}]}],"state":{"luftrenare␟Levoit":{"markets":{"SE":"gap","NO":"live"},"comment":""},"luftrenare␟Smartmi":{"markets":{"SE":"kontaktad"},"comment":""},"robotdammsugare␟Norada":{"markets":{"FI":"gap"},"comment":""}}}
+{
+  "version": 1,
+  "updated": "2026-06-02",
+  "category": "robotdammsugare",
+  "markets": [
+    "FI"
+  ],
+  "findings": [
+    {
+      "brand": "Norada",
+      "market": "FI",
+      "category": "robotdammsugare",
+      "note": "rising +850% (FI)",
+      "in_cdon": false,
+      "cdon_hits": 0,
+      "cdon_links": [],
+      "merchants_selling": [
+        {
+          "merchant": "e-ville.com",
+          "site": "https://www.verkkokauppa.com/",
+          "hits": 7,
+          "links": [
+            "https://www.verkkokauppa.com/fi/catalog/textile-washers/tekstiilipesurit",
+            "https://www.verkkokauppa.com/fi/catalog/humidifiers/ilmankostuttimet",
+            "https://www.verkkokauppa.com/fi/etusivu"
+          ],
+          "manager": "TBD"
+        }
+      ]
+    }
+  ]
+}

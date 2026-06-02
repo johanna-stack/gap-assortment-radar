@@ -1,34 +1,33 @@
 # GAP Assortment Radar - Streamlit
 
-Interaktiv dashboard för CDON:s GAP Assortment Radar (Trail). Visar uppstickande brands per
-marknad som saknas i CDON:s sortiment, och vilken befintlig merchant som kan lägga upp dem.
+Interaktiv dashboard för CDON:s GAP Assortment Radar (Trail). Uppstickande brands per marknad
+som saknas i CDON:s sortiment, och vilken befintlig merchant som kan lägga upp dem.
 
 ## Vyer
 - **Per marknad** - jobba en marknad i taget, sätt status (GAP / Kontaktad / Live) per marknad.
 - **Per merchant** - samlar alla brands/marknader per merchant så du kontaktar en gång.
 - Sök merchant, exportera CSV (komma/UTF-8, importeras rent i Google Sheets).
 
-## Datakälla
-Appen läser och skriver mot Aurora-backend via `AURORA_URL`:
-- `GET /api/gap-radar` - findings + delad status
-- `POST /api/gap-radar/state` - status/kommentar (loggas i audit)
+## Data (repo-backad)
+- `findings.json` - gaps (brands/marknader). Pushas av Aurora efter varje scan.
+- `state.json` - status + kommentarer. Skrivs av appen via GitHub Contents-API:t.
 
-Om `AURORA_URL` inte är nåbar faller appen tillbaka på den bundlade `findings.json`
-(**read-only** - status sparas inte). Det gör att Cloud-deployen visar data direkt; sätt
-`AURORA_URL` till en nåbar backend för full läs/skriv.
+Appen läser båda från detta repo och skriver `state.json` tillbaka med en GitHub-token.
+Ingen extern backend behövs. **Token (`GAP_RADAR_PAT`) är scopad till BARA detta repo -
+cdon-trackers rörs aldrig.**
 
 ## Deploy på Streamlit Community Cloud
-1. New app -> välj repot `johanna-stack/gap-assortment-radar`, branch `main`, main file `streamlit_app.py`.
+1. New app -> repo `johanna-stack/gap-assortment-radar`, branch `main`, main file `streamlit_app.py`.
 2. Advanced settings -> Secrets:
    ```toml
-   AURORA_URL = "https://<din-nåbara-aurora-backend>"
+   GAP_RADAR_PAT = "github_pat_..."
    ```
-   Lämna bort `AURORA_URL` (eller sätt en onåbar) för read-only-läge mot bundlad findings.json.
-3. Deploy.
+   (fine-grained PAT, Contents: Read and write, endast detta repo)
+3. Deploy. Utan secret körs appen read-only (visar findings, sparar inte status).
 
 ## Kör lokalt
 ```bash
 pip install -r requirements.txt
-export AURORA_URL=http://127.0.0.1:5174
+export GAP_RADAR_PAT=github_pat_...
 streamlit run streamlit_app.py
 ```
