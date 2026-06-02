@@ -65,7 +65,60 @@
       "note": "elsykkel (Volt Allroad)",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.se",
+          "hits": 10,
+          "links": [
+            "https://www.csmegastore.se/i/21272730/diamant-r%C3%B6rsocker-1-kg?srsltid=AfmBOoqzep1Y4_Z6RqfXhYY0bEZtDsWmW9gvO1msK4va-NIMfa6ezRve",
+            "https://www.csmegastore.se/i/8655687/godan-siffervimpel-0-diamant-7-6-cm?srsltid=AfmBOor8LPc6Ktr1Wu9wVRoGg0UXmc1Nf-TdjpQ63xYnKYsM1BeKS4Hj",
+            "https://www.csmegastore.se/i/9364152/diamant-white-sugar-diamant-1kg?srsltid=AfmBOoo4c137eJPzokYf7n22qZEqIenJyQP5VGox1Wqtsbzzjhhddjac"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "INF Company AB",
+          "site": "inf.se",
+          "hits": 10,
+          "links": [
+            "https://inf.se/dekoration/187420-inf-lugnande-sensoriska-klistermrken-vg-stjrna-diamant-5-pack-7314281354718.html",
+            "https://inf.se/skrmskydd-iphone/206321-inf-30-graders-fulltckande-diamant-explosionsskert-sekretess-hrdat-glas-skrmskydd-kompatibelt-med-iphone-17-pro-7314281194765.html",
+            "https://inf.se/smartwatch-sportklocka/212425-inf-bl-diamant-vit-diamant-smart-armband-aktivitetsmtare-med-pulsmtare-smnvervakning-7314281078676.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "e-ville.com",
+          "site": "www.e-ville.com",
+          "hits": 1,
+          "links": [
+            "https://www.e-ville.com/sv/1013-ovrigt-iphone-4/12761-iphone5-5s-5c-diamant.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "Nordmagasinet",
+          "site": "kivero.se",
+          "hits": 2,
+          "links": [
+            "https://kivero.se/products/diamant-karaff-whiskystenar-whiskey?srsltid=AfmBOopcfqRWbWcywQCjNR2V7vE4hirdrKxVncGK69Esr1yCbh1umxx7",
+            "https://kivero.se/products/diamant-karaff-set-whiskeyglas-whiskystenar-whiskey?srsltid=AfmBOorFEs4IWjIxOBS-eSgxcVzn1ZsPnLr0puvfN4jObT6zvJ7-JuFX"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "0815",
+          "site": "www.0815.at",
+          "hits": 10,
+          "links": [
+            "https://www.0815.at/Werkzeug-Installation/Werkzeug/Zubehoer/DIEWE-Diamant-Nassschnitttrennscheibe-SC620-450-x-25.4-10-mm/656953074",
+            "https://www.0815.at/Werkzeug-Installation/Werkzeug/Zubehoer/DIEWE-Diamant-Handtrennscheibe-Magic-230-x-22.23-12-mm/656953072",
+            "https://www.0815.at/Werkzeug-Installation/Werkzeug/Zubehoer/TYROLIT-Diamant-Trennscheibe-Premium-DCU-FC-125-x-2.0-10-mm-Fast-Cut/656896348"
+          ],
+          "manager": "TBD"
+        }
+      ]
     },
     {
       "brand": "Ninja",
@@ -75,7 +128,52 @@
       "note": "espressomaskin, rising",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.se",
+          "hits": 10,
+          "links": [
+            "https://www.csmegastore.se/i/21580965/ninja-luxe-caf%C3%A9-pro-es701eu-serien?srsltid=AfmBOorPkAGXVAScwbqgRYThg4iBrFdc4yQ_OrxW_zCbUZk0ba8IyqNT",
+            "https://www.csmegastore.se/i/21697587/ninja-af451eu-foodi-max-dual-zone-airfryer-med-smart-cook-system?srsltid=AfmBOorcc4A8rpP8EUyOdpD5BOJLQs7G_4LBY-lT85RBFKUmY3obYJW_",
+            "https://www.csmegastore.se/i/24189020/ninja-kniv?srsltid=AfmBOorpw3dirhTDClDLVaAc2loWzlA6IUTyJ_plHRXSOJZrCt9XMr7r"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "INF Company AB",
+          "site": "inf.se",
+          "hits": 10,
+          "links": [
+            "https://inf.se/2515_ninja-print",
+            "https://inf.se/hem-och-hushll/211619-inf-silikon-air-fryer-matta-kompatibel-med-ninja-fn101gy-halkfri-vrmebestndig-pad-7314281106713.html",
+            "https://inf.se/dekoration/200308-play-doh-teenage-mutant-ninja-turtles-slice-and-blast-pizza-playset-5010996330154.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "e-ville.com",
+          "site": "www.e-ville.com",
+          "hits": 10,
+          "links": [
+            "https://www.e-ville.com/sv/3047208-nintendo-spel/113324-teenage-mutant-ninja-turtles-arcade-wrath-of-the-mutants-switch.html",
+            "https://www.e-ville.com/sv/3047208-nintendo-spel/994388-teenage-mutant-ninja-turtles-splintered-fate-deluxe-edition-switch.html",
+            "https://www.e-ville.com/sv/3047208-nintendo-spel/113321-teenage-mutant-ninja-turtles-mutants-unleashed-switch.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "0815",
+          "site": "www.0815.at",
+          "hits": 10,
+          "links": [
+            "https://www.0815.at/Kampagnen/2026-Weekendknaller-KW12-AT/Ninja-Foodi-AG651/656681354",
+            "https://www.0815.at/Haushalt-Kueche/Kueche/Maschinen/Ninja-FS301EU-Slushi/656777210",
+            "https://www.0815.at/Unsere-Marken/Ninja"
+          ],
+          "manager": "TBD"
+        }
+      ]
     },
     {
       "brand": "Ninja",
@@ -85,7 +183,52 @@
       "note": "espressomaskin, rising",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.se",
+          "hits": 10,
+          "links": [
+            "https://www.csmegastore.se/i/21580965/ninja-luxe-caf%C3%A9-pro-es701eu-serien?srsltid=AfmBOorPkAGXVAScwbqgRYThg4iBrFdc4yQ_OrxW_zCbUZk0ba8IyqNT",
+            "https://www.csmegastore.se/i/21697587/ninja-af451eu-foodi-max-dual-zone-airfryer-med-smart-cook-system?srsltid=AfmBOorcc4A8rpP8EUyOdpD5BOJLQs7G_4LBY-lT85RBFKUmY3obYJW_",
+            "https://www.csmegastore.se/i/24189020/ninja-kniv?srsltid=AfmBOorpw3dirhTDClDLVaAc2loWzlA6IUTyJ_plHRXSOJZrCt9XMr7r"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "INF Company AB",
+          "site": "inf.se",
+          "hits": 10,
+          "links": [
+            "https://inf.se/2515_ninja-print",
+            "https://inf.se/hem-och-hushll/211619-inf-silikon-air-fryer-matta-kompatibel-med-ninja-fn101gy-halkfri-vrmebestndig-pad-7314281106713.html",
+            "https://inf.se/dekoration/200308-play-doh-teenage-mutant-ninja-turtles-slice-and-blast-pizza-playset-5010996330154.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "e-ville.com",
+          "site": "www.e-ville.com",
+          "hits": 10,
+          "links": [
+            "https://www.e-ville.com/sv/3047208-nintendo-spel/113324-teenage-mutant-ninja-turtles-arcade-wrath-of-the-mutants-switch.html",
+            "https://www.e-ville.com/sv/3047208-nintendo-spel/994388-teenage-mutant-ninja-turtles-splintered-fate-deluxe-edition-switch.html",
+            "https://www.e-ville.com/sv/3047208-nintendo-spel/113321-teenage-mutant-ninja-turtles-mutants-unleashed-switch.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "0815",
+          "site": "www.0815.at",
+          "hits": 10,
+          "links": [
+            "https://www.0815.at/Kampagnen/2026-Weekendknaller-KW12-AT/Ninja-Foodi-AG651/656681354",
+            "https://www.0815.at/Haushalt-Kueche/Kueche/Maschinen/Ninja-FS301EU-Slushi/656777210",
+            "https://www.0815.at/Unsere-Marken/Ninja"
+          ],
+          "manager": "TBD"
+        }
+      ]
     },
     {
       "brand": "Sage",
