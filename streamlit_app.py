@@ -24,7 +24,7 @@ import streamlit as st
 REPO = "johanna-stack/gap-assortment-radar"
 API = f"https://api.github.com/repos/{REPO}/contents"
 ACQ = "Merchant Acquisition"
-LABEL = {"gap": "GAP", "kontaktad": "Kontaktad", "live": "Live"}
+LABEL = {"gap": "GAP", "kontaktad": "Kontaktad", "avvakta": "Avvakta", "live": "Live"}
 INV = {v: k for k, v in LABEL.items()}
 
 st.set_page_config(page_title="GAP Assortment Radar", layout="wide")
