@@ -146,6 +146,7 @@ def save_state(message):
     try:
         st.session_state.state_sha = gh_put("state.json", STATE, st.session_state.state_sha, message)
         gh_get.clear()
+        st.toast("Sparat till delad källa (repo)")
     except requests.HTTPError as e:
         code = e.response.status_code if e.response is not None else None
         if code == 409:
@@ -156,6 +157,11 @@ def save_state(message):
 
 
 # --- Sidofält ---
+if st.sidebar.button("Uppdatera data", use_container_width=True,
+                     help="Hämta senaste findings + status från repot (ser andras ändringar)"):
+    gh_get.clear()
+    st.session_state.pop("state", None)
+    st.rerun()
 st.sidebar.header("Filter")
 view = st.sidebar.radio("Vy", ["Per marknad", "Per merchant"])
 mkt = st.sidebar.selectbox("Marknad", ["Alla"] + markets)
@@ -164,7 +170,8 @@ cat = st.sidebar.selectbox("Kategori", ["Alla"] + cats)
 q = st.sidebar.text_input("Sök merchant")
 
 st.title("GAP Assortment Radar")
-st.caption(f"{len(brands)} brands · marknader {', '.join(markets)} · repo {REPO}"
+mode = "läs/skriv" if not READONLY else "read-only"
+st.caption(f"Delad källa (repo {REPO}, {mode}) · {len(brands)} brands · marknader {', '.join(markets)}"
            + (f" · uppdaterad {findings_doc.get('updated')}" if findings_doc.get("updated") else ""))
 if READONLY:
     st.warning("Read-only: ingen GAP_RADAR_PAT-secret satt. Lägg secret GAP_RADAR_PAT i Streamlit "
