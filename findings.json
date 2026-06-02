@@ -1,32 +1,101 @@
 {
   "version": 1,
   "updated": "2026-06-02",
-  "category": "robotdammsugare",
+  "category": "Seasonal jun-jul",
   "markets": [
-    "FI"
+    "SE",
+    "NO"
   ],
   "findings": [
     {
-      "brand": "Norada",
-      "market": "FI",
-      "category": "robotdammsugare",
-      "note": "rising +850% (FI)",
+      "brand": "Ecoride",
+      "market": "SE",
+      "category": "Seasonal jun-jul",
+      "typ": "Kategori-uppstickare",
+      "note": "elcykel, rising",
       "in_cdon": false,
-      "cdon_hits": 0,
-      "cdon_links": [],
-      "merchants_selling": [
-        {
-          "merchant": "e-ville.com",
-          "site": "https://www.verkkokauppa.com/",
-          "hits": 7,
-          "links": [
-            "https://www.verkkokauppa.com/fi/catalog/textile-washers/tekstiilipesurit",
-            "https://www.verkkokauppa.com/fi/catalog/humidifiers/ilmankostuttimet",
-            "https://www.verkkokauppa.com/fi/etusivu"
-          ],
-          "manager": "TBD"
-        }
-      ]
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Ecoride",
+      "market": "NO",
+      "category": "Seasonal jun-jul",
+      "typ": "Kategori-uppstickare",
+      "note": "elcykel, rising",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Elcross",
+      "market": "SE",
+      "category": "Seasonal jun-jul",
+      "typ": "Kategori-uppstickare",
+      "note": "elcykel, rising +110%",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Fiido",
+      "market": "SE",
+      "category": "Seasonal jun-jul",
+      "typ": "Kategori-uppstickare",
+      "note": "elcykel, rising",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Kayoba",
+      "market": "NO",
+      "category": "Seasonal jun-jul",
+      "typ": "Kategori-uppstickare",
+      "note": "elsykkel",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Diamant",
+      "market": "NO",
+      "category": "Seasonal jun-jul",
+      "typ": "Kategori-uppstickare",
+      "note": "elsykkel (Volt Allroad)",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Ninja",
+      "market": "SE",
+      "category": "Seasonal jun-jul",
+      "typ": "Kategori-uppstickare",
+      "note": "espressomaskin, rising",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Ninja",
+      "market": "NO",
+      "category": "Seasonal jun-jul",
+      "typ": "Kategori-uppstickare",
+      "note": "espressomaskin, rising",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Sage",
+      "market": "NO",
+      "category": "Seasonal jun-jul",
+      "typ": "Kategori-uppstickare",
+      "note": "espresso (Barista Pro)",
+      "in_cdon": true,
+      "cdon_source": "steep:Sage",
+      "merchants_selling": []
     }
   ]
 }
