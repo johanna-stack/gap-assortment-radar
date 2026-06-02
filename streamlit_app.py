@@ -26,6 +26,8 @@ API = f"https://api.github.com/repos/{REPO}/contents"
 ACQ = "Merchant Acquisition"
 LABEL = {"gap": "GAP", "kontaktad": "Kontaktad", "avvakta": "Avvakta", "live": "Live"}
 INV = {v: k for k, v in LABEL.items()}
+GROUP_OF = {"GAP": "NY", "Kontaktad": "Kontaktad", "Avvakta": "Avvakta", "Live": "Klara"}
+STATUS_GROUPS = ["NY", "Kontaktad", "Avvakta", "Klara"]
 
 st.set_page_config(page_title="GAP Assortment Radar", layout="wide")
 
@@ -173,7 +175,7 @@ def _market_section(df, key):
     edited = st.data_editor(
         df, hide_index=True, use_container_width=True, key=key, disabled=READONLY,
         column_config={
-            "id": None, "Typ": None,
+            "id": None, "Typ": None, "Grupp": None,
             "Status": st.column_config.SelectboxColumn("Status", options=list(LABEL.values()), required=True),
             "Brand": st.column_config.TextColumn(disabled=True),
             "Kategori": st.column_config.TextColumn(disabled=True),
@@ -204,9 +206,10 @@ def market_view():
             if b["base"].get(m) != "gap":
                 continue
             sellers = sorted({x["merchant"] for x in b["merchants"] if x["market"] == m})
+            slabel = LABEL[cell_state(b, m)]
             rows.append({"id": b["id"], "Brand": b["brand"], "Kategori": b["category"], "Marknad": m,
-                         "Typ": b.get("typ", "Kategori-uppstickare"),
-                         "Status": LABEL[cell_state(b, m)], "Merchant": ", ".join(sellers) or ACQ,
+                         "Typ": b.get("typ", "Kategori-uppstickare"), "Grupp": GROUP_OF[slabel],
+                         "Status": slabel, "Merchant": ", ".join(sellers) or ACQ,
                          "Kommentar": comment_of(b)})
     if not rows:
         st.info("Inga GAP för valt filter.")
@@ -221,9 +224,15 @@ def market_view():
     present = [t for t in order if (df["Typ"] == t).any()]
     present += [t for t in sorted(df["Typ"].unique()) if t not in order]
     for t in present:
-        sub = df[df["Typ"] == t].reset_index(drop=True)
-        st.subheader(f"{t}  ({len(sub)})")
-        _market_section(sub, key="ed_" + slug(t))
+        sub_t = df[df["Typ"] == t]
+        st.subheader(f"{t}  ({len(sub_t)})")
+        # separata status-grupper inom varje typ-sektion
+        for grp in STATUS_GROUPS:
+            g = sub_t[sub_t["Grupp"] == grp].reset_index(drop=True)
+            if g.empty:
+                continue
+            st.markdown(f"**{grp}** ({len(g)})")
+            _market_section(g, key=f"ed_{slug(t)}_{grp}")
     st.download_button("Exportera Allt CSV",
                        df.drop(columns=["id"]).to_csv(index=False).encode("utf-8"),
                        file_name=f"gap_radar_{datetime.date.today()}.csv", mime="text/csv")
