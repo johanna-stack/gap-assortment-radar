@@ -1,1 +1,15 @@
-{}
+{
+  "Seasonal jun-jul␟Diamant": {
+    "markets": {
+      "NO": "kontaktad"
+    },
+    "comment": ""
+  },
+  "Seasonal jun-jul␟Ninja": {
+    "markets": {
+      "SE": "kontaktad",
+      "NO": "kontaktad"
+    },
+    "comment": ""
+  }
+}
