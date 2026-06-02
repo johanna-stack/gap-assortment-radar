@@ -110,8 +110,10 @@ for f in findings_doc.get("findings", []):
     catn = f.get("category") or findings_doc.get("category") or "-"
     key = f"{catn}␟{f['brand']}"
     b = brands.setdefault(key, {"id": key, "brand": f["brand"], "category": catn,
-                                "base": {}, "note": "", "merchants": []})
+                                "base": {}, "note": "", "merchants": [], "typ": "Kategori-uppstickare"})
     b["base"][f["market"]] = "in" if f.get("in_cdon") else "gap"
+    if f.get("typ"):
+        b["typ"] = f["typ"]
     if not b["note"] and f.get("note"):
         b["note"] = f["note"]
     for m in f.get("merchants_selling", []):
@@ -167,6 +169,31 @@ if READONLY:
                "(eller env lokalt) för att kunna spara status till repot.")
 
 
+def _market_section(df, key):
+    edited = st.data_editor(
+        df, hide_index=True, use_container_width=True, key=key, disabled=READONLY,
+        column_config={
+            "id": None, "Typ": None,
+            "Status": st.column_config.SelectboxColumn("Status", options=list(LABEL.values()), required=True),
+            "Brand": st.column_config.TextColumn(disabled=True),
+            "Kategori": st.column_config.TextColumn(disabled=True),
+            "Marknad": st.column_config.TextColumn(disabled=True),
+            "Merchant": st.column_config.TextColumn(disabled=True),
+        },
+    )
+    if READONLY:
+        return
+    dirty = False
+    for i in range(len(df)):
+        o, n = df.iloc[i], edited.iloc[i]
+        if n["Status"] != o["Status"]:
+            set_status(o["id"], o["Marknad"], INV[n["Status"]]); dirty = True
+        if n["Kommentar"] != o["Kommentar"]:
+            set_comment(o["id"], n["Kommentar"]); dirty = True
+    if dirty:
+        save_state("status-uppdatering"); st.rerun()
+
+
 def market_view():
     vis = markets if mkt == "Alla" else [mkt]
     rows = []
@@ -178,6 +205,7 @@ def market_view():
                 continue
             sellers = sorted({x["merchant"] for x in b["merchants"] if x["market"] == m})
             rows.append({"id": b["id"], "Brand": b["brand"], "Kategori": b["category"], "Marknad": m,
+                         "Typ": b.get("typ", "Kategori-uppstickare"),
                          "Status": LABEL[cell_state(b, m)], "Merchant": ", ".join(sellers) or ACQ,
                          "Kommentar": comment_of(b)})
     if not rows:
@@ -188,27 +216,14 @@ def market_view():
     c1.metric("GAP-rader", len(df))
     c2.metric("Live", int((df["Status"] == "Live").sum()))
     c3.metric("Brands", df["Brand"].nunique())
-    edited = st.data_editor(
-        df, hide_index=True, use_container_width=True, key="ed_market", disabled=READONLY,
-        column_config={
-            "id": None,
-            "Status": st.column_config.SelectboxColumn("Status", options=list(LABEL.values()), required=True),
-            "Brand": st.column_config.TextColumn(disabled=True),
-            "Kategori": st.column_config.TextColumn(disabled=True),
-            "Marknad": st.column_config.TextColumn(disabled=True),
-            "Merchant": st.column_config.TextColumn(disabled=True),
-        },
-    )
-    if not READONLY:
-        dirty = False
-        for i in range(len(df)):
-            o, n = df.iloc[i], edited.iloc[i]
-            if n["Status"] != o["Status"]:
-                set_status(o["id"], o["Marknad"], INV[n["Status"]]); dirty = True
-            if n["Kommentar"] != o["Kommentar"]:
-                set_comment(o["id"], n["Kommentar"]); dirty = True
-        if dirty:
-            save_state("status-uppdatering"); st.rerun()
+    # Separata sektioner per typ i samma vy
+    order = ["Kategori-uppstickare", "Peak-modell"]
+    present = [t for t in order if (df["Typ"] == t).any()]
+    present += [t for t in sorted(df["Typ"].unique()) if t not in order]
+    for t in present:
+        sub = df[df["Typ"] == t].reset_index(drop=True)
+        st.subheader(f"{t}  ({len(sub)})")
+        _market_section(sub, key="ed_" + slug(t))
     st.download_button("Exportera Allt CSV",
                        df.drop(columns=["id"]).to_csv(index=False).encode("utf-8"),
                        file_name=f"gap_radar_{datetime.date.today()}.csv", mime="text/csv")
@@ -240,7 +255,8 @@ def merchant_view():
             if g["site"]:
                 st.caption(g["site"])
             df = pd.DataFrame([{
-                "Brand": b["brand"], "Kategori": b["category"], "Marknad": m,
+                "Brand": b["brand"], "Typ": b.get("typ", "Kategori-uppstickare"),
+                "Kategori": b["category"], "Marknad": m,
                 "Status": LABEL[cell_state(b, m)], "Kommentar": comment_of(b),
             } for b, m in g["lines"]])
             st.dataframe(df, hide_index=True, use_container_width=True)
