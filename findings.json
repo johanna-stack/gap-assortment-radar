@@ -1,7 +1,7 @@
 {
   "version": 1,
   "updated": "2026-06-02",
-  "category": "Seasonal jun-jul",
+  "category": "",
   "markets": [
     "SE",
     "NO"
@@ -10,9 +10,10 @@
     {
       "brand": "Ecoride",
       "market": "SE",
-      "category": "Seasonal jun-jul",
+      "category": "Elcykel",
       "typ": "Kategori-uppstickare",
-      "note": "elcykel, rising",
+      "signal": "+1100%",
+      "note": "Ecoride Ambassador 4 / Tripper 4",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": []
@@ -20,9 +21,10 @@
     {
       "brand": "Ecoride",
       "market": "NO",
-      "category": "Seasonal jun-jul",
+      "category": "Elcykel",
       "typ": "Kategori-uppstickare",
-      "note": "elcykel, rising",
+      "signal": "+1100%",
+      "note": "Ecoride Ambassador 4 / Tripper 4",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": []
@@ -30,9 +32,10 @@
     {
       "brand": "Elcross",
       "market": "SE",
-      "category": "Seasonal jun-jul",
+      "category": "Elcykel",
       "typ": "Kategori-uppstickare",
-      "note": "elcykel, rising +110%",
+      "signal": "+110%",
+      "note": "elcykel",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": []
@@ -40,9 +43,10 @@
     {
       "brand": "Fiido",
       "market": "SE",
-      "category": "Seasonal jun-jul",
+      "category": "Elcykel",
       "typ": "Kategori-uppstickare",
-      "note": "elcykel, rising",
+      "signal": "+50%",
+      "note": "elcykel",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": []
@@ -50,8 +54,9 @@
     {
       "brand": "Kayoba",
       "market": "NO",
-      "category": "Seasonal jun-jul",
+      "category": "Elcykel",
       "typ": "Kategori-uppstickare",
+      "signal": "Breakout",
       "note": "elsykkel",
       "in_cdon": false,
       "cdon_source": "steep",
@@ -60,9 +65,10 @@
     {
       "brand": "Diamant",
       "market": "NO",
-      "category": "Seasonal jun-jul",
+      "category": "Elcykel",
       "typ": "Kategori-uppstickare",
-      "note": "elsykkel (Volt Allroad)",
+      "signal": "Breakout",
+      "note": "Volt Allroad 2 GT",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": [
@@ -123,9 +129,10 @@
     {
       "brand": "Ninja",
       "market": "SE",
-      "category": "Seasonal jun-jul",
+      "category": "Espressomaskin",
       "typ": "Kategori-uppstickare",
-      "note": "espressomaskin, rising",
+      "signal": "Breakout",
+      "note": "Ninja Luxe Café",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": [
@@ -178,9 +185,10 @@
     {
       "brand": "Ninja",
       "market": "NO",
-      "category": "Seasonal jun-jul",
+      "category": "Espressomaskin",
       "typ": "Kategori-uppstickare",
-      "note": "espressomaskin, rising",
+      "signal": "Breakout",
+      "note": "Ninja Luxe Café",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": [
@@ -233,9 +241,10 @@
     {
       "brand": "Sage",
       "market": "NO",
-      "category": "Seasonal jun-jul",
+      "category": "Espressomaskin",
       "typ": "Kategori-uppstickare",
-      "note": "espresso (Barista Pro)",
+      "signal": "rising",
+      "note": "Sage Barista Pro",
       "in_cdon": true,
       "cdon_source": "steep:Sage",
       "merchants_selling": []
