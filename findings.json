@@ -3,10 +3,10 @@
   "updated": "2026-06-09",
   "category": "Seasonal Jun, Jul",
   "markets": [
-    "SE",
-    "NO",
     "DK",
-    "FI"
+    "FI",
+    "NO",
+    "SE"
   ],
   "findings": [
     {
@@ -19,7 +19,9 @@
       "note": "Airfryer 5000 XXL stark trend i Norden",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Philips",
@@ -31,7 +33,9 @@
       "note": "Airfryer 5000 XXL stark trend i Norden",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Philips",
@@ -43,7 +47,9 @@
       "note": "Airfryer 5000 XXL stark trend i Norden",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Philips",
@@ -55,7 +61,9 @@
       "note": "Airfryer 5000 XXL stark trend i Norden",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Ninja",
@@ -67,7 +75,9 @@
       "note": "Dramatisk ökning i Norge, etablering i Danmark",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Ninja",
@@ -124,7 +134,9 @@
           ],
           "manager": "TBD"
         }
-      ]
+      ],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Ninja",
@@ -181,7 +193,9 @@
           ],
           "manager": "TBD"
         }
-      ]
+      ],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Ninja",
@@ -193,7 +207,9 @@
       "note": "Dramatisk ökning i Norge, etablering i Danmark",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Russell Hobbs",
@@ -205,7 +221,9 @@
       "note": "Etablerad aktör med tillväxt",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Russell Hobbs",
@@ -217,7 +235,9 @@
       "note": "Etablerad aktör med tillväxt",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Russell Hobbs",
@@ -229,7 +249,9 @@
       "note": "Etablerad aktör med tillväxt",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Russell Hobbs",
@@ -241,7 +263,9 @@
       "note": "Etablerad aktör med tillväxt",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "WILFA",
@@ -253,7 +277,9 @@
       "note": "Nordic sense variant, stark i Finland",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "WILFA",
@@ -265,7 +291,9 @@
       "note": "Nordic sense variant, stark i Finland",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "WILFA",
@@ -277,7 +305,9 @@
       "note": "Nordic sense variant, stark i Finland",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "WILFA",
@@ -323,7 +353,9 @@
           ],
           "manager": "TBD"
         }
-      ]
+      ],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Electrolux",
@@ -335,7 +367,9 @@
       "note": "Explore 6 modell (E6AF16ST)",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Electrolux",
@@ -347,7 +381,9 @@
       "note": "Explore 6 modell (E6AF16ST)",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Electrolux",
@@ -359,7 +395,9 @@
       "note": "Explore 6 modell (E6AF16ST)",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Electrolux",
@@ -371,7 +409,9 @@
       "note": "Explore 6 modell (E6AF16ST)",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -383,7 +423,9 @@
       "note": "AirPods Pro 3 med live translation - major launch signal",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -395,7 +437,9 @@
       "note": "AirPods Pro 3 med live translation - major launch signal",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -407,7 +451,9 @@
       "note": "AirPods Pro 3 med live translation - major launch signal",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -419,7 +465,9 @@
       "note": "AirPods Pro 3 med live translation - major launch signal",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -431,7 +479,9 @@
       "note": "iPhone 15 Pro Max att köpa - höga intent signals",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -443,7 +493,9 @@
       "note": "iPhone 15 Pro Max att köpa - höga intent signals",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -455,7 +507,9 @@
       "note": "iPhone 15 Pro Max att köpa - höga intent signals",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -467,7 +521,9 @@
       "note": "iPhone 15 Pro Max att köpa - höga intent signals",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -479,7 +535,9 @@
       "note": "iPhone 17 Pro comparison-driven breakouts, skyddsprodukter",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -491,7 +549,9 @@
       "note": "iPhone 17 Pro comparison-driven breakouts, skyddsprodukter",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -503,7 +563,9 @@
       "note": "iPhone 17 Pro comparison-driven breakouts, skyddsprodukter",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -515,7 +577,9 @@
       "note": "iPhone 17 Pro comparison-driven breakouts, skyddsprodukter",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -527,7 +591,9 @@
       "note": "Ny modell, massiv sökning för specifikationer & jämförelser",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -539,7 +605,9 @@
       "note": "Ny modell, massiv sökning för specifikationer & jämförelser",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -551,7 +619,9 @@
       "note": "Ny modell, massiv sökning för specifikationer & jämförelser",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -563,7 +633,9 @@
       "note": "Ny modell, massiv sökning för specifikationer & jämförelser",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -575,7 +647,9 @@
       "note": "Nylanseringshype - case/accessories dominerar",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -587,7 +661,9 @@
       "note": "Nylanseringshype - case/accessories dominerar",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -599,7 +675,9 @@
       "note": "Nylanseringshype - case/accessories dominerar",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -611,7 +689,9 @@
       "note": "Nylanseringshype - case/accessories dominerar",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "EcoRide",
@@ -635,7 +715,9 @@
           ],
           "manager": "TBD"
         }
-      ]
+      ],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "EcoRide",
@@ -647,7 +729,9 @@
       "note": "Ny elcykelproducent med stark debut",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "EcoRide",
@@ -659,7 +743,9 @@
       "note": "Ny elcykelproducent med stark debut",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "EcoRide",
@@ -671,7 +757,9 @@
       "note": "Ny elcykelproducent med stark debut",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Diamant",
@@ -683,7 +771,9 @@
       "note": "Volt Allroad 2 serien explosiv trend i Norge",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Diamant",
@@ -695,7 +785,9 @@
       "note": "Volt Allroad 2 serien explosiv trend i Norge",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Diamant",
@@ -707,7 +799,9 @@
       "note": "Volt Allroad 2 serien explosiv trend i Norge",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Diamant",
@@ -719,7 +813,9 @@
       "note": "Volt Allroad 2 serien explosiv trend i Norge",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Hepha",
@@ -731,7 +827,9 @@
       "note": "Ny elcykelaktör i Finland",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Hepha",
@@ -743,7 +841,9 @@
       "note": "Ny elcykelaktör i Finland",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Hepha",
@@ -755,7 +855,9 @@
       "note": "Ny elcykelaktör i Finland",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Hepha",
@@ -767,7 +869,9 @@
       "note": "Ny elcykelaktör i Finland",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Engwe",
@@ -779,7 +883,9 @@
       "note": "Fatbike-segment breakout i Danmark",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Engwe",
@@ -791,7 +897,9 @@
       "note": "Fatbike-segment breakout i Danmark",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Engwe",
@@ -814,7 +922,9 @@
           ],
           "manager": "TBD"
         }
-      ]
+      ],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Engwe",
@@ -826,7 +936,9 @@
       "note": "Fatbike-segment breakout i Danmark",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Ninja",
@@ -838,7 +950,9 @@
       "note": "Stark etablering i espresso/kaffemarknad Danmark",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Ninja",
@@ -850,7 +964,9 @@
       "note": "Stark etablering i espresso/kaffemarknad Danmark",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Ninja",
@@ -907,7 +1023,9 @@
           ],
           "manager": "TBD"
         }
-      ]
+      ],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Ninja",
@@ -919,7 +1037,9 @@
       "note": "Stark etablering i espresso/kaffemarknad Danmark",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Hâws",
@@ -931,7 +1051,9 @@
       "note": "Dansk espressomaskinfabrikant med tillväxt",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Hâws",
@@ -943,7 +1065,9 @@
       "note": "Dansk espressomaskinfabrikant med tillväxt",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Hâws",
@@ -955,7 +1079,9 @@
       "note": "Dansk espressomaskinfabrikant med tillväxt",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Hâws",
@@ -967,7 +1093,9 @@
       "note": "Dansk espressomaskinfabrikant med tillväxt",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "WD Elements",
@@ -979,7 +1107,9 @@
       "note": "Budget-segment portable lagring",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "WD Elements",
@@ -991,7 +1121,9 @@
       "note": "Budget-segment portable lagring",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "WD Elements",
@@ -1003,7 +1135,9 @@
       "note": "Budget-segment portable lagring",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "WD Elements",
@@ -1015,7 +1149,9 @@
       "note": "Budget-segment portable lagring",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1027,7 +1163,9 @@
       "note": "Premium SSD-serie dominerar",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1039,7 +1177,9 @@
       "note": "Premium SSD-serie dominerar",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1051,7 +1191,9 @@
       "note": "Premium SSD-serie dominerar",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1063,7 +1205,9 @@
       "note": "Premium SSD-serie dominerar",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1075,7 +1219,9 @@
       "note": "Rugged variant breakout",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1087,7 +1233,9 @@
       "note": "Rugged variant breakout",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1099,7 +1247,9 @@
       "note": "Rugged variant breakout",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1111,7 +1261,9 @@
       "note": "Rugged variant breakout",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Pop Mart/Labubu",
@@ -1123,7 +1275,9 @@
       "note": "Collectible figurines - massiv global trend",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Pop Mart/Labubu",
@@ -1135,7 +1289,9 @@
       "note": "Collectible figurines - massiv global trend",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Pop Mart/Labubu",
@@ -1147,7 +1303,9 @@
       "note": "Collectible figurines - massiv global trend",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Pop Mart/Labubu",
@@ -1159,7 +1317,9 @@
       "note": "Collectible figurines - massiv global trend",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -1171,7 +1331,9 @@
       "note": "M5 chipset launch hype across Nordics",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -1183,7 +1345,9 @@
       "note": "M5 chipset launch hype across Nordics",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -1195,7 +1359,9 @@
       "note": "M5 chipset launch hype across Nordics",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Apple",
@@ -1207,7 +1373,9 @@
       "note": "M5 chipset launch hype across Nordics",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "UGreen",
@@ -1253,7 +1421,9 @@
           ],
           "manager": "TBD"
         }
-      ]
+      ],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "UGreen",
@@ -1299,7 +1469,9 @@
           ],
           "manager": "TBD"
         }
-      ]
+      ],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "UGreen",
@@ -1345,7 +1517,9 @@
           ],
           "manager": "TBD"
         }
-      ]
+      ],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "UGreen",
@@ -1391,7 +1565,9 @@
           ],
           "manager": "TBD"
         }
-      ]
+      ],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Beelink",
@@ -1423,7 +1599,9 @@
           ],
           "manager": "TBD"
         }
-      ]
+      ],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Beelink",
@@ -1455,7 +1633,9 @@
           ],
           "manager": "TBD"
         }
-      ]
+      ],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Beelink",
@@ -1467,7 +1647,9 @@
       "note": "MiniPC/NAS hybrid entering market",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Beelink",
@@ -1479,7 +1661,9 @@
       "note": "MiniPC/NAS hybrid entering market",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Synology",
@@ -1491,7 +1675,9 @@
       "note": "Ny budget-serie för etablerad aktör",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Synology",
@@ -1503,7 +1689,9 @@
       "note": "Ny budget-serie för etablerad aktör",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Synology",
@@ -1515,7 +1703,9 @@
       "note": "Ny budget-serie för etablerad aktör",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Synology",
@@ -1527,7 +1717,9 @@
       "note": "Ny budget-serie för etablerad aktör",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Mammotion",
@@ -1539,7 +1731,9 @@
       "note": "Helt ny robotgräsklippare-brand dominerar",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Mammotion",
@@ -1551,7 +1745,9 @@
       "note": "Helt ny robotgräsklippare-brand dominerar",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Mammotion",
@@ -1563,7 +1759,9 @@
       "note": "Helt ny robotgräsklippare-brand dominerar",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Mammotion",
@@ -1587,7 +1785,9 @@
           ],
           "manager": "TBD"
         }
-      ]
+      ],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Segway",
@@ -1599,7 +1799,9 @@
       "note": "Mobility-brand enter robotgräsklippare",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Segway",
@@ -1611,7 +1813,9 @@
       "note": "Mobility-brand enter robotgräsklippare",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Segway",
@@ -1623,7 +1827,9 @@
       "note": "Mobility-brand enter robotgräsklippare",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Segway",
@@ -1635,7 +1841,9 @@
       "note": "Mobility-brand enter robotgräsklippare",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1647,7 +1855,9 @@
       "note": "Budget-flagship stark demand pre-S25",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1659,7 +1869,9 @@
       "note": "Budget-flagship stark demand pre-S25",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1671,7 +1883,9 @@
       "note": "Budget-flagship stark demand pre-S25",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1683,7 +1897,9 @@
       "note": "Budget-flagship stark demand pre-S25",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "OnePlus",
@@ -1695,7 +1911,9 @@
       "note": "OnePlus re-entry signal i Finland",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "OnePlus",
@@ -1707,7 +1925,9 @@
       "note": "OnePlus re-entry signal i Finland",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "OnePlus",
@@ -1719,7 +1939,9 @@
       "note": "OnePlus re-entry signal i Finland",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "OnePlus",
@@ -1731,7 +1953,9 @@
       "note": "OnePlus re-entry signal i Finland",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Honor",
@@ -1743,7 +1967,9 @@
       "note": "Premium Chinese brand entering Finland",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Honor",
@@ -1755,7 +1981,9 @@
       "note": "Premium Chinese brand entering Finland",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Honor",
@@ -1767,7 +1995,9 @@
       "note": "Premium Chinese brand entering Finland",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Honor",
@@ -1779,7 +2009,9 @@
       "note": "Premium Chinese brand entering Finland",
       "in_cdon": true,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1791,7 +2023,9 @@
       "note": "Flagship comparison-driven mega-trend",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1803,7 +2037,9 @@
       "note": "Flagship comparison-driven mega-trend",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1815,7 +2051,9 @@
       "note": "Flagship comparison-driven mega-trend",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1827,7 +2065,9 @@
       "note": "Flagship comparison-driven mega-trend",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1839,7 +2079,9 @@
       "note": "Foldable next-gen launch signals",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1851,7 +2093,9 @@
       "note": "Foldable next-gen launch signals",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1863,7 +2107,9 @@
       "note": "Foldable next-gen launch signals",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     },
     {
       "brand": "Samsung",
@@ -1875,7 +2121,22 @@
       "note": "Foldable next-gen launch signals",
       "in_cdon": true,
       "cdon_source": "cdon.se",
-      "merchants_selling": []
+      "merchants_selling": [],
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
+    },
+    {
+      "brand": "__TESTBRAND__",
+      "market": "SE",
+      "category": "Elcykel",
+      "typ": "Kategori-uppstickare",
+      "signal": "+999%",
+      "demand": true,
+      "in_cdon": false,
+      "merchants_selling": [],
+      "note": "test",
+      "first_seen": "2026-06-09",
+      "last_seen": "2026-06-09"
     }
   ]
 }
