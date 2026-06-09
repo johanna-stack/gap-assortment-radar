@@ -696,7 +696,7 @@
     {
       "brand": "EcoRide",
       "market": "SE",
-      "category": "Elcykel Standard",
+      "category": "E-bike Standard",
       "typ": "Kategori-uppstickare",
       "signal": "+1,100% (Ambassador 4), +120% (Tripper 4)",
       "demand": true,
@@ -722,7 +722,7 @@
     {
       "brand": "EcoRide",
       "market": "NO",
-      "category": "Elcykel Standard",
+      "category": "E-bike Standard",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
@@ -736,7 +736,7 @@
     {
       "brand": "EcoRide",
       "market": "DK",
-      "category": "Elcykel Standard",
+      "category": "E-bike Standard",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
@@ -750,7 +750,7 @@
     {
       "brand": "EcoRide",
       "market": "FI",
-      "category": "Elcykel Standard",
+      "category": "E-bike Standard",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
@@ -764,7 +764,7 @@
     {
       "brand": "Diamant",
       "market": "SE",
-      "category": "Elcykel Standard",
+      "category": "E-bike Standard",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -778,7 +778,7 @@
     {
       "brand": "Diamant",
       "market": "NO",
-      "category": "Elcykel Standard",
+      "category": "E-bike Standard",
       "typ": "Peak-modell",
       "signal": "+2,100% (Volt Allroad 2 GT), Breakout",
       "demand": true,
@@ -792,7 +792,7 @@
     {
       "brand": "Diamant",
       "market": "DK",
-      "category": "Elcykel Standard",
+      "category": "E-bike Standard",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -806,7 +806,7 @@
     {
       "brand": "Diamant",
       "market": "FI",
-      "category": "Elcykel Standard",
+      "category": "E-bike Standard",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -820,7 +820,7 @@
     {
       "brand": "Hepha",
       "market": "SE",
-      "category": "Elcykel Standard",
+      "category": "E-bike Standard",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
@@ -834,7 +834,7 @@
     {
       "brand": "Hepha",
       "market": "NO",
-      "category": "Elcykel Standard",
+      "category": "E-bike Standard",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
@@ -848,7 +848,7 @@
     {
       "brand": "Hepha",
       "market": "DK",
-      "category": "Elcykel Standard",
+      "category": "E-bike Standard",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
@@ -862,7 +862,7 @@
     {
       "brand": "Hepha",
       "market": "FI",
-      "category": "Elcykel Standard",
+      "category": "E-bike Standard",
       "typ": "Kategori-uppstickare",
       "signal": "Breakout",
       "demand": true,
@@ -876,7 +876,7 @@
     {
       "brand": "Engwe",
       "market": "SE",
-      "category": "Elcykel fatbike",
+      "category": "E-bike fatbike",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
@@ -890,7 +890,7 @@
     {
       "brand": "Engwe",
       "market": "NO",
-      "category": "Elcykel fatbike",
+      "category": "E-bike fatbike",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
@@ -904,7 +904,7 @@
     {
       "brand": "Engwe",
       "market": "DK",
-      "category": "Elcykel fatbike",
+      "category": "E-bike fatbike",
       "typ": "Kategori-uppstickare",
       "signal": "+200%",
       "demand": true,
@@ -929,7 +929,7 @@
     {
       "brand": "Engwe",
       "market": "FI",
-      "category": "Elcykel fatbike",
+      "category": "E-bike fatbike",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
@@ -943,7 +943,7 @@
     {
       "brand": "Ninja",
       "market": "SE",
-      "category": "Espressomaskiner",
+      "category": "Espresso machines",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
@@ -957,7 +957,7 @@
     {
       "brand": "Ninja",
       "market": "NO",
-      "category": "Espressomaskiner",
+      "category": "Espresso machines",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
@@ -971,7 +971,7 @@
     {
       "brand": "Ninja",
       "market": "DK",
-      "category": "Espressomaskiner",
+      "category": "Espresso machines",
       "typ": "Kategori-uppstickare",
       "signal": "+1,450% (Kaffemaskine), Breakout (Luxe Cafe Essential)",
       "demand": true,
@@ -1030,7 +1030,7 @@
     {
       "brand": "Ninja",
       "market": "FI",
-      "category": "Espressomaskiner",
+      "category": "Espresso machines",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
@@ -1044,7 +1044,7 @@
     {
       "brand": "Hâws",
       "market": "SE",
-      "category": "Espressomaskiner",
+      "category": "Espresso machines",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -1058,7 +1058,7 @@
     {
       "brand": "Hâws",
       "market": "NO",
-      "category": "Espressomaskiner",
+      "category": "Espresso machines",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -1072,7 +1072,7 @@
     {
       "brand": "Hâws",
       "market": "DK",
-      "category": "Espressomaskiner",
+      "category": "Espresso machines",
       "typ": "Peak-modell",
       "signal": "+130%",
       "demand": true,
@@ -1086,7 +1086,7 @@
     {
       "brand": "Hâws",
       "market": "FI",
-      "category": "Espressomaskiner",
+      "category": "Espresso machines",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -1100,7 +1100,7 @@
     {
       "brand": "WD Elements",
       "market": "SE",
-      "category": "Externa hårddiskar",
+      "category": "External hard drives",
       "typ": "Peak-modell",
       "signal": "+130%",
       "demand": true,
@@ -1114,7 +1114,7 @@
     {
       "brand": "WD Elements",
       "market": "NO",
-      "category": "Externa hårddiskar",
+      "category": "External hard drives",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -1128,7 +1128,7 @@
     {
       "brand": "WD Elements",
       "market": "DK",
-      "category": "Externa hårddiskar",
+      "category": "External hard drives",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -1142,7 +1142,7 @@
     {
       "brand": "WD Elements",
       "market": "FI",
-      "category": "Externa hårddiskar",
+      "category": "External hard drives",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -1156,7 +1156,7 @@
     {
       "brand": "Samsung",
       "market": "SE",
-      "category": "Hårddiskar",
+      "category": "Hard drives",
       "typ": "Peak-modell",
       "signal": "+350% (T9), +140% (T7)",
       "demand": true,
@@ -1170,7 +1170,7 @@
     {
       "brand": "Samsung",
       "market": "NO",
-      "category": "Hårddiskar",
+      "category": "Hard drives",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -1184,7 +1184,7 @@
     {
       "brand": "Samsung",
       "market": "DK",
-      "category": "Hårddiskar",
+      "category": "Hard drives",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -1198,7 +1198,7 @@
     {
       "brand": "Samsung",
       "market": "FI",
-      "category": "Hårddiskar",
+      "category": "Hard drives",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -1212,7 +1212,7 @@
     {
       "brand": "Samsung",
       "market": "SE",
-      "category": "Hårddiskar",
+      "category": "Hard drives",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -1226,7 +1226,7 @@
     {
       "brand": "Samsung",
       "market": "NO",
-      "category": "Hårddiskar",
+      "category": "Hard drives",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -1240,7 +1240,7 @@
     {
       "brand": "Samsung",
       "market": "DK",
-      "category": "Hårddiskar",
+      "category": "Hard drives",
       "typ": "Peak-modell",
       "signal": "Breakout (T7 Shield)",
       "demand": true,
@@ -1254,7 +1254,7 @@
     {
       "brand": "Samsung",
       "market": "FI",
-      "category": "Hårddiskar",
+      "category": "Hard drives",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -1724,7 +1724,7 @@
     {
       "brand": "Mammotion",
       "market": "SE",
-      "category": "Robotgräsklippare",
+      "category": "Robotic lawn mowers",
       "typ": "Kategori-uppstickare",
       "signal": "Breakout (all Luba variants)",
       "demand": true,
@@ -1738,7 +1738,7 @@
     {
       "brand": "Mammotion",
       "market": "NO",
-      "category": "Robotgräsklippare",
+      "category": "Robotic lawn mowers",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
@@ -1752,7 +1752,7 @@
     {
       "brand": "Mammotion",
       "market": "DK",
-      "category": "Robotgräsklippare",
+      "category": "Robotic lawn mowers",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
@@ -1766,7 +1766,7 @@
     {
       "brand": "Mammotion",
       "market": "FI",
-      "category": "Robotgräsklippare",
+      "category": "Robotic lawn mowers",
       "typ": "Kategori-uppstickare",
       "signal": "Breakout (all Luba variants)",
       "demand": true,
@@ -1792,7 +1792,7 @@
     {
       "brand": "Segway",
       "market": "SE",
-      "category": "Robotgräsklippare",
+      "category": "Robotic lawn mowers",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -1806,7 +1806,7 @@
     {
       "brand": "Segway",
       "market": "NO",
-      "category": "Robotgräsklippare",
+      "category": "Robotic lawn mowers",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -1820,7 +1820,7 @@
     {
       "brand": "Segway",
       "market": "DK",
-      "category": "Robotgräsklippare",
+      "category": "Robotic lawn mowers",
       "typ": "Peak-modell",
       "signal": "",
       "demand": false,
@@ -1834,7 +1834,7 @@
     {
       "brand": "Segway",
       "market": "FI",
-      "category": "Robotgräsklippare",
+      "category": "Robotic lawn mowers",
       "typ": "Peak-modell",
       "signal": "Breakout (NaviMow)",
       "demand": true,
