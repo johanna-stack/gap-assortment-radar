@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""GAP Assortment Radar - Streamlit-app (repo-backad läs/skriv).
+"""GAP Assortment Radar - Streamlit app (repo-backed read/write).
 
-Läser findings.json (gaps, pushas av Aurora) + state.json (status) från GitHub-repot
-johanna-stack/gap-assortment-radar, och skriver status tillbaka till state.json via
-GitHub Contents-API:t med GAP_RADAR_PAT. Ingen backend/Mac behövs.
+Reads findings.json (gaps, pushed by Aurora) + state.json (status) from the GitHub repo
+johanna-stack/gap-assortment-radar, and writes status back to state.json via the
+GitHub Contents API using GAP_RADAR_PAT. No backend/Mac required.
 
-VIKTIGT: GAP_RADAR_PAT är scopad till BARA detta repo. cdon-trackers rörs aldrig.
+IMPORTANT: GAP_RADAR_PAT is scoped to ONLY this repo. cdon-trackers is never touched.
 
-Lokalt:  export GAP_RADAR_PAT=...   &&  streamlit run streamlit_app.py
-Cloud:   sätt secret  GAP_RADAR_PAT = "github_pat_..."
-Utan token: read-only mot bundlad findings.json (status kan inte sparas).
+Local:  export GAP_RADAR_PAT=...   &&  streamlit run streamlit_app.py
+Cloud:  set secret  GAP_RADAR_PAT = "github_pat_..."
+Without token: read-only against the bundled findings.json (status cannot be saved).
 """
 import os
 import re
@@ -24,10 +24,25 @@ import streamlit as st
 REPO = "johanna-stack/gap-assortment-radar"
 API = f"https://api.github.com/repos/{REPO}/contents"
 ACQ = "Merchant Acquisition"
-LABEL = {"gap": "GAP", "kontaktad": "Kontaktad", "avvakta": "Avvakta", "live": "Live"}
+# Internal stored status keys (in state.json) stay unchanged for compatibility;
+# only the displayed labels are English.
+LABEL = {"gap": "GAP", "kontaktad": "Contacted", "avvakta": "On hold", "live": "Live"}
 INV = {v: k for k, v in LABEL.items()}
-GROUP_OF = {"GAP": "NY", "Kontaktad": "Kontaktad", "Avvakta": "Avvakta", "Live": "Klara"}
-STATUS_GROUPS = ["NY", "Kontaktad", "Avvakta", "Klara"]
+GROUP_OF = {"GAP": "New", "Contacted": "Contacted", "On hold": "On hold", "Live": "Done"}
+STATUS_GROUPS = ["New", "Contacted", "On hold", "Done"]
+# Canonicalize the finding type to English (data may still carry the old Swedish values).
+TYP_CANON = {
+    "Kategori-uppstickare": "Category up-and-comer",
+    "Peak-modell": "Peak model",
+    "Category up-and-comer": "Category up-and-comer",
+    "Peak model": "Peak model",
+}
+TYP_ORDER = ["Category up-and-comer", "Peak model"]
+
+
+def canon_typ(t):
+    return TYP_CANON.get((t or "").strip(), (t or "").strip() or "Category up-and-comer")
+
 
 st.set_page_config(page_title="GAP Assortment Radar", layout="wide")
 
@@ -78,9 +93,9 @@ def slug(s):
 
 
 def _norm(x):
-    """Normalisera cellvärde för jämförelse: NaN/None -> "". Annars hade tomma
-    Kommentar-celler (NaN i data_editor) alltid skiljt sig från "" och trigga en
-    oändlig save->rerun-loop."""
+    """Normalize a cell value for comparison: NaN/None -> "". Otherwise empty
+    Comment cells (NaN in data_editor) would always differ from "" and trigger an
+    infinite save->rerun loop."""
     if x is None:
         return ""
     try:
@@ -97,7 +112,7 @@ if TOKEN:
     try:
         findings_doc, _ = gh_get("findings.json")
     except Exception as e:  # noqa: BLE001
-        st.warning(f"Kunde inte läsa findings.json från repo: {e}")
+        st.warning(f"Could not read findings.json from repo: {e}")
 if findings_doc is None:
     try:
         with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "findings.json"), encoding="utf-8") as fh:
@@ -107,7 +122,7 @@ if findings_doc is None:
 
 markets = findings_doc.get("markets") or ["SE", "NO", "DK", "FI"]
 
-# --- state (status) i session ---
+# --- state (status) in session ---
 if "state" not in st.session_state:
     s, sha = ({}, None)
     if TOKEN:
@@ -120,19 +135,19 @@ if "state" not in st.session_state:
     st.session_state.state_sha = sha
 STATE = st.session_state.state
 
-# pivotera findings -> en post per (kategori, brand)
+# pivot findings -> one record per (category, brand)
 brands = {}
 for f in findings_doc.get("findings", []):
     catn = f.get("category") or findings_doc.get("category") or "-"
     key = f"{catn}␟{f['brand']}"
     b = brands.setdefault(key, {"id": key, "brand": f["brand"], "category": catn,
                                 "base": {}, "note": "", "signal": "", "merchants": [],
-                                "demand": set(), "typ": "Kategori-uppstickare"})
+                                "demand": set(), "typ": "Category up-and-comer"})
     b["base"][f["market"]] = "in" if f.get("in_cdon") else "gap"
     if f.get("demand"):
         b["demand"].add(f["market"])
     if f.get("typ"):
-        b["typ"] = f["typ"]
+        b["typ"] = canon_typ(f["typ"])
     if f.get("signal") and not b["signal"]:
         b["signal"] = f["signal"]
     if not b["note"] and f.get("note"):
@@ -165,48 +180,48 @@ def save_state(message):
     try:
         st.session_state.state_sha = gh_put("state.json", STATE, st.session_state.state_sha, message)
         gh_get.clear()
-        st.toast("Sparat till delad källa (repo)")
+        st.toast("Saved to shared source (repo)")
     except requests.HTTPError as e:
         code = e.response.status_code if e.response is not None else None
         if code == 409:
-            st.error("Statuskonflikt - någon sparade samtidigt. Laddar om, försök igen.")
+            st.error("Status conflict - someone saved at the same time. Reloading, please try again.")
             del st.session_state["state"]; st.rerun()
         else:
-            st.error(f"Kunde inte spara status: {e}")
+            st.error(f"Could not save status: {e}")
 
 
-# --- Sidofält ---
-if st.sidebar.button("Uppdatera data", use_container_width=True,
-                     help="Hämta senaste findings + status från repot (ser andras ändringar)"):
+# --- Sidebar ---
+if st.sidebar.button("Refresh data", use_container_width=True,
+                     help="Fetch the latest findings + status from the repo (see others' changes)"):
     gh_get.clear()
     st.session_state.pop("state", None)
     st.rerun()
 st.sidebar.header("Filter")
-view = st.sidebar.radio("Vy", ["Per marknad", "Per merchant", "Marknadsbredd"])
-mkt = st.sidebar.selectbox("Marknad", ["Alla"] + markets)
+view = st.sidebar.radio("View", ["By market", "By merchant", "Market breadth"])
+mkt = st.sidebar.selectbox("Market", ["All"] + markets)
 cats = sorted({b["category"] for b in brands.values()})
-cat = st.sidebar.selectbox("Kategori", ["Alla"] + cats)
-q = st.sidebar.text_input("Sök merchant")
+cat = st.sidebar.selectbox("Category", ["All"] + cats)
+q = st.sidebar.text_input("Search merchant")
 
 st.title("GAP Assortment Radar")
-mode = "läs/skriv" if not READONLY else "read-only"
-st.caption(f"Delad källa (repo {REPO}, {mode}) · {len(brands)} brands · marknader {', '.join(markets)}"
-           + (f" · uppdaterad {findings_doc.get('updated')}" if findings_doc.get("updated") else ""))
+mode = "read/write" if not READONLY else "read-only"
+st.caption(f"Shared source (repo {REPO}, {mode}) · {len(brands)} brands · markets {', '.join(markets)}"
+           + (f" · updated {findings_doc.get('updated')}" if findings_doc.get("updated") else ""))
 if READONLY:
-    st.warning("Read-only: ingen GAP_RADAR_PAT-secret satt. Lägg secret GAP_RADAR_PAT i Streamlit "
-               "(eller env lokalt) för att kunna spara status till repot.")
+    st.warning("Read-only: no GAP_RADAR_PAT secret set. Add the secret GAP_RADAR_PAT in Streamlit "
+               "(or env locally) to be able to save status to the repo.")
 
 
 def _market_section(df, key):
     edited = st.data_editor(
         df, hide_index=True, use_container_width=True, key=key, disabled=READONLY,
         column_config={
-            "id": None, "Typ": None, "Grupp": None,
+            "id": None, "Type": None, "Group": None,
             "Status": st.column_config.SelectboxColumn("Status", options=list(LABEL.values()), required=True),
             "Brand": st.column_config.TextColumn(disabled=True),
-            "Kategori": st.column_config.TextColumn(disabled=True),
+            "Category": st.column_config.TextColumn(disabled=True),
             "Signal": st.column_config.TextColumn("Signal", disabled=True, help="Trend (rising search volume)"),
-            "Marknad": st.column_config.TextColumn(disabled=True),
+            "Market": st.column_config.TextColumn(disabled=True),
             "Merchant": st.column_config.TextColumn(disabled=True),
         },
     )
@@ -216,52 +231,51 @@ def _market_section(df, key):
     for i in range(len(df)):
         o, n = df.iloc[i], edited.iloc[i]
         if _norm(n["Status"]) != _norm(o["Status"]):
-            set_status(o["id"], o["Marknad"], INV[n["Status"]]); dirty = True
-        if _norm(n["Kommentar"]) != _norm(o["Kommentar"]):
-            set_comment(o["id"], _norm(n["Kommentar"])); dirty = True
+            set_status(o["id"], o["Market"], INV[n["Status"]]); dirty = True
+        if _norm(n["Comment"]) != _norm(o["Comment"]):
+            set_comment(o["id"], _norm(n["Comment"])); dirty = True
     if dirty:
-        save_state("status-uppdatering"); st.rerun()
+        save_state("status update"); st.rerun()
 
 
 def market_view():
-    vis = markets if mkt == "Alla" else [mkt]
+    vis = markets if mkt == "All" else [mkt]
     rows = []
     for b in brands.values():
-        if cat != "Alla" and b["category"] != cat:
+        if cat != "All" and b["category"] != cat:
             continue
         for m in vis:
             if b["base"].get(m) != "gap" or m not in b.get("demand", set()):
-                continue  # arbetsvyn visar bara GAP+trend (demand) — bredden finns i Marknadsbredd-vyn
+                continue  # the work view shows only GAP+trend (demand) — breadth is in the Market breadth view
             sellers = sorted({x["merchant"] for x in b["merchants"] if x["market"] == m})
             slabel = LABEL[cell_state(b, m)]
-            rows.append({"id": b["id"], "Brand": b["brand"], "Kategori": b["category"],
-                         "Signal": b.get("signal", ""), "Marknad": m,
-                         "Typ": b.get("typ", "Kategori-uppstickare"), "Grupp": GROUP_OF[slabel],
+            rows.append({"id": b["id"], "Brand": b["brand"], "Category": b["category"],
+                         "Signal": b.get("signal", ""), "Market": m,
+                         "Type": b.get("typ", "Category up-and-comer"), "Group": GROUP_OF[slabel],
                          "Status": slabel, "Merchant": ", ".join(sellers) or ACQ,
-                         "Kommentar": comment_of(b)})
+                         "Comment": comment_of(b)})
     if not rows:
-        st.info("Inga GAP för valt filter.")
+        st.info("No GAP for the selected filter.")
         return
     df = pd.DataFrame(rows)
     c1, c2, c3 = st.columns(3)
-    c1.metric("GAP-rader", len(df))
+    c1.metric("GAP rows", len(df))
     c2.metric("Live", int((df["Status"] == "Live").sum()))
     c3.metric("Brands", df["Brand"].nunique())
-    # Separata sektioner per typ i samma vy
-    order = ["Kategori-uppstickare", "Peak-modell"]
-    present = [t for t in order if (df["Typ"] == t).any()]
-    present += [t for t in sorted(df["Typ"].unique()) if t not in order]
+    # Separate sections per type in the same view
+    present = [t for t in TYP_ORDER if (df["Type"] == t).any()]
+    present += [t for t in sorted(df["Type"].unique()) if t not in TYP_ORDER]
     for t in present:
-        sub_t = df[df["Typ"] == t]
+        sub_t = df[df["Type"] == t]
         st.subheader(f"{t}  ({len(sub_t)})")
-        # separata status-grupper inom varje typ-sektion
+        # separate status groups within each type section
         for grp in STATUS_GROUPS:
-            g = sub_t[sub_t["Grupp"] == grp].reset_index(drop=True)
+            g = sub_t[sub_t["Group"] == grp].reset_index(drop=True)
             if g.empty:
                 continue
             st.markdown(f"**{grp}** ({len(g)})")
             _market_section(g, key=f"ed_{slug(t)}_{grp}")
-    st.download_button("Exportera Allt CSV",
+    st.download_button("Export All CSV",
                        df.drop(columns=["id"]).to_csv(index=False).encode("utf-8"),
                        file_name=f"gap_radar_{datetime.date.today()}.csv", mime="text/csv")
 
@@ -269,11 +283,11 @@ def market_view():
 def merchant_view():
     groups = {}
     for b in brands.values():
-        if cat != "Alla" and b["category"] != cat:
+        if cat != "All" and b["category"] != cat:
             continue
         for m in markets:
             if b["base"].get(m) != "gap" or m not in b.get("demand", set()):
-                continue  # bara GAP+trend i arbetsvyn
+                continue  # only GAP+trend in the work view
             sellers = [x for x in b["merchants"] if x["market"] == m]
             if sellers:
                 for s in sellers:
@@ -284,7 +298,7 @@ def merchant_view():
     if q:
         names = [n for n in names if q.lower() in n.lower()]
     if not names:
-        st.info("Ingen merchant matchar.")
+        st.info("No merchant matches.")
         return
     for name in names:
         g = groups[name]
@@ -292,23 +306,23 @@ def merchant_view():
             if g["site"]:
                 st.caption(g["site"])
             df = pd.DataFrame([{
-                "id": b["id"], "Marknad_key": m,
-                "Brand": b["brand"], "Typ": b.get("typ", "Kategori-uppstickare"),
-                "Kategori": b["category"], "Signal": b.get("signal", ""), "Marknad": m,
-                "Status": LABEL[cell_state(b, m)], "Kommentar": comment_of(b),
+                "id": b["id"], "Market_key": m,
+                "Brand": b["brand"], "Type": b.get("typ", "Category up-and-comer"),
+                "Category": b["category"], "Signal": b.get("signal", ""), "Market": m,
+                "Status": LABEL[cell_state(b, m)], "Comment": comment_of(b),
             } for b, m in g["lines"]])
-            # Editerbar status/kommentar PER RAD (per enskild brand/marknad)
+            # Editable status/comment PER ROW (per individual brand/market)
             edited = st.data_editor(
                 df, hide_index=True, use_container_width=True, key="me_" + slug(name),
                 disabled=READONLY,
                 column_config={
-                    "id": None, "Marknad_key": None,
+                    "id": None, "Market_key": None,
                     "Status": st.column_config.SelectboxColumn("Status", options=list(LABEL.values()), required=True),
                     "Brand": st.column_config.TextColumn(disabled=True),
-                    "Typ": st.column_config.TextColumn(disabled=True),
-                    "Kategori": st.column_config.TextColumn(disabled=True),
+                    "Type": st.column_config.TextColumn(disabled=True),
+                    "Category": st.column_config.TextColumn(disabled=True),
                     "Signal": st.column_config.TextColumn(disabled=True),
-                    "Marknad": st.column_config.TextColumn(disabled=True),
+                    "Market": st.column_config.TextColumn(disabled=True),
                 },
             )
             if not READONLY:
@@ -316,19 +330,19 @@ def merchant_view():
                 for i in range(len(df)):
                     o, n = df.iloc[i], edited.iloc[i]
                     if _norm(n["Status"]) != _norm(o["Status"]):
-                        set_status(o["id"], o["Marknad_key"], INV[n["Status"]]); dirty = True
-                    if _norm(n["Kommentar"]) != _norm(o["Kommentar"]):
-                        set_comment(o["id"], _norm(n["Kommentar"])); dirty = True
+                        set_status(o["id"], o["Market_key"], INV[n["Status"]]); dirty = True
+                    if _norm(n["Comment"]) != _norm(o["Comment"]):
+                        set_comment(o["id"], _norm(n["Comment"])); dirty = True
                 if dirty:
                     save_state(f"status: {name}"); st.rerun()
             c1, c2 = st.columns(2)
-            if not READONLY and c1.button("Markera ALLA som Kontaktad", key="k_" + slug(name)):
+            if not READONLY and c1.button("Mark ALL as Contacted", key="k_" + slug(name)):
                 for b, m in g["lines"]:
                     if cell_state(b, m) == "gap":
                         set_status(b["id"], m, "kontaktad")
-                save_state(f"kontaktad alla: {name}"); st.rerun()
-            c2.download_button("Ladda ned Merchant",
-                               df.drop(columns=["id", "Marknad_key"]).to_csv(index=False).encode("utf-8"),
+                save_state(f"contacted all: {name}"); st.rerun()
+            c2.download_button("Download Merchant",
+                               df.drop(columns=["id", "Market_key"]).to_csv(index=False).encode("utf-8"),
                                file_name=f"gap_radar_{slug(name)}_{datetime.date.today()}.csv",
                                mime="text/csv", key="d_" + slug(name))
 
@@ -336,40 +350,40 @@ def merchant_view():
 def breadth_cell(b, m):
     base = b["base"].get(m)
     if base == "in":
-        return "finns"
+        return "in CDON"
     if base == "gap":
         return "GAP+trend" if m in b.get("demand", set()) else "GAP"
     return "-"
 
 
 def breadth_view():
-    st.caption("finns = i CDON  ·  GAP+trend = saknas + stigande efterfrågan (agera)  ·  "
-               "GAP = saknas men ingen trend ännu (bredd-potential)")
+    st.caption("in CDON = in the assortment  ·  GAP+trend = missing + rising demand (act)  ·  "
+               "GAP = missing but no trend yet (breadth potential)")
     rows = []
     for b in brands.values():
-        if cat != "Alla" and b["category"] != cat:
+        if cat != "All" and b["category"] != cat:
             continue
-        r = {"Brand": b["brand"], "Kategori": b["category"], "Signal": b.get("signal", "")}
+        r = {"Brand": b["brand"], "Category": b["category"], "Signal": b.get("signal", "")}
         for m in markets:
             r[m] = breadth_cell(b, m)
-        r["GAP+trend (antal)"] = sum(1 for m in markets if r[m] == "GAP+trend")
+        r["GAP+trend (count)"] = sum(1 for m in markets if r[m] == "GAP+trend")
         rows.append(r)
     if not rows:
-        st.info("Inga brands för valt filter.")
+        st.info("No brands for the selected filter.")
         return
     df = pd.DataFrame(rows).sort_values(
-        ["GAP+trend (antal)", "Brand"], ascending=[False, True]).reset_index(drop=True)
+        ["GAP+trend (count)", "Brand"], ascending=[False, True]).reset_index(drop=True)
     c1, c2 = st.columns(2)
     c1.metric("Brands", len(df))
-    c2.metric("Brett (GAP+trend i ≥2 marknader)", int((df["GAP+trend (antal)"] >= 2).sum()))
+    c2.metric("Broad (GAP+trend in ≥2 markets)", int((df["GAP+trend (count)"] >= 2).sum()))
     st.dataframe(df, hide_index=True, use_container_width=True)
-    st.download_button("Exportera marknadsbredd CSV", df.to_csv(index=False).encode("utf-8"),
-                       file_name=f"gap_radar_bredd_{datetime.date.today()}.csv", mime="text/csv")
+    st.download_button("Export market breadth CSV", df.to_csv(index=False).encode("utf-8"),
+                       file_name=f"gap_radar_breadth_{datetime.date.today()}.csv", mime="text/csv")
 
 
-if view == "Per marknad":
+if view == "By market":
     market_view()
-elif view == "Per merchant":
+elif view == "By merchant":
     merchant_view()
 else:
     breadth_view()
