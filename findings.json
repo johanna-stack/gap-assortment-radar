@@ -2124,19 +2124,6 @@
       "merchants_selling": [],
       "first_seen": "2026-06-09",
       "last_seen": "2026-06-09"
-    },
-    {
-      "brand": "__TESTBRAND__",
-      "market": "SE",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "+999%",
-      "demand": true,
-      "in_cdon": false,
-      "merchants_selling": [],
-      "note": "test",
-      "first_seen": "2026-06-09",
-      "last_seen": "2026-06-09"
     }
   ]
 }
