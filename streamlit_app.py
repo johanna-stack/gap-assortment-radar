@@ -106,6 +106,23 @@ def _norm(x):
     return str(x).strip()
 
 
+def signal_rank(s):
+    """Numeric strength of a trend signal, for ranking (highest = hottest).
+    Breakout is the strongest Google Trends label, then the rising percentage."""
+    s = (s or "").strip().lower()
+    if not s:
+        return -1.0
+    if "breakout" in s:
+        return float("inf")
+    m = re.search(r"(\d[\d\s.,]*)", s)
+    if m:
+        try:
+            return float(m.group(1).replace(" ", "").replace(",", "").rstrip("."))
+        except ValueError:
+            return 0.0
+    return 0.0
+
+
 # --- findings (gaps) ---
 findings_doc = None
 if TOKEN:
@@ -197,7 +214,7 @@ if st.sidebar.button("Refresh data", use_container_width=True,
     st.session_state.pop("state", None)
     st.rerun()
 st.sidebar.header("Filter")
-view = st.sidebar.radio("View", ["By market", "By merchant", "Market breadth"])
+view = st.sidebar.radio("View", ["Trends", "By merchant", "Market breadth"])
 mkt = st.sidebar.selectbox("Market", ["All"] + markets)
 cats = sorted({b["category"] for b in brands.values()})
 cat = st.sidebar.selectbox("Category", ["All"] + cats)
@@ -212,33 +229,12 @@ if READONLY:
                "(or env locally) to be able to save status to the repo.")
 
 
-def _market_section(df, key):
-    edited = st.data_editor(
-        df, hide_index=True, use_container_width=True, key=key, disabled=READONLY,
-        column_config={
-            "id": None, "Type": None, "Group": None,
-            "Status": st.column_config.SelectboxColumn("Status", options=list(LABEL.values()), required=True),
-            "Brand": st.column_config.TextColumn(disabled=True),
-            "Category": st.column_config.TextColumn(disabled=True),
-            "Signal": st.column_config.TextColumn("Signal", disabled=True, help="Trend (rising search volume)"),
-            "Market": st.column_config.TextColumn(disabled=True),
-            "Merchant": st.column_config.TextColumn(disabled=True),
-        },
-    )
-    if READONLY:
-        return
-    dirty = False
-    for i in range(len(df)):
-        o, n = df.iloc[i], edited.iloc[i]
-        if _norm(n["Status"]) != _norm(o["Status"]):
-            set_status(o["id"], o["Market"], INV[n["Status"]]); dirty = True
-        if _norm(n["Comment"]) != _norm(o["Comment"]):
-            set_comment(o["id"], _norm(n["Comment"])); dirty = True
-    if dirty:
-        save_state("status update"); st.rerun()
-
-
-def market_view():
+def trends_view():
+    """Signal-first action list: the hottest rising gaps on top, with the route in.
+    This is the real value — spot the trend, see how to act, update the assortment."""
+    st.caption("Hottest trends on top. Each row is a brand that is missing from CDON in a market "
+               "with rising demand. 'Route in' = an existing merchant that already sells it, or "
+               "Merchant Acquisition. Handled (Live) items sink to the bottom.")
     vis = markets if mkt == "All" else [mkt]
     rows = []
     for b in brands.values():
@@ -246,38 +242,54 @@ def market_view():
             continue
         for m in vis:
             if b["base"].get(m) != "gap" or m not in b.get("demand", set()):
-                continue  # the work view shows only GAP+trend (demand) — breadth is in the Market breadth view
+                continue  # only GAP+trend (where it is BOTH missing and demand is rising)
             sellers = sorted({x["merchant"] for x in b["merchants"] if x["market"] == m})
             slabel = LABEL[cell_state(b, m)]
-            rows.append({"id": b["id"], "Brand": b["brand"], "Category": b["category"],
-                         "Signal": b.get("signal", ""), "Market": m,
-                         "Type": b.get("typ", "Category up-and-comer"), "Group": GROUP_OF[slabel],
-                         "Status": slabel, "Merchant": ", ".join(sellers) or ACQ,
-                         "Comment": comment_of(b)})
+            rows.append({"id": b["id"], "Market_key": m,
+                         "_rank": signal_rank(b.get("signal", "")),
+                         "_done": 1 if slabel == "Live" else 0,
+                         "Signal": b.get("signal", "") or "-", "Brand": b["brand"],
+                         "Category": b["category"], "Market": m,
+                         "Type": b.get("typ", "Category up-and-comer"),
+                         "Route in": ", ".join(sellers) or ACQ,
+                         "Status": slabel, "Comment": comment_of(b)})
     if not rows:
-        st.info("No GAP for the selected filter.")
+        st.info("No trending gaps for the selected filter.")
         return
-    df = pd.DataFrame(rows)
+    df = pd.DataFrame(rows).sort_values(
+        ["_done", "_rank", "Brand"], ascending=[True, False, True]).reset_index(drop=True)
     c1, c2, c3 = st.columns(3)
-    c1.metric("GAP rows", len(df))
-    c2.metric("Live", int((df["Status"] == "Live").sum()))
-    c3.metric("Brands", df["Brand"].nunique())
-    # Separate sections per type in the same view
-    present = [t for t in TYP_ORDER if (df["Type"] == t).any()]
-    present += [t for t in sorted(df["Type"].unique()) if t not in TYP_ORDER]
-    for t in present:
-        sub_t = df[df["Type"] == t]
-        st.subheader(f"{t}  ({len(sub_t)})")
-        # separate status groups within each type section
-        for grp in STATUS_GROUPS:
-            g = sub_t[sub_t["Group"] == grp].reset_index(drop=True)
-            if g.empty:
-                continue
-            st.markdown(f"**{grp}** ({len(g)})")
-            _market_section(g, key=f"ed_{slug(t)}_{grp}")
+    c1.metric("Trending gaps", len(df))
+    c2.metric("Breakout", int((df["Signal"].str.lower() == "breakout").sum()))
+    c3.metric("With ready merchant", int((df["Route in"] != ACQ).sum()))
+    edited = st.data_editor(
+        df, hide_index=True, use_container_width=True, key="trends", disabled=READONLY,
+        column_config={
+            "id": None, "Market_key": None, "_rank": None, "_done": None,
+            "Signal": st.column_config.TextColumn("Signal", disabled=True,
+                                                  help="Rising search trend; Breakout = strongest"),
+            "Brand": st.column_config.TextColumn(disabled=True),
+            "Category": st.column_config.TextColumn(disabled=True),
+            "Market": st.column_config.TextColumn(disabled=True),
+            "Type": st.column_config.TextColumn(disabled=True),
+            "Route in": st.column_config.TextColumn("Route in", disabled=True,
+                                                    help="Existing merchant that already sells it, or Merchant Acquisition"),
+            "Status": st.column_config.SelectboxColumn("Status", options=list(LABEL.values()), required=True),
+        },
+    )
+    if not READONLY:
+        dirty = False
+        for i in range(len(df)):
+            o, n = df.iloc[i], edited.iloc[i]
+            if _norm(n["Status"]) != _norm(o["Status"]):
+                set_status(o["id"], o["Market_key"], INV[n["Status"]]); dirty = True
+            if _norm(n["Comment"]) != _norm(o["Comment"]):
+                set_comment(o["id"], _norm(n["Comment"])); dirty = True
+        if dirty:
+            save_state("status update"); st.rerun()
     st.download_button("Export All CSV",
-                       df.drop(columns=["id"]).to_csv(index=False).encode("utf-8"),
-                       file_name=f"gap_radar_{datetime.date.today()}.csv", mime="text/csv")
+                       df.drop(columns=["id", "Market_key", "_rank", "_done"]).to_csv(index=False).encode("utf-8"),
+                       file_name=f"gap_radar_trends_{datetime.date.today()}.csv", mime="text/csv")
 
 
 def merchant_view():
@@ -381,8 +393,8 @@ def breadth_view():
                        file_name=f"gap_radar_breadth_{datetime.date.today()}.csv", mime="text/csv")
 
 
-if view == "By market":
-    market_view()
+if view == "Trends":
+    trends_view()
 elif view == "By merchant":
     merchant_view()
 else:
