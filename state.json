@@ -14,7 +14,8 @@
   },
   "Elcykel␟Ecoride": {
     "markets": {
-      "SE": "live"
+      "SE": "live",
+      "NO": "avvakta"
     },
     "comment": NaN
   },
