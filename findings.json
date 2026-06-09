@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "updated": "2026-06-02",
-  "category": "",
+  "updated": "2026-06-09",
+  "category": "Seasonal Jun, Jul",
   "markets": [
     "SE",
     "NO",
@@ -10,373 +10,1397 @@
   ],
   "findings": [
     {
-      "brand": "Ecoride",
+      "brand": "Philips",
       "market": "SE",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "+1100%",
+      "category": "Airfryers",
+      "typ": "Peak-modell",
+      "signal": "+550% (NO), Breakout (FI)",
       "demand": true,
-      "note": "Ambassador 4 / Tripper 4",
-      "in_cdon": false,
-      "cdon_source": "steep",
+      "note": "Airfryer 5000 XXL stark trend i Norden",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
       "merchants_selling": []
     },
     {
-      "brand": "Ecoride",
+      "brand": "Philips",
       "market": "NO",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "+1100%",
+      "category": "Airfryers",
+      "typ": "Peak-modell",
+      "signal": "+550% (NO), Breakout (FI)",
       "demand": true,
-      "note": "Ambassador 4 / Tripper 4",
-      "in_cdon": false,
-      "cdon_source": "steep",
+      "note": "Airfryer 5000 XXL stark trend i Norden",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
       "merchants_selling": []
     },
     {
-      "brand": "Ecoride",
+      "brand": "Philips",
       "market": "DK",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
+      "category": "Airfryers",
+      "typ": "Peak-modell",
       "signal": "",
       "demand": false,
-      "note": "Ambassador 4 / Tripper 4",
-      "in_cdon": false,
-      "cdon_source": "steep",
+      "note": "Airfryer 5000 XXL stark trend i Norden",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
       "merchants_selling": []
     },
     {
-      "brand": "Ecoride",
+      "brand": "Philips",
       "market": "FI",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "Ambassador 4 / Tripper 4",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Elcross",
-      "market": "SE",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "+110%",
+      "category": "Airfryers",
+      "typ": "Peak-modell",
+      "signal": "+550% (NO), Breakout (FI)",
       "demand": true,
-      "note": "elcykel",
-      "in_cdon": false,
-      "cdon_source": "steep",
+      "note": "Airfryer 5000 XXL stark trend i Norden",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
       "merchants_selling": []
     },
     {
-      "brand": "Elcross",
-      "market": "NO",
-      "category": "Elcykel",
+      "brand": "Ninja",
+      "market": "SE",
+      "category": "Airfryers",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
-      "note": "elcykel",
+      "note": "Dramatisk ökning i Norge, etablering i Danmark",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": []
     },
     {
-      "brand": "Elcross",
+      "brand": "Ninja",
+      "market": "NO",
+      "category": "Airfryers",
+      "typ": "Kategori-uppstickare",
+      "signal": "+3,400% (NO Crispi), +140% (DK Foodi AF500EU)",
+      "demand": true,
+      "note": "Dramatisk ökning i Norge, etablering i Danmark",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.se",
+          "hits": 10,
+          "links": [
+            "https://www.csmegastore.se/i/21580965/ninja-luxe-caf%C3%A9-pro-es701eu-serien?srsltid=AfmBOorPkAGXVAScwbqgRYThg4iBrFdc4yQ_OrxW_zCbUZk0ba8IyqNT",
+            "https://www.csmegastore.se/i/21697587/ninja-af451eu-foodi-max-dual-zone-airfryer-med-smart-cook-system?srsltid=AfmBOorcc4A8rpP8EUyOdpD5BOJLQs7G_4LBY-lT85RBFKUmY3obYJW_",
+            "https://www.csmegastore.se/i/24189020/ninja-kniv?srsltid=AfmBOorpw3dirhTDClDLVaAc2loWzlA6IUTyJ_plHRXSOJZrCt9XMr7r"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "INF Company AB",
+          "site": "inf.se",
+          "hits": 10,
+          "links": [
+            "https://inf.se/2515_ninja-print",
+            "https://inf.se/hem-och-hushll/211619-inf-silikon-air-fryer-matta-kompatibel-med-ninja-fn101gy-halkfri-vrmebestndig-pad-7314281106713.html",
+            "https://inf.se/dekoration/200308-play-doh-teenage-mutant-ninja-turtles-slice-and-blast-pizza-playset-5010996330154.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "e-ville.com",
+          "site": "www.e-ville.com",
+          "hits": 10,
+          "links": [
+            "https://www.e-ville.com/sv/3047208-nintendo-spel/113324-teenage-mutant-ninja-turtles-arcade-wrath-of-the-mutants-switch.html",
+            "https://www.e-ville.com/sv/3047208-nintendo-spel/994388-teenage-mutant-ninja-turtles-splintered-fate-deluxe-edition-switch.html",
+            "https://www.e-ville.com/sv/3047208-nintendo-spel/113321-teenage-mutant-ninja-turtles-mutants-unleashed-switch.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "0815",
+          "site": "www.0815.at",
+          "hits": 10,
+          "links": [
+            "https://www.0815.at/Kampagnen/2026-Weekendknaller-KW12-AT/Ninja-Foodi-AG651/656681354",
+            "https://www.0815.at/Haushalt-Kueche/Kueche/Maschinen/Ninja-FS301EU-Slushi/656777210",
+            "https://www.0815.at/Unsere-Marken/Ninja"
+          ],
+          "manager": "TBD"
+        }
+      ]
+    },
+    {
+      "brand": "Ninja",
       "market": "DK",
-      "category": "Elcykel",
+      "category": "Airfryers",
       "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "elcykel",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Elcross",
-      "market": "FI",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "elcykel",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Fiido",
-      "market": "SE",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "+100%",
+      "signal": "+3,400% (NO Crispi), +140% (DK Foodi AF500EU)",
       "demand": true,
-      "note": "elcykel",
+      "note": "Dramatisk ökning i Norge, etablering i Danmark",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.se",
+          "hits": 10,
+          "links": [
+            "https://www.csmegastore.se/i/21580965/ninja-luxe-caf%C3%A9-pro-es701eu-serien?srsltid=AfmBOorPkAGXVAScwbqgRYThg4iBrFdc4yQ_OrxW_zCbUZk0ba8IyqNT",
+            "https://www.csmegastore.se/i/21697587/ninja-af451eu-foodi-max-dual-zone-airfryer-med-smart-cook-system?srsltid=AfmBOorcc4A8rpP8EUyOdpD5BOJLQs7G_4LBY-lT85RBFKUmY3obYJW_",
+            "https://www.csmegastore.se/i/24189020/ninja-kniv?srsltid=AfmBOorpw3dirhTDClDLVaAc2loWzlA6IUTyJ_plHRXSOJZrCt9XMr7r"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "INF Company AB",
+          "site": "inf.se",
+          "hits": 10,
+          "links": [
+            "https://inf.se/2515_ninja-print",
+            "https://inf.se/hem-och-hushll/211619-inf-silikon-air-fryer-matta-kompatibel-med-ninja-fn101gy-halkfri-vrmebestndig-pad-7314281106713.html",
+            "https://inf.se/dekoration/200308-play-doh-teenage-mutant-ninja-turtles-slice-and-blast-pizza-playset-5010996330154.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "e-ville.com",
+          "site": "www.e-ville.com",
+          "hits": 10,
+          "links": [
+            "https://www.e-ville.com/sv/3047208-nintendo-spel/113324-teenage-mutant-ninja-turtles-arcade-wrath-of-the-mutants-switch.html",
+            "https://www.e-ville.com/sv/3047208-nintendo-spel/994388-teenage-mutant-ninja-turtles-splintered-fate-deluxe-edition-switch.html",
+            "https://www.e-ville.com/sv/3047208-nintendo-spel/113321-teenage-mutant-ninja-turtles-mutants-unleashed-switch.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "0815",
+          "site": "www.0815.at",
+          "hits": 10,
+          "links": [
+            "https://www.0815.at/Kampagnen/2026-Weekendknaller-KW12-AT/Ninja-Foodi-AG651/656681354",
+            "https://www.0815.at/Haushalt-Kueche/Kueche/Maschinen/Ninja-FS301EU-Slushi/656777210",
+            "https://www.0815.at/Unsere-Marken/Ninja"
+          ],
+          "manager": "TBD"
+        }
+      ]
     },
     {
-      "brand": "Fiido",
-      "market": "NO",
-      "category": "Elcykel",
+      "brand": "Ninja",
+      "market": "FI",
+      "category": "Airfryers",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
-      "note": "elcykel",
+      "note": "Dramatisk ökning i Norge, etablering i Danmark",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": []
     },
     {
-      "brand": "Fiido",
+      "brand": "Russell Hobbs",
+      "market": "SE",
+      "category": "Airfryers",
+      "typ": "Peak-modell",
+      "signal": "+170%",
+      "demand": true,
+      "note": "Etablerad aktör med tillväxt",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Russell Hobbs",
+      "market": "NO",
+      "category": "Airfryers",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Etablerad aktör med tillväxt",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Russell Hobbs",
       "market": "DK",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "+100%",
-      "demand": true,
-      "note": "elcykel",
-      "in_cdon": false,
-      "cdon_source": "steep",
+      "category": "Airfryers",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Etablerad aktör med tillväxt",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
       "merchants_selling": []
     },
     {
-      "brand": "Fiido",
+      "brand": "Russell Hobbs",
       "market": "FI",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
+      "category": "Airfryers",
+      "typ": "Peak-modell",
       "signal": "",
       "demand": false,
-      "note": "elcykel",
-      "in_cdon": false,
-      "cdon_source": "steep",
+      "note": "Etablerad aktör med tillväxt",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
       "merchants_selling": []
     },
     {
-      "brand": "Kayoba",
+      "brand": "WILFA",
       "market": "SE",
-      "category": "Elcykel",
+      "category": "Airfryers",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
-      "note": "elsykkel",
+      "note": "Nordic sense variant, stark i Finland",
+      "in_cdon": true,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "WILFA",
+      "market": "NO",
+      "category": "Airfryers",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "Nordic sense variant, stark i Finland",
+      "in_cdon": true,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "WILFA",
+      "market": "DK",
+      "category": "Airfryers",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "Nordic sense variant, stark i Finland",
+      "in_cdon": true,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "WILFA",
+      "market": "FI",
+      "category": "Airfryers",
+      "typ": "Kategori-uppstickare",
+      "signal": "+250%",
+      "demand": true,
+      "note": "Nordic sense variant, stark i Finland",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.se",
+          "hits": 8,
+          "links": [
+            "https://www.csmegastore.se/i/8000949/wilfa-wspl-3b-performance-kaffemaskin-svart?srsltid=AfmBOopn2RHc1_N-AullU1nQhCKfHU_iXfpV4pmwXoaA177iXkiRsG2J",
+            "https://www.csmegastore.se/i/25065164/wilfa-probaker-grey-km1gy-70?srsltid=AfmBOoqL2nOE4RGpsktTtnOWxXf2acWb-LVUonaj7fOUVI-e8nv0YYXG",
+            "https://www.csmegastore.se/i/9716309/wilfa-uni-ks1b-t2-k%C3%B8kkenv%C3%A6gt-sort?srsltid=AfmBOooFvgBRUKCsW7jwI0N9nxcESxYS-vShtMeDmDSdGzuYNeE5n-Nz"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "INF Company AB",
+          "site": "inf.se",
+          "hits": 10,
+          "links": [
+            "https://inf.se/2134_wilfa",
+            "https://inf.se/hem-och-hushll/125623-wilfa-vffeljrn-tradition-single-wswa-516w-7044876027535.html",
+            "https://inf.se/frvaring/125902-wilfa-elvisp-svart-500w-boost-hm1b-500-7044876027122.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "e-ville.com",
+          "site": "www.e-ville.com",
+          "hits": 9,
+          "links": [
+            "https://www.e-ville.com/sv/3046923-varmluftsfritoser/65434-wilfa-crispier-af1b-350-luftfritos.html",
+            "https://www.e-ville.com/sv/3046925-stavmixers/63570-wilfa-xplode-fusion-blender.html",
+            "https://www.e-ville.com/sv/3046955-kaffebryggare/65418-wilfa-svart-precision-wsp2a-kaffebryggare.html"
+          ],
+          "manager": "TBD"
+        }
+      ]
+    },
+    {
+      "brand": "Electrolux",
+      "market": "SE",
+      "category": "Airfryers",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Explore 6 modell (E6AF16ST)",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Electrolux",
+      "market": "NO",
+      "category": "Airfryers",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Explore 6 modell (E6AF16ST)",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Electrolux",
+      "market": "DK",
+      "category": "Airfryers",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Explore 6 modell (E6AF16ST)",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Electrolux",
+      "market": "FI",
+      "category": "Airfryers",
+      "typ": "Peak-modell",
+      "signal": "+140%",
+      "demand": true,
+      "note": "Explore 6 modell (E6AF16ST)",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "SE",
+      "category": "Apple AirPods",
+      "typ": "Peak-modell",
+      "signal": "Breakout (translation feature)",
+      "demand": true,
+      "note": "AirPods Pro 3 med live translation - major launch signal",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "NO",
+      "category": "Apple AirPods",
+      "typ": "Peak-modell",
+      "signal": "Breakout (translation feature)",
+      "demand": true,
+      "note": "AirPods Pro 3 med live translation - major launch signal",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "DK",
+      "category": "Apple AirPods",
+      "typ": "Peak-modell",
+      "signal": "Breakout (translation feature)",
+      "demand": true,
+      "note": "AirPods Pro 3 med live translation - major launch signal",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "FI",
+      "category": "Apple AirPods",
+      "typ": "Peak-modell",
+      "signal": "Breakout (translation feature)",
+      "demand": true,
+      "note": "AirPods Pro 3 med live translation - major launch signal",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "SE",
+      "category": "Apple iPhone 15",
+      "typ": "Peak-modell",
+      "signal": "+1,550% (SE), +3,550% (NO Pro Max)",
+      "demand": true,
+      "note": "iPhone 15 Pro Max att köpa - höga intent signals",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "NO",
+      "category": "Apple iPhone 15",
+      "typ": "Peak-modell",
+      "signal": "+1,550% (SE), +3,550% (NO Pro Max)",
+      "demand": true,
+      "note": "iPhone 15 Pro Max att köpa - höga intent signals",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "DK",
+      "category": "Apple iPhone 15",
+      "typ": "Peak-modell",
+      "signal": "+1,550% (SE), +3,550% (NO Pro Max)",
+      "demand": true,
+      "note": "iPhone 15 Pro Max att köpa - höga intent signals",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "FI",
+      "category": "Apple iPhone 15",
+      "typ": "Peak-modell",
+      "signal": "+1,550% (SE), +3,550% (NO Pro Max)",
+      "demand": true,
+      "note": "iPhone 15 Pro Max att köpa - höga intent signals",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "SE",
+      "category": "Apple iPhone 16 Pro",
+      "typ": "Peak-modell",
+      "signal": "Breakout (multiple)",
+      "demand": true,
+      "note": "iPhone 17 Pro comparison-driven breakouts, skyddsprodukter",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "NO",
+      "category": "Apple iPhone 16 Pro",
+      "typ": "Peak-modell",
+      "signal": "Breakout (multiple)",
+      "demand": true,
+      "note": "iPhone 17 Pro comparison-driven breakouts, skyddsprodukter",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "DK",
+      "category": "Apple iPhone 16 Pro",
+      "typ": "Peak-modell",
+      "signal": "Breakout (multiple)",
+      "demand": true,
+      "note": "iPhone 17 Pro comparison-driven breakouts, skyddsprodukter",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "FI",
+      "category": "Apple iPhone 16 Pro",
+      "typ": "Peak-modell",
+      "signal": "Breakout (multiple)",
+      "demand": true,
+      "note": "iPhone 17 Pro comparison-driven breakouts, skyddsprodukter",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "SE",
+      "category": "Apple iPhone 16e",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (multiple)",
+      "demand": true,
+      "note": "Ny modell, massiv sökning för specifikationer & jämförelser",
+      "in_cdon": true,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "NO",
+      "category": "Apple iPhone 16e",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (multiple)",
+      "demand": true,
+      "note": "Ny modell, massiv sökning för specifikationer & jämförelser",
+      "in_cdon": true,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "DK",
+      "category": "Apple iPhone 16e",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (multiple)",
+      "demand": true,
+      "note": "Ny modell, massiv sökning för specifikationer & jämförelser",
+      "in_cdon": true,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "FI",
+      "category": "Apple iPhone 16e",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (multiple)",
+      "demand": true,
+      "note": "Ny modell, massiv sökning för specifikationer & jämförelser",
+      "in_cdon": true,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "SE",
+      "category": "Apple iPhone 17 Pro",
+      "typ": "Peak-modell",
+      "signal": "Breakout (all markets)",
+      "demand": true,
+      "note": "Nylanseringshype - case/accessories dominerar",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "NO",
+      "category": "Apple iPhone 17 Pro",
+      "typ": "Peak-modell",
+      "signal": "Breakout (all markets)",
+      "demand": true,
+      "note": "Nylanseringshype - case/accessories dominerar",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "DK",
+      "category": "Apple iPhone 17 Pro",
+      "typ": "Peak-modell",
+      "signal": "Breakout (all markets)",
+      "demand": true,
+      "note": "Nylanseringshype - case/accessories dominerar",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "FI",
+      "category": "Apple iPhone 17 Pro",
+      "typ": "Peak-modell",
+      "signal": "Breakout (all markets)",
+      "demand": true,
+      "note": "Nylanseringshype - case/accessories dominerar",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "EcoRide",
+      "market": "SE",
+      "category": "Elcykel Standard",
+      "typ": "Kategori-uppstickare",
+      "signal": "+1,100% (Ambassador 4), +120% (Tripper 4)",
+      "demand": true,
+      "note": "Ny elcykelproducent med stark debut",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [
+        {
+          "merchant": "INF Company AB",
+          "site": "infshop.dk",
+          "hits": 10,
+          "links": [
+            "https://www.ecoride.com/da-dk?srsltid=AfmBOooncLC2tjr1YONa5YcUmPFvB8Esx8eJPX994FZKW6_LQyq2VcPW",
+            "https://www.ecoride.com/da-dk/elcykler?srsltid=AfmBOoogbFKQXKUmDBIqu-_4SywDi3eLOK9z5Y4eVSOrkoY6-BkVUCGs",
+            "https://www.bikester.dk/da/ecoride-cykel"
+          ],
+          "manager": "TBD"
+        }
+      ]
+    },
+    {
+      "brand": "EcoRide",
+      "market": "NO",
+      "category": "Elcykel Standard",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "Ny elcykelproducent med stark debut",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": []
     },
     {
-      "brand": "Kayoba",
+      "brand": "EcoRide",
+      "market": "DK",
+      "category": "Elcykel Standard",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "Ny elcykelproducent med stark debut",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "EcoRide",
+      "market": "FI",
+      "category": "Elcykel Standard",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "Ny elcykelproducent med stark debut",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Diamant",
+      "market": "SE",
+      "category": "Elcykel Standard",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Volt Allroad 2 serien explosiv trend i Norge",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Diamant",
       "market": "NO",
-      "category": "Elcykel",
+      "category": "Elcykel Standard",
+      "typ": "Peak-modell",
+      "signal": "+2,100% (Volt Allroad 2 GT), Breakout",
+      "demand": true,
+      "note": "Volt Allroad 2 serien explosiv trend i Norge",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Diamant",
+      "market": "DK",
+      "category": "Elcykel Standard",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Volt Allroad 2 serien explosiv trend i Norge",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Diamant",
+      "market": "FI",
+      "category": "Elcykel Standard",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Volt Allroad 2 serien explosiv trend i Norge",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Hepha",
+      "market": "SE",
+      "category": "Elcykel Standard",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "Ny elcykelaktör i Finland",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Hepha",
+      "market": "NO",
+      "category": "Elcykel Standard",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "Ny elcykelaktör i Finland",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Hepha",
+      "market": "DK",
+      "category": "Elcykel Standard",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "Ny elcykelaktör i Finland",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Hepha",
+      "market": "FI",
+      "category": "Elcykel Standard",
       "typ": "Kategori-uppstickare",
       "signal": "Breakout",
       "demand": true,
-      "note": "elsykkel",
+      "note": "Ny elcykelaktör i Finland",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": []
     },
     {
-      "brand": "Kayoba",
-      "market": "DK",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "elsykkel",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Kayoba",
-      "market": "FI",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "elsykkel",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Diamant",
+      "brand": "Engwe",
       "market": "SE",
-      "category": "Elcykel",
+      "category": "Elcykel fatbike",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
-      "note": "Volt Allroad 2 GT",
+      "note": "Fatbike-segment breakout i Danmark",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": []
     },
     {
-      "brand": "Diamant",
+      "brand": "Engwe",
       "market": "NO",
-      "category": "Elcykel",
+      "category": "Elcykel fatbike",
       "typ": "Kategori-uppstickare",
-      "signal": "Breakout",
+      "signal": "",
+      "demand": false,
+      "note": "Fatbike-segment breakout i Danmark",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Engwe",
+      "market": "DK",
+      "category": "Elcykel fatbike",
+      "typ": "Kategori-uppstickare",
+      "signal": "+200%",
       "demand": true,
-      "note": "Volt Allroad 2 GT",
+      "note": "Fatbike-segment breakout i Danmark",
       "in_cdon": false,
       "cdon_source": "steep",
-      "merchants_selling": []
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.dk",
+          "hits": 2,
+          "links": [
+            "https://www.csmegastore.dk/i/25547641/sulankstomas-elektrinis-dviratis-engwe-engine-pro-3-0-boost-m%C4%97lynas-250w?srsltid=AfmBOooSPH3GYZFM1EG3aGXlK927b67pQIYTQTPK19K41rJ5dpNFhbDc",
+            "https://www.csmegastore.dk/i/25310898/sulankstomas-elektrinis-dviratis-engwe-engine-pro-3-0-boost-m%C4%97lynas-250w?srsltid=AfmBOoo8FyNHfbX92Kd_t1jRDX8qERJSCZzU0fBgr2R5vHglA5A9q9p8"
+          ],
+          "manager": "TBD"
+        }
+      ]
     },
     {
-      "brand": "Diamant",
-      "market": "DK",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "Volt Allroad 2 GT",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Diamant",
+      "brand": "Engwe",
       "market": "FI",
-      "category": "Elcykel",
+      "category": "Elcykel fatbike",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
-      "note": "Volt Allroad 2 GT",
+      "note": "Fatbike-segment breakout i Danmark",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": []
     },
     {
-      "brand": "Momas",
+      "brand": "Ninja",
       "market": "SE",
-      "category": "Elcykel",
+      "category": "Espressomaskiner",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
-      "note": "elcykel DK",
+      "note": "Stark etablering i espresso/kaffemarknad Danmark",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": []
     },
     {
-      "brand": "Momas",
+      "brand": "Ninja",
       "market": "NO",
-      "category": "Elcykel",
+      "category": "Espressomaskiner",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
-      "note": "elcykel DK",
+      "note": "Stark etablering i espresso/kaffemarknad Danmark",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": []
     },
     {
-      "brand": "Momas",
+      "brand": "Ninja",
       "market": "DK",
-      "category": "Elcykel",
+      "category": "Espressomaskiner",
       "typ": "Kategori-uppstickare",
+      "signal": "+1,450% (Kaffemaskine), Breakout (Luxe Cafe Essential)",
+      "demand": true,
+      "note": "Stark etablering i espresso/kaffemarknad Danmark",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.se",
+          "hits": 10,
+          "links": [
+            "https://www.csmegastore.se/i/21580965/ninja-luxe-caf%C3%A9-pro-es701eu-serien?srsltid=AfmBOorPkAGXVAScwbqgRYThg4iBrFdc4yQ_OrxW_zCbUZk0ba8IyqNT",
+            "https://www.csmegastore.se/i/21697587/ninja-af451eu-foodi-max-dual-zone-airfryer-med-smart-cook-system?srsltid=AfmBOorcc4A8rpP8EUyOdpD5BOJLQs7G_4LBY-lT85RBFKUmY3obYJW_",
+            "https://www.csmegastore.se/i/24189020/ninja-kniv?srsltid=AfmBOorpw3dirhTDClDLVaAc2loWzlA6IUTyJ_plHRXSOJZrCt9XMr7r"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "INF Company AB",
+          "site": "inf.se",
+          "hits": 10,
+          "links": [
+            "https://inf.se/2515_ninja-print",
+            "https://inf.se/hem-och-hushll/211619-inf-silikon-air-fryer-matta-kompatibel-med-ninja-fn101gy-halkfri-vrmebestndig-pad-7314281106713.html",
+            "https://inf.se/dekoration/200308-play-doh-teenage-mutant-ninja-turtles-slice-and-blast-pizza-playset-5010996330154.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "e-ville.com",
+          "site": "www.e-ville.com",
+          "hits": 10,
+          "links": [
+            "https://www.e-ville.com/sv/3047208-nintendo-spel/113324-teenage-mutant-ninja-turtles-arcade-wrath-of-the-mutants-switch.html",
+            "https://www.e-ville.com/sv/3047208-nintendo-spel/994388-teenage-mutant-ninja-turtles-splintered-fate-deluxe-edition-switch.html",
+            "https://www.e-ville.com/sv/3047208-nintendo-spel/113321-teenage-mutant-ninja-turtles-mutants-unleashed-switch.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "0815",
+          "site": "www.0815.at",
+          "hits": 10,
+          "links": [
+            "https://www.0815.at/Kampagnen/2026-Weekendknaller-KW12-AT/Ninja-Foodi-AG651/656681354",
+            "https://www.0815.at/Haushalt-Kueche/Kueche/Maschinen/Ninja-FS301EU-Slushi/656777210",
+            "https://www.0815.at/Unsere-Marken/Ninja"
+          ],
+          "manager": "TBD"
+        }
+      ]
+    },
+    {
+      "brand": "Ninja",
+      "market": "FI",
+      "category": "Espressomaskiner",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "Stark etablering i espresso/kaffemarknad Danmark",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Hâws",
+      "market": "SE",
+      "category": "Espressomaskiner",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Dansk espressomaskinfabrikant med tillväxt",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Hâws",
+      "market": "NO",
+      "category": "Espressomaskiner",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Dansk espressomaskinfabrikant med tillväxt",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Hâws",
+      "market": "DK",
+      "category": "Espressomaskiner",
+      "typ": "Peak-modell",
       "signal": "+130%",
       "demand": true,
-      "note": "elcykel DK",
-      "in_cdon": false,
-      "cdon_source": "steep",
+      "note": "Dansk espressomaskinfabrikant med tillväxt",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
       "merchants_selling": []
     },
     {
-      "brand": "Momas",
+      "brand": "Hâws",
       "market": "FI",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
+      "category": "Espressomaskiner",
+      "typ": "Peak-modell",
       "signal": "",
       "demand": false,
-      "note": "elcykel DK",
-      "in_cdon": false,
-      "cdon_source": "steep",
+      "note": "Dansk espressomaskinfabrikant med tillväxt",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
       "merchants_selling": []
     },
     {
-      "brand": "Gazelle",
+      "brand": "WD Elements",
       "market": "SE",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "Paris C7",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Gazelle",
-      "market": "NO",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "Paris C7",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Gazelle",
-      "market": "DK",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "+100%",
+      "category": "Externa hårddiskar",
+      "typ": "Peak-modell",
+      "signal": "+130%",
       "demand": true,
-      "note": "Paris C7",
-      "in_cdon": false,
-      "cdon_source": "steep",
+      "note": "Budget-segment portable lagring",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
       "merchants_selling": []
     },
     {
-      "brand": "Gazelle",
+      "brand": "WD Elements",
+      "market": "NO",
+      "category": "Externa hårddiskar",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Budget-segment portable lagring",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "WD Elements",
+      "market": "DK",
+      "category": "Externa hårddiskar",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Budget-segment portable lagring",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "WD Elements",
       "market": "FI",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
+      "category": "Externa hårddiskar",
+      "typ": "Peak-modell",
       "signal": "",
       "demand": false,
-      "note": "Paris C7",
-      "in_cdon": false,
-      "cdon_source": "steep",
+      "note": "Budget-segment portable lagring",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
       "merchants_selling": []
     },
     {
-      "brand": "Engwe",
+      "brand": "Samsung",
       "market": "SE",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "elcykel DK",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Engwe",
-      "market": "NO",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "elcykel DK",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Engwe",
-      "market": "DK",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "+70%",
+      "category": "Hårddiskar",
+      "typ": "Peak-modell",
+      "signal": "+350% (T9), +140% (T7)",
       "demand": true,
-      "note": "elcykel DK",
+      "note": "Premium SSD-serie dominerar",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "NO",
+      "category": "Hårddiskar",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Premium SSD-serie dominerar",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "DK",
+      "category": "Hårddiskar",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Premium SSD-serie dominerar",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "FI",
+      "category": "Hårddiskar",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Premium SSD-serie dominerar",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "SE",
+      "category": "Hårddiskar",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Rugged variant breakout",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "NO",
+      "category": "Hårddiskar",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Rugged variant breakout",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "DK",
+      "category": "Hårddiskar",
+      "typ": "Peak-modell",
+      "signal": "Breakout (T7 Shield)",
+      "demand": true,
+      "note": "Rugged variant breakout",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "FI",
+      "category": "Hårddiskar",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Rugged variant breakout",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Pop Mart/Labubu",
+      "market": "SE",
+      "category": "Labubu",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (all markets)",
+      "demand": true,
+      "note": "Collectible figurines - massiv global trend",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Pop Mart/Labubu",
+      "market": "NO",
+      "category": "Labubu",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (all markets)",
+      "demand": true,
+      "note": "Collectible figurines - massiv global trend",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Pop Mart/Labubu",
+      "market": "DK",
+      "category": "Labubu",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (all markets)",
+      "demand": true,
+      "note": "Collectible figurines - massiv global trend",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Pop Mart/Labubu",
+      "market": "FI",
+      "category": "Labubu",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (all markets)",
+      "demand": true,
+      "note": "Collectible figurines - massiv global trend",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "SE",
+      "category": "MacBook Air",
+      "typ": "Peak-modell",
+      "signal": "Breakout (M5 series)",
+      "demand": true,
+      "note": "M5 chipset launch hype across Nordics",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "NO",
+      "category": "MacBook Air",
+      "typ": "Peak-modell",
+      "signal": "Breakout (M5 series)",
+      "demand": true,
+      "note": "M5 chipset launch hype across Nordics",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "DK",
+      "category": "MacBook Air",
+      "typ": "Peak-modell",
+      "signal": "Breakout (M5 series)",
+      "demand": true,
+      "note": "M5 chipset launch hype across Nordics",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Apple",
+      "market": "FI",
+      "category": "MacBook Air",
+      "typ": "Peak-modell",
+      "signal": "Breakout (M5 series)",
+      "demand": true,
+      "note": "M5 chipset launch hype across Nordics",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "UGreen",
+      "market": "SE",
+      "category": "NAS",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (multiple), +400% (NO)",
+      "demand": true,
+      "note": "Budget-friendly NAS breakthrough brand",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.se",
+          "hits": 10,
+          "links": [
+            "https://www.csmegastore.se/i/21263559/ugreen-25871-inomhus-ac-gr%C3%A5?srsltid=AfmBOooE6n4WpMeRZY01fhP2m8DwHGBhIuxij0PCA4LOzNGqJBH7Wcwg",
+            "https://www.csmegastore.se/i/21263559/ugreen-laddare-ugreen-nexode-pro-usb-a-2xusb-c-65w-usb-c-usb-c-kabel-1-5m-svart?srsltid=AfmBOooaDxu0SF19vJCwWWXlT5HWaacjIZQgTAFQLoGZfuF5i-rir_9B",
+            "https://www.csmegastore.se/i/5634184/ugreen-30762-kabelh%C3%A5llare-silikon-svart?srsltid=AfmBOorKvEL3t2QPBFpKdUWBAO-tfv5j-m_aprbr40vuJ-HR7tr7vww1"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "e-ville.com",
+          "site": "www.e-ville.com",
+          "hits": 8,
+          "links": [
+            "https://www.e-ville.com/sv/14555-datorkomponenter/49949-ugreen-usb-sata-usap-adapter.html",
+            "https://www.e-ville.com/sv/3145-powerbank/990678-ugreen-10-000-mah-powerbank-med-snabbladdning.html",
+            "https://www.e-ville.com/sv/3046647-ljudkablar-och-adaptrar/42953-ugreen-toslink-fiberoptisk-kabel-15-3m.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "0815",
+          "site": "www.0815.at",
+          "hits": 10,
+          "links": [
+            "https://www.0815.at/Smartphone-IT/Handys-Tablets/Zubehoer-Handys-Tablets/Diverses-Handy-Tablet-Zubehoer/Ugreen-50747-Handy-Smartphone-Passive-Halterung-Tisch-Bank-Schwarz/656812501",
+            "https://www.0815.at/Haushalt-Kueche/Batterien/Ugreen-Induktive-Power-Bank-magnetisch-10000-mAh-37-Wh-20-Watt-3-A-PD-3.0-PD-2.0-QC-3.0-QC-2.0-Apple-2.4A-USB-BC-1.2-24-pin-USB-C/656928329",
+            "https://www.0815.at/Haushalt-Kueche/Batterien/Ladegeraete/UGREEN-Nexode-Pro-100W-3-Port-GaN-Fast-Charger-Set-X757/656810770"
+          ],
+          "manager": "TBD"
+        }
+      ]
+    },
+    {
+      "brand": "UGreen",
+      "market": "NO",
+      "category": "NAS",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (multiple), +400% (NO)",
+      "demand": true,
+      "note": "Budget-friendly NAS breakthrough brand",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.se",
+          "hits": 10,
+          "links": [
+            "https://www.csmegastore.se/i/21263559/ugreen-25871-inomhus-ac-gr%C3%A5?srsltid=AfmBOooE6n4WpMeRZY01fhP2m8DwHGBhIuxij0PCA4LOzNGqJBH7Wcwg",
+            "https://www.csmegastore.se/i/21263559/ugreen-laddare-ugreen-nexode-pro-usb-a-2xusb-c-65w-usb-c-usb-c-kabel-1-5m-svart?srsltid=AfmBOooaDxu0SF19vJCwWWXlT5HWaacjIZQgTAFQLoGZfuF5i-rir_9B",
+            "https://www.csmegastore.se/i/5634184/ugreen-30762-kabelh%C3%A5llare-silikon-svart?srsltid=AfmBOorKvEL3t2QPBFpKdUWBAO-tfv5j-m_aprbr40vuJ-HR7tr7vww1"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "e-ville.com",
+          "site": "www.e-ville.com",
+          "hits": 8,
+          "links": [
+            "https://www.e-ville.com/sv/14555-datorkomponenter/49949-ugreen-usb-sata-usap-adapter.html",
+            "https://www.e-ville.com/sv/3145-powerbank/990678-ugreen-10-000-mah-powerbank-med-snabbladdning.html",
+            "https://www.e-ville.com/sv/3046647-ljudkablar-och-adaptrar/42953-ugreen-toslink-fiberoptisk-kabel-15-3m.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "0815",
+          "site": "www.0815.at",
+          "hits": 10,
+          "links": [
+            "https://www.0815.at/Smartphone-IT/Handys-Tablets/Zubehoer-Handys-Tablets/Diverses-Handy-Tablet-Zubehoer/Ugreen-50747-Handy-Smartphone-Passive-Halterung-Tisch-Bank-Schwarz/656812501",
+            "https://www.0815.at/Haushalt-Kueche/Batterien/Ugreen-Induktive-Power-Bank-magnetisch-10000-mAh-37-Wh-20-Watt-3-A-PD-3.0-PD-2.0-QC-3.0-QC-2.0-Apple-2.4A-USB-BC-1.2-24-pin-USB-C/656928329",
+            "https://www.0815.at/Haushalt-Kueche/Batterien/Ladegeraete/UGREEN-Nexode-Pro-100W-3-Port-GaN-Fast-Charger-Set-X757/656810770"
+          ],
+          "manager": "TBD"
+        }
+      ]
+    },
+    {
+      "brand": "UGreen",
+      "market": "DK",
+      "category": "NAS",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (multiple), +400% (NO)",
+      "demand": true,
+      "note": "Budget-friendly NAS breakthrough brand",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.se",
+          "hits": 10,
+          "links": [
+            "https://www.csmegastore.se/i/21263559/ugreen-25871-inomhus-ac-gr%C3%A5?srsltid=AfmBOooE6n4WpMeRZY01fhP2m8DwHGBhIuxij0PCA4LOzNGqJBH7Wcwg",
+            "https://www.csmegastore.se/i/21263559/ugreen-laddare-ugreen-nexode-pro-usb-a-2xusb-c-65w-usb-c-usb-c-kabel-1-5m-svart?srsltid=AfmBOooaDxu0SF19vJCwWWXlT5HWaacjIZQgTAFQLoGZfuF5i-rir_9B",
+            "https://www.csmegastore.se/i/5634184/ugreen-30762-kabelh%C3%A5llare-silikon-svart?srsltid=AfmBOorKvEL3t2QPBFpKdUWBAO-tfv5j-m_aprbr40vuJ-HR7tr7vww1"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "e-ville.com",
+          "site": "www.e-ville.com",
+          "hits": 8,
+          "links": [
+            "https://www.e-ville.com/sv/14555-datorkomponenter/49949-ugreen-usb-sata-usap-adapter.html",
+            "https://www.e-ville.com/sv/3145-powerbank/990678-ugreen-10-000-mah-powerbank-med-snabbladdning.html",
+            "https://www.e-ville.com/sv/3046647-ljudkablar-och-adaptrar/42953-ugreen-toslink-fiberoptisk-kabel-15-3m.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "0815",
+          "site": "www.0815.at",
+          "hits": 10,
+          "links": [
+            "https://www.0815.at/Smartphone-IT/Handys-Tablets/Zubehoer-Handys-Tablets/Diverses-Handy-Tablet-Zubehoer/Ugreen-50747-Handy-Smartphone-Passive-Halterung-Tisch-Bank-Schwarz/656812501",
+            "https://www.0815.at/Haushalt-Kueche/Batterien/Ugreen-Induktive-Power-Bank-magnetisch-10000-mAh-37-Wh-20-Watt-3-A-PD-3.0-PD-2.0-QC-3.0-QC-2.0-Apple-2.4A-USB-BC-1.2-24-pin-USB-C/656928329",
+            "https://www.0815.at/Haushalt-Kueche/Batterien/Ladegeraete/UGREEN-Nexode-Pro-100W-3-Port-GaN-Fast-Charger-Set-X757/656810770"
+          ],
+          "manager": "TBD"
+        }
+      ]
+    },
+    {
+      "brand": "UGreen",
+      "market": "FI",
+      "category": "NAS",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (multiple), +400% (NO)",
+      "demand": true,
+      "note": "Budget-friendly NAS breakthrough brand",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.se",
+          "hits": 10,
+          "links": [
+            "https://www.csmegastore.se/i/21263559/ugreen-25871-inomhus-ac-gr%C3%A5?srsltid=AfmBOooE6n4WpMeRZY01fhP2m8DwHGBhIuxij0PCA4LOzNGqJBH7Wcwg",
+            "https://www.csmegastore.se/i/21263559/ugreen-laddare-ugreen-nexode-pro-usb-a-2xusb-c-65w-usb-c-usb-c-kabel-1-5m-svart?srsltid=AfmBOooaDxu0SF19vJCwWWXlT5HWaacjIZQgTAFQLoGZfuF5i-rir_9B",
+            "https://www.csmegastore.se/i/5634184/ugreen-30762-kabelh%C3%A5llare-silikon-svart?srsltid=AfmBOorKvEL3t2QPBFpKdUWBAO-tfv5j-m_aprbr40vuJ-HR7tr7vww1"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "e-ville.com",
+          "site": "www.e-ville.com",
+          "hits": 8,
+          "links": [
+            "https://www.e-ville.com/sv/14555-datorkomponenter/49949-ugreen-usb-sata-usap-adapter.html",
+            "https://www.e-ville.com/sv/3145-powerbank/990678-ugreen-10-000-mah-powerbank-med-snabbladdning.html",
+            "https://www.e-ville.com/sv/3046647-ljudkablar-och-adaptrar/42953-ugreen-toslink-fiberoptisk-kabel-15-3m.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "0815",
+          "site": "www.0815.at",
+          "hits": 10,
+          "links": [
+            "https://www.0815.at/Smartphone-IT/Handys-Tablets/Zubehoer-Handys-Tablets/Diverses-Handy-Tablet-Zubehoer/Ugreen-50747-Handy-Smartphone-Passive-Halterung-Tisch-Bank-Schwarz/656812501",
+            "https://www.0815.at/Haushalt-Kueche/Batterien/Ugreen-Induktive-Power-Bank-magnetisch-10000-mAh-37-Wh-20-Watt-3-A-PD-3.0-PD-2.0-QC-3.0-QC-2.0-Apple-2.4A-USB-BC-1.2-24-pin-USB-C/656928329",
+            "https://www.0815.at/Haushalt-Kueche/Batterien/Ladegeraete/UGREEN-Nexode-Pro-100W-3-Port-GaN-Fast-Charger-Set-X757/656810770"
+          ],
+          "manager": "TBD"
+        }
+      ]
+    },
+    {
+      "brand": "Beelink",
+      "market": "SE",
+      "category": "NAS",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (multiple)",
+      "demand": true,
+      "note": "MiniPC/NAS hybrid entering market",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": [
@@ -385,376 +1409,472 @@
           "site": "csmegastore.dk",
           "hits": 1,
           "links": [
-            "https://www.csmegastore.dk/i/25547641/sulankstomas-elektrinis-dviratis-engwe-engine-pro-3-0-boost-m%C4%97lynas-250w?srsltid=AfmBOop-83IgIM5BI-5Z96M9EJtwUQzId0Cqd32MMFp5oyFyC18onuVD"
-          ],
-          "manager": "TBD"
-        }
-      ]
-    },
-    {
-      "brand": "Engwe",
-      "market": "FI",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "elcykel DK",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Hepha",
-      "market": "SE",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "sähköpyörä FI",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Hepha",
-      "market": "NO",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "sähköpyörä FI",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Hepha",
-      "market": "DK",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "sähköpyörä FI",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Hepha",
-      "market": "FI",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "Breakout",
-      "demand": true,
-      "note": "sähköpyörä FI",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Helkama",
-      "market": "SE",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "Aino sähköpyörä",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Helkama",
-      "market": "NO",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "Aino sähköpyörä",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Helkama",
-      "market": "DK",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "Aino sähköpyörä",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Helkama",
-      "market": "FI",
-      "category": "Elcykel",
-      "typ": "Kategori-uppstickare",
-      "signal": "+60%",
-      "demand": true,
-      "note": "Aino sähköpyörä",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": [
-        {
-          "merchant": "CS MEGASTORE",
-          "site": "csmegastore.no",
-          "hits": 1,
-          "links": [
-            "https://www.csmegastore.no/i/24344828/helkama-cx-elsykkel-50-cm-5-trinns-lilla?srsltid=AfmBOooXi75AVrva-b9DsT_DHNUqlpNm0C3XWHXhzZ9D8aYi8RMb9EhG"
+            "https://www.csmegastore.dk/i/21107102/mini-pc-beelink-ser5-m-ryzen-7-5800h-32gb-ram-1tb-black?srsltid=AfmBOooqE627QImdYD0qN-XS-Otb-N_w5m9yj-a3Dyg8gvfIiQ5onvA3"
           ],
           "manager": "TBD"
         },
         {
           "merchant": "e-ville.com",
           "site": "www.e-ville.com",
-          "hits": 5,
+          "hits": 2,
           "links": [
-            "https://www.e-ville.com/sv/3047241-batterier-och-tillbehor/110906-helkama-e-aino-elcykel-svart-52-cm.html",
-            "https://www.e-ville.com/sv/3047241-batterier-och-tillbehor/110897-helkama-ce9-elcykel-svart-48-cm.html",
-            "https://www.e-ville.com/sv/3047241-batterier-och-tillbehor/110901-helkama-fe584-elfatbike-silver-20.html"
+            "https://www.e-ville.com/sv/1034-android-tv-mini-pc/26824-beelink-s1-intel-mini-pc-n3450.html",
+            "https://www.e-ville.com/fi/1034-tv-tarvikkeet/26824-beelink-s1-intel-mini-pc-n3450.html"
           ],
           "manager": "TBD"
         }
       ]
     },
     {
-      "brand": "Ninja",
-      "market": "SE",
-      "category": "Espressomaskin",
+      "brand": "Beelink",
+      "market": "NO",
+      "category": "NAS",
       "typ": "Kategori-uppstickare",
-      "signal": "Breakout",
+      "signal": "Breakout (multiple)",
       "demand": true,
-      "note": "Luxe Café",
+      "note": "MiniPC/NAS hybrid entering market",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.dk",
+          "hits": 1,
+          "links": [
+            "https://www.csmegastore.dk/i/21107102/mini-pc-beelink-ser5-m-ryzen-7-5800h-32gb-ram-1tb-black?srsltid=AfmBOooqE627QImdYD0qN-XS-Otb-N_w5m9yj-a3Dyg8gvfIiQ5onvA3"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "e-ville.com",
+          "site": "www.e-ville.com",
+          "hits": 2,
+          "links": [
+            "https://www.e-ville.com/sv/1034-android-tv-mini-pc/26824-beelink-s1-intel-mini-pc-n3450.html",
+            "https://www.e-ville.com/fi/1034-tv-tarvikkeet/26824-beelink-s1-intel-mini-pc-n3450.html"
+          ],
+          "manager": "TBD"
+        }
+      ]
+    },
+    {
+      "brand": "Beelink",
+      "market": "DK",
+      "category": "NAS",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "MiniPC/NAS hybrid entering market",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Beelink",
+      "market": "FI",
+      "category": "NAS",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "MiniPC/NAS hybrid entering market",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Synology",
+      "market": "SE",
+      "category": "NAS",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Ny budget-serie för etablerad aktör",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Synology",
+      "market": "NO",
+      "category": "NAS",
+      "typ": "Peak-modell",
+      "signal": "Breakout (Beestation)",
+      "demand": true,
+      "note": "Ny budget-serie för etablerad aktör",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Synology",
+      "market": "DK",
+      "category": "NAS",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Ny budget-serie för etablerad aktör",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Synology",
+      "market": "FI",
+      "category": "NAS",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Ny budget-serie för etablerad aktör",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Mammotion",
+      "market": "SE",
+      "category": "Robotgräsklippare",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (all Luba variants)",
+      "demand": true,
+      "note": "Helt ny robotgräsklippare-brand dominerar",
+      "in_cdon": true,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Mammotion",
+      "market": "NO",
+      "category": "Robotgräsklippare",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "Helt ny robotgräsklippare-brand dominerar",
+      "in_cdon": true,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Mammotion",
+      "market": "DK",
+      "category": "Robotgräsklippare",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "Helt ny robotgräsklippare-brand dominerar",
+      "in_cdon": true,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Mammotion",
+      "market": "FI",
+      "category": "Robotgräsklippare",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (all Luba variants)",
+      "demand": true,
+      "note": "Helt ny robotgräsklippare-brand dominerar",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": [
         {
           "merchant": "CS MEGASTORE",
           "site": "csmegastore.se",
-          "hits": 2,
+          "hits": 3,
           "links": [
-            "https://www.csmegastore.se/i/21580965/ninja-luxe-caf%C3%A9-pro-es701eu-serien?srsltid=AfmBOopKD-LbpwhqXlObR5ulzk61h7g5JGXZeZOXsYQncO8-ZmkVbmdY",
-            "https://www.csmegastore.se/i/21580964/ninja-es601eu-espressomaskin-2-l-kaffeb%C3%B6nor-inbyggd-kvarn-1650-w-svart-rostfritt-st%C3%A5l?srsltid=AfmBOorOCPo14fhxGZd0HK0sdHn9lrhbDZiYtQoH6tsRDkKcR0YqlEcx"
-          ],
-          "manager": "TBD"
-        },
-        {
-          "merchant": "INF Company AB",
-          "site": "inf.se",
-          "hits": 1,
-          "links": [
-            "https://inf.se/dekoration/212347-inf-silikonmatta-fr-ninja-luxe-espressomaskin-es601-vrmebestndig-ltt-att-rengra-7314281312480.html"
-          ],
-          "manager": "TBD"
-        },
-        {
-          "merchant": "e-ville.com",
-          "site": "www.e-ville.com",
-          "hits": 8,
-          "links": [
-            "https://www.ninjasverige.com.se/",
-            "https://www.ninjacasino.se/",
-            "https://www.youtube.com/channel/UCAW-NpUFkMyCNrvRSSGIvDQ"
+            "https://www.csmegastore.se/i/25354767/mammotion-luba-mini-1500-awd-med-vision-rtk-robotgr%C3%A4sklippare?srsltid=AfmBOoqcgrEexxh0lSJ36y2hik_chpuk2kbTURaB_g4szlvr3_sLm3HN",
+            "https://www.csmegastore.se/i/25945026/mammotion-yuka-mini-2-800r-vision-rtk-robotgr%C3%A4sklippare?srsltid=AfmBOorZetYQlnh2ZB5XcgZTq8Hg3gVmazkupEUGQ9gDxkJ0aYrvEfAz",
+            "https://www.csmegastore.se/i/25354838/mammotion-luba-mini-awd-robotic-lawn-mower-battery-black-white?srsltid=AfmBOoqgUyhSv8DDtPy-S8LO1Sip88iOLu7kUhz5Sn45q_FmRONiTMJr"
           ],
           "manager": "TBD"
         }
       ]
     },
     {
-      "brand": "Ninja",
-      "market": "NO",
-      "category": "Espressomaskin",
-      "typ": "Kategori-uppstickare",
-      "signal": "Breakout",
-      "demand": true,
-      "note": "Luxe Café",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": [
-        {
-          "merchant": "CS MEGASTORE",
-          "site": "csmegastore.se",
-          "hits": 2,
-          "links": [
-            "https://www.csmegastore.se/i/21580965/ninja-luxe-caf%C3%A9-pro-es701eu-serien?srsltid=AfmBOopKD-LbpwhqXlObR5ulzk61h7g5JGXZeZOXsYQncO8-ZmkVbmdY",
-            "https://www.csmegastore.se/i/21580964/ninja-es601eu-espressomaskin-2-l-kaffeb%C3%B6nor-inbyggd-kvarn-1650-w-svart-rostfritt-st%C3%A5l?srsltid=AfmBOorOCPo14fhxGZd0HK0sdHn9lrhbDZiYtQoH6tsRDkKcR0YqlEcx"
-          ],
-          "manager": "TBD"
-        },
-        {
-          "merchant": "INF Company AB",
-          "site": "inf.se",
-          "hits": 1,
-          "links": [
-            "https://inf.se/dekoration/212347-inf-silikonmatta-fr-ninja-luxe-espressomaskin-es601-vrmebestndig-ltt-att-rengra-7314281312480.html"
-          ],
-          "manager": "TBD"
-        },
-        {
-          "merchant": "e-ville.com",
-          "site": "www.e-ville.com",
-          "hits": 8,
-          "links": [
-            "https://www.ninjasverige.com.se/",
-            "https://www.ninjacasino.se/",
-            "https://www.youtube.com/channel/UCAW-NpUFkMyCNrvRSSGIvDQ"
-          ],
-          "manager": "TBD"
-        }
-      ]
-    },
-    {
-      "brand": "Ninja",
-      "market": "DK",
-      "category": "Espressomaskin",
-      "typ": "Kategori-uppstickare",
-      "signal": "Breakout",
-      "demand": true,
-      "note": "Luxe Café",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": [
-        {
-          "merchant": "CS MEGASTORE",
-          "site": "csmegastore.se",
-          "hits": 2,
-          "links": [
-            "https://www.csmegastore.se/i/21580965/ninja-luxe-caf%C3%A9-pro-es701eu-serien?srsltid=AfmBOopKD-LbpwhqXlObR5ulzk61h7g5JGXZeZOXsYQncO8-ZmkVbmdY",
-            "https://www.csmegastore.se/i/21580964/ninja-es601eu-espressomaskin-2-l-kaffeb%C3%B6nor-inbyggd-kvarn-1650-w-svart-rostfritt-st%C3%A5l?srsltid=AfmBOorOCPo14fhxGZd0HK0sdHn9lrhbDZiYtQoH6tsRDkKcR0YqlEcx"
-          ],
-          "manager": "TBD"
-        },
-        {
-          "merchant": "INF Company AB",
-          "site": "inf.se",
-          "hits": 1,
-          "links": [
-            "https://inf.se/dekoration/212347-inf-silikonmatta-fr-ninja-luxe-espressomaskin-es601-vrmebestndig-ltt-att-rengra-7314281312480.html"
-          ],
-          "manager": "TBD"
-        },
-        {
-          "merchant": "e-ville.com",
-          "site": "www.e-ville.com",
-          "hits": 8,
-          "links": [
-            "https://www.ninjasverige.com.se/",
-            "https://www.ninjacasino.se/",
-            "https://www.youtube.com/channel/UCAW-NpUFkMyCNrvRSSGIvDQ"
-          ],
-          "manager": "TBD"
-        }
-      ]
-    },
-    {
-      "brand": "Ninja",
-      "market": "FI",
-      "category": "Espressomaskin",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "Luxe Café",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Sage",
+      "brand": "Segway",
       "market": "SE",
-      "category": "Espressomaskin",
-      "typ": "Kategori-uppstickare",
+      "category": "Robotgräsklippare",
+      "typ": "Peak-modell",
       "signal": "",
       "demand": false,
-      "note": "Barista Pro",
+      "note": "Mobility-brand enter robotgräsklippare",
       "in_cdon": true,
-      "cdon_source": "steep:Sage",
+      "cdon_source": "cdon.se",
       "merchants_selling": []
     },
     {
-      "brand": "Sage",
+      "brand": "Segway",
       "market": "NO",
-      "category": "Espressomaskin",
-      "typ": "Kategori-uppstickare",
-      "signal": "rising",
-      "demand": true,
-      "note": "Barista Pro",
+      "category": "Robotgräsklippare",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Mobility-brand enter robotgräsklippare",
       "in_cdon": true,
-      "cdon_source": "steep:Sage",
+      "cdon_source": "cdon.se",
       "merchants_selling": []
     },
     {
-      "brand": "Sage",
+      "brand": "Segway",
       "market": "DK",
-      "category": "Espressomaskin",
-      "typ": "Kategori-uppstickare",
+      "category": "Robotgräsklippare",
+      "typ": "Peak-modell",
       "signal": "",
       "demand": false,
-      "note": "Barista Pro",
+      "note": "Mobility-brand enter robotgräsklippare",
       "in_cdon": true,
-      "cdon_source": "steep:Sage",
+      "cdon_source": "cdon.se",
       "merchants_selling": []
     },
     {
-      "brand": "Sage",
+      "brand": "Segway",
       "market": "FI",
-      "category": "Espressomaskin",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "Barista Pro",
-      "in_cdon": false,
-      "cdon_source": "steep",
+      "category": "Robotgräsklippare",
+      "typ": "Peak-modell",
+      "signal": "Breakout (NaviMow)",
+      "demand": true,
+      "note": "Mobility-brand enter robotgräsklippare",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
       "merchants_selling": []
     },
     {
-      "brand": "Haws",
+      "brand": "Samsung",
       "market": "SE",
-      "category": "Espressomaskin",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "espressomaskine DK",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Haws",
-      "market": "NO",
-      "category": "Espressomaskin",
-      "typ": "Kategori-uppstickare",
-      "signal": "",
-      "demand": false,
-      "note": "espressomaskine DK",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": []
-    },
-    {
-      "brand": "Haws",
-      "market": "DK",
-      "category": "Espressomaskin",
-      "typ": "Kategori-uppstickare",
-      "signal": "+200%",
+      "category": "Samsung Galaxy S24 FE",
+      "typ": "Peak-modell",
+      "signal": "+450% (SE), +600% (NO), +300% (DK)",
       "demand": true,
-      "note": "espressomaskine DK",
-      "in_cdon": false,
+      "note": "Budget-flagship stark demand pre-S25",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "NO",
+      "category": "Samsung Galaxy S24 FE",
+      "typ": "Peak-modell",
+      "signal": "+450% (SE), +600% (NO), +300% (DK)",
+      "demand": true,
+      "note": "Budget-flagship stark demand pre-S25",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "DK",
+      "category": "Samsung Galaxy S24 FE",
+      "typ": "Peak-modell",
+      "signal": "+450% (SE), +600% (NO), +300% (DK)",
+      "demand": true,
+      "note": "Budget-flagship stark demand pre-S25",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "FI",
+      "category": "Samsung Galaxy S24 FE",
+      "typ": "Peak-modell",
+      "signal": "+450% (SE), +600% (NO), +300% (DK)",
+      "demand": true,
+      "note": "Budget-flagship stark demand pre-S25",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "OnePlus",
+      "market": "SE",
+      "category": "Samsung Galaxy S25 +",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "OnePlus re-entry signal i Finland",
+      "in_cdon": true,
       "cdon_source": "steep",
       "merchants_selling": []
     },
     {
-      "brand": "Haws",
-      "market": "FI",
-      "category": "Espressomaskin",
+      "brand": "OnePlus",
+      "market": "NO",
+      "category": "Samsung Galaxy S25 +",
       "typ": "Kategori-uppstickare",
       "signal": "",
       "demand": false,
-      "note": "espressomaskine DK",
-      "in_cdon": false,
+      "note": "OnePlus re-entry signal i Finland",
+      "in_cdon": true,
       "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "OnePlus",
+      "market": "DK",
+      "category": "Samsung Galaxy S25 +",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "OnePlus re-entry signal i Finland",
+      "in_cdon": true,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "OnePlus",
+      "market": "FI",
+      "category": "Samsung Galaxy S25 +",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (OnePlus 13R)",
+      "demand": true,
+      "note": "OnePlus re-entry signal i Finland",
+      "in_cdon": true,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Honor",
+      "market": "SE",
+      "category": "Samsung Galaxy S25 +",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "Premium Chinese brand entering Finland",
+      "in_cdon": true,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Honor",
+      "market": "NO",
+      "category": "Samsung Galaxy S25 +",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "Premium Chinese brand entering Finland",
+      "in_cdon": true,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Honor",
+      "market": "DK",
+      "category": "Samsung Galaxy S25 +",
+      "typ": "Kategori-uppstickare",
+      "signal": "",
+      "demand": false,
+      "note": "Premium Chinese brand entering Finland",
+      "in_cdon": true,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Honor",
+      "market": "FI",
+      "category": "Samsung Galaxy S25 +",
+      "typ": "Kategori-uppstickare",
+      "signal": "Breakout (Honor 400)",
+      "demand": true,
+      "note": "Premium Chinese brand entering Finland",
+      "in_cdon": true,
+      "cdon_source": "steep",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "SE",
+      "category": "Samsung Galaxy S25 Ultra",
+      "typ": "Peak-modell",
+      "signal": "+1,700% (SE iPhone 17 comp), +1,950% (FI S26 comp)",
+      "demand": true,
+      "note": "Flagship comparison-driven mega-trend",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "NO",
+      "category": "Samsung Galaxy S25 Ultra",
+      "typ": "Peak-modell",
+      "signal": "+1,700% (SE iPhone 17 comp), +1,950% (FI S26 comp)",
+      "demand": true,
+      "note": "Flagship comparison-driven mega-trend",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "DK",
+      "category": "Samsung Galaxy S25 Ultra",
+      "typ": "Peak-modell",
+      "signal": "+1,700% (SE iPhone 17 comp), +1,950% (FI S26 comp)",
+      "demand": true,
+      "note": "Flagship comparison-driven mega-trend",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "FI",
+      "category": "Samsung Galaxy S25 Ultra",
+      "typ": "Peak-modell",
+      "signal": "+1,700% (SE iPhone 17 comp), +1,950% (FI S26 comp)",
+      "demand": true,
+      "note": "Flagship comparison-driven mega-trend",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "SE",
+      "category": "Samsung Galaxy Z fold",
+      "typ": "Peak-modell",
+      "signal": "Breakout (Z Fold 7), +650%",
+      "demand": true,
+      "note": "Foldable next-gen launch signals",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "NO",
+      "category": "Samsung Galaxy Z fold",
+      "typ": "Peak-modell",
+      "signal": "Breakout (Z Fold 7), +650%",
+      "demand": true,
+      "note": "Foldable next-gen launch signals",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "DK",
+      "category": "Samsung Galaxy Z fold",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Foldable next-gen launch signals",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
+      "merchants_selling": []
+    },
+    {
+      "brand": "Samsung",
+      "market": "FI",
+      "category": "Samsung Galaxy Z fold",
+      "typ": "Peak-modell",
+      "signal": "",
+      "demand": false,
+      "note": "Foldable next-gen launch signals",
+      "in_cdon": true,
+      "cdon_source": "cdon.se",
       "merchants_selling": []
     }
   ]

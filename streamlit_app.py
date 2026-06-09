@@ -77,6 +77,20 @@ def slug(s):
     return re.sub(r"[^a-z0-9]+", "-", (s or "x").lower()).strip("-")[:40]
 
 
+def _norm(x):
+    """Normalisera cellvärde för jämförelse: NaN/None -> "". Annars hade tomma
+    Kommentar-celler (NaN i data_editor) alltid skiljt sig från "" och trigga en
+    oändlig save->rerun-loop."""
+    if x is None:
+        return ""
+    try:
+        if pd.isna(x):
+            return ""
+    except (TypeError, ValueError):
+        pass
+    return str(x).strip()
+
+
 # --- findings (gaps) ---
 findings_doc = None
 if TOKEN:
@@ -201,10 +215,10 @@ def _market_section(df, key):
     dirty = False
     for i in range(len(df)):
         o, n = df.iloc[i], edited.iloc[i]
-        if n["Status"] != o["Status"]:
+        if _norm(n["Status"]) != _norm(o["Status"]):
             set_status(o["id"], o["Marknad"], INV[n["Status"]]); dirty = True
-        if n["Kommentar"] != o["Kommentar"]:
-            set_comment(o["id"], n["Kommentar"]); dirty = True
+        if _norm(n["Kommentar"]) != _norm(o["Kommentar"]):
+            set_comment(o["id"], _norm(n["Kommentar"])); dirty = True
     if dirty:
         save_state("status-uppdatering"); st.rerun()
 
@@ -301,10 +315,10 @@ def merchant_view():
                 dirty = False
                 for i in range(len(df)):
                     o, n = df.iloc[i], edited.iloc[i]
-                    if n["Status"] != o["Status"]:
+                    if _norm(n["Status"]) != _norm(o["Status"]):
                         set_status(o["id"], o["Marknad_key"], INV[n["Status"]]); dirty = True
-                    if n["Kommentar"] != o["Kommentar"]:
-                        set_comment(o["id"], n["Kommentar"]); dirty = True
+                    if _norm(n["Kommentar"]) != _norm(o["Kommentar"]):
+                        set_comment(o["id"], _norm(n["Kommentar"])); dirty = True
                 if dirty:
                     save_state(f"status: {name}"); st.rerun()
             c1, c2 = st.columns(2)
