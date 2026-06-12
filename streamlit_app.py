@@ -66,9 +66,9 @@ st.set_page_config(page_title="GAP Assortment Radar", layout="wide", page_icon=N
 
 st.markdown("""
 <style>
-/* Intern delning: dölj Streamlits verktygsrad, meny, footer och viewer-badge */
-#MainMenu, footer, header [data-testid="stToolbar"],
-[data-testid="stToolbar"], [data-testid="stDecoration"],
+/* Intern delning: dölj Streamlits meny, footer och viewer-badge.
+   OBS: dölj ALDRIG hela stToolbar — expand-sidebar-knappen bor i den. */
+#MainMenu, footer, [data-testid="stDecoration"],
 [class*="viewerBadge"], [data-testid="stStatusWidget"],
 a[href*="streamlit.io"] {display: none !important; visibility: hidden !important;}
 /* Nedre högra hörnet: Streamlit Cloud-badge, profil-avatar och Manage app-knappen */
@@ -82,12 +82,15 @@ div[class*="_profilePreview"], div[class*="_profileContainer"],
 [class*="_darkThemeShadow"], a[href*="share.streamlit.io"],
 a[href*="streamlit.io/user"] {display: none !important; visibility: hidden !important;
                               width: 0 !important; height: 0 !important;}
-/* Övre högra hörnet: dölj verktygsknapparna men BEHÅLL headern —
-   sidofältets expand-knapp bor där och får inte försvinna */
+/* Övre högra hörnet: dölj åtgärdsknapparna (Fork/GitHub/meny/Deploy) men
+   BEHÅLL toolbar + header — sidofältets expand-knapp bor i toolbaren */
 header[data-testid="stHeader"] {background: transparent !important;}
-[data-testid="stToolbar"], [data-testid="stAppToolbar"],
+[data-testid="stToolbar"] {display: flex !important; visibility: visible !important;}
 [data-testid="stToolbarActions"], [data-testid="stMainMenu"],
 .stAppDeployButton {display: none !important; visibility: hidden !important;}
+[data-testid="stExpandSidebarButton"], [data-testid="stSidebarCollapsedControl"],
+[data-testid="stSidebarCollapseButton"]
+  {display: flex !important; visibility: visible !important;}
 .block-container {padding-top: 3rem;}
 .kpi-card {border: 1px solid rgba(128,128,128,.25); border-radius: 10px;
            padding: .65rem .9rem; text-align: center;}
