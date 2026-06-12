@@ -1,1 +1,47 @@
-{}
+{
+  "Airfryers␟Ninja": {
+    "status": "ny",
+    "owner": "",
+    "comments": []
+  },
+  "Airfryers␟WILFA": {
+    "status": "ny",
+    "owner": "",
+    "comments": []
+  },
+  "E-bike Standard␟EcoRide": {
+    "status": "ny",
+    "owner": "",
+    "comments": []
+  },
+  "E-bike Standard␟Hepha": {
+    "status": "kontaktad",
+    "owner": "",
+    "comments": []
+  },
+  "E-bike fatbike␟Engwe": {
+    "status": "ny",
+    "owner": "",
+    "comments": []
+  },
+  "Espresso machines␟Ninja": {
+    "status": "ny",
+    "owner": "",
+    "comments": []
+  },
+  "NAS␟UGreen": {
+    "status": "ny",
+    "owner": "",
+    "comments": []
+  },
+  "NAS␟Beelink": {
+    "status": "ny",
+    "owner": "",
+    "comments": []
+  },
+  "Robotic lawn mowers␟Mammotion": {
+    "status": "ny",
+    "owner": "",
+    "comments": []
+  }
+}
