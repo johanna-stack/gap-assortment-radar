@@ -251,6 +251,22 @@ def brand_status(b):
     return KEY_STATUS.get(entry(b["id"]).get("status", "ny"), "New")
 
 
+DEPT_COLOR = {"Merchant Acquisition": "#b08c9d", "Category Success": "#8c9db0",
+              "Merchant Success": "#9dab8c"}
+
+
+def derived_dept(b):
+    """Automatisk routing - inget manuellt val:
+    - brandet finns redan i sortimentet på minst en marknad -> Category Success
+      (bredda befintligt sortiment till fler marknader)
+    - full gap men en BEFINTLIG merchant säljer det på egen sajt -> Merchant Success
+      (aktivera sortimentet hos merchanten)
+    - full gap och ingen merchant har det -> Merchant Acquisition (rekrytera)"""
+    if any(v == "in" for v in b["base"].values()):
+        return "Category Success"
+    return "Merchant Success" if b["merchants"] else "Merchant Acquisition"
+
+
 def market_chips(b):
     parts = []
     for m in markets:
@@ -285,7 +301,10 @@ with st.sidebar:
                          placeholder="e.g. Johanna")
     st.session_state["user"] = user
     st.header("Filter")
-    f_dept = st.selectbox("Department", ["All"] + DEPARTMENTS + ["Unassigned"])
+    f_dept = st.selectbox("Department", ["All"] + DEPARTMENTS,
+                          help="Auto-routed: in assortment somewhere = Category Success, "
+                               "existing merchant sells it = Merchant Success, "
+                               "no merchant has it = Merchant Acquisition")
     f_status = st.multiselect("Status", STATUSES, default=[])
     cats = sorted({b["category"] for b in brands.values()})
     f_cat = st.selectbox("Category", ["All"] + cats)
@@ -305,12 +324,8 @@ def visible(b):
         return False
     if f_status and brand_status(b) not in f_status:
         return False
-    if f_dept != "All":
-        own = entry(b["id"]).get("owner", "")
-        if f_dept == "Unassigned" and own:
-            return False
-        if f_dept in DEPARTMENTS and own != f_dept:
-            return False
+    if f_dept != "All" and derived_dept(b) != f_dept:
+        return False
     if f_q:
         hay = b["brand"].lower() + " " + " ".join(x["merchant"].lower() for x in b["merchants"])
         if f_q.lower() not in hay:
@@ -375,15 +390,9 @@ def render_brand_row(b, key_prefix):
             save_state(f"{branch}: {b['brand']} -> {new}")
             st.rerun()
     with c4:
-        own_opts = ["Unassigned"] + DEPARTMENTS
-        cur_own = e.get("owner") or "Unassigned"
-        new_own = st.selectbox("Owner", own_opts, index=own_opts.index(cur_own),
-                               key=f"{key_prefix}ow_{slug(b['id'])}", disabled=READONLY,
-                               label_visibility="collapsed")
-        if not READONLY and new_own != cur_own:
-            e["owner"] = "" if new_own == "Unassigned" else new_own
-            save_state(f"{branch}: {b['brand']} owner -> {new_own}")
-            st.rerun()
+        dept = derived_dept(b)
+        st.markdown(f"<span class='badge' style='background:{DEPT_COLOR[dept]}'>{dept}</span>",
+                    unsafe_allow_html=True)
     with c5:
         n = len(e["comments"])
         with st.popover(f"Comments ({n})", use_container_width=True):
@@ -417,7 +426,9 @@ LEGEND_HTML = (
 
 with tab_work:
     st.caption("One row per brand - status applies to the whole brand since one merchant "
-               "conversation covers all markets.")
+               "conversation covers all markets. Department routing is automatic: "
+               "in assortment somewhere = Category Success - existing merchant sells it "
+               "= Merchant Success - nobody has it = Merchant Acquisition.")
     st.markdown(LEGEND_HTML, unsafe_allow_html=True)
     groups = {s: [] for s in STATUSES}
     for b in vis_brands:
@@ -491,7 +502,7 @@ with tab_matrix:
     rows = []
     for b in vis_brands:
         r = {"Brand": b["brand"], "Category": b["category"], "Status": brand_status(b),
-             "Owner": entry(b["id"]).get("owner") or "-"}
+             "Department": derived_dept(b)}
         for m in markets:
             base = b["base"].get(m)
             r[m] = ("in" if base == "in"
