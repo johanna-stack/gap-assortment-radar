@@ -75,6 +75,10 @@ a[href*="streamlit.io"] {display: none !important; visibility: hidden !important
 [class*="_container_gzau3"], [class*="_viewerBadge"],
 [data-testid="manage-app-button"], #ViewerBadge,
 iframe[title="app-creator-avatar"] {display: none !important; visibility: hidden !important;}
+/* Övre högra hörnet: dölj HELA headern (Fork / GitHub / meny ligger där) */
+header[data-testid="stHeader"], .stAppHeader, [data-testid="stAppToolbar"],
+[data-testid="stToolbarActions"], [data-testid="stMainMenu"],
+.stAppDeployButton {display: none !important; visibility: hidden !important;}
 .block-container {padding-top: 3rem;}
 .kpi-card {border: 1px solid rgba(128,128,128,.25); border-radius: 10px;
            padding: .65rem .9rem; text-align: center;}
@@ -323,8 +327,7 @@ if st.session_state.pop("__sync_widgets", False):
             if isinstance(_k, str) and _k.endswith(_sfx):
                 st.session_state[_k] = _lab
 
-mode = "read/write" if not READONLY else "read-only"
-st.caption(f"Shared source: repo {REPO} ({mode}) - {len(brands)} brands - markets {', '.join(markets)}"
+st.caption(f"{len(brands)} brands - markets {', '.join(markets)}"
            + (f" - last run {findings_doc.get('updated')}" if findings_doc.get("updated") else ""))
 if READONLY:
     st.warning("Read-only: no GAP_RADAR_PAT secret set, status and comments cannot be saved.")
