@@ -475,6 +475,57 @@ with tab_about:
         "is speed on viral trends (see the Viral radar tab).\n"
         "- Every section can be **exported to CSV**.")
 
+    st.markdown("---")
+    st.markdown("### Weekly routine")
+    st.markdown(
+        "New findings land **every Monday morning**, for both branches. Start of week:\n\n"
+        "1. Pick your branch (CDON / Fyndiq) at the top.\n"
+        "2. Set the **Department filter** to your team in the sidebar.\n"
+        "3. Open **Workspace** and work the **New** section top-down - hottest signal first.\n"
+        "4. Enter your **name in the sidebar** so your comments are signed.\n\n"
+        "Midweek: check the **Viral radar** tab for fast movers - especially on Fyndiq, "
+        "where speed is the edge.")
+    r1, r2 = st.columns(2)
+    with r1:
+        st.markdown(
+            f"<span class='badge' style='background:{DEPT_COLOR['Merchant Success']}'>"
+            "Merchant Success</span>", unsafe_allow_html=True)
+        st.markdown(
+            "Your queue: brands where **a route in already exists** - an existing merchant "
+            "sells it in their own webshop, or it is already live with us but missing in "
+            "some market.\n\n"
+            "1. Check **Route in** on the row - that is the merchant to talk to. "
+            "Use the **By merchant** tab to take all brands for one merchant in a "
+            "single conversation (export the CSV as your call sheet).\n"
+            "2. Contact the merchant about activating the brand on the gap markets - "
+            "the chips show exactly which markets are open (red = demand is rising now).\n"
+            "3. Set **Contacted** + a comment: who you spoke to and what was agreed. "
+            "Use **Mark all as Contacted** after covering several brands in one call.\n"
+            "4. Merchant hesitant or blocked? Set **On hold** + a comment why - "
+            "it stays visible so we can revisit.\n"
+            "5. When the assortment is live on the market: set **Live**. Done items "
+            "stay as a record of what the radar delivered.")
+    with r2:
+        st.markdown(
+            f"<span class='badge' style='background:{DEPT_COLOR['Merchant Acquisition']}'>"
+            "Merchant Acquisition</span>", unsafe_allow_html=True)
+        st.markdown(
+            "Your queue: brands where **nobody has it** - no existing merchant sells it "
+            "and it is not in our assortment anywhere. This is your recruitment list, "
+            "pre-validated by real consumer demand.\n\n"
+            "1. Prioritize by **signal strength** (Breakout first) and how many markets "
+            "show the gap - broad gaps mean a bigger prize for one recruitment.\n"
+            "2. Identify candidate merchants: the brand's own webshop, local retailers, "
+            "distributors in the gap markets.\n"
+            "3. Set **Contacted** when outreach starts + a comment naming the candidate.\n"
+            "4. No viable merchant right now? Set **On hold** + why - the radar will "
+            "keep the demand signal visible if it returns next season.\n"
+            "5. When a recruited merchant lists the brand: set **Live**.")
+    st.markdown(
+        "**Ground rules:** always leave a comment when you change a status (who, what, "
+        "next step) - the radar is shared across teams and the comment is the handover. "
+        "Status covers the whole brand across all markets: one conversation, all markets.")
+
 
 def _status_changed(bid, brand_name, wkey):
     """on_change-callback: sparar BARA när användaren faktiskt ändrat widgeten.
