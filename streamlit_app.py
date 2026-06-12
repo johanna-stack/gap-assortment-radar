@@ -307,6 +307,22 @@ def route_in(b):
     return ", ".join(sellers) if sellers else ACQ
 
 
+# Håll status-widgetnycklar vid liv även när raden är bortfiltrerad — annars
+# städar Streamlit nyckeln och en återmonterad widget kan skicka in ett gammalt
+# värde som felaktigt sparas (status-revert vid filtrering).
+for _k in list(st.session_state.keys()):
+    if isinstance(_k, str) and ("_st_" in _k or "_cm_" in _k):
+        st.session_state[_k] = st.session_state[_k]
+
+# Efter "Refresh data": synka status-widgets till färska repo-värden (sätt, radera inte)
+if st.session_state.pop("__sync_widgets", False):
+    for _b in brands.values():
+        _lab = brand_status(_b)
+        _sfx = "st_" + slug(_b["id"])
+        for _k in list(st.session_state.keys()):
+            if isinstance(_k, str) and _k.endswith(_sfx):
+                st.session_state[_k] = _lab
+
 mode = "read/write" if not READONLY else "read-only"
 st.caption(f"Shared source: repo {REPO} ({mode}) - {len(brands)} brands - markets {', '.join(markets)}"
            + (f" - last run {findings_doc.get('updated')}" if findings_doc.get("updated") else ""))
@@ -333,9 +349,7 @@ with st.sidebar:
                  help="Fetch the latest findings + status from the repo"):
         gh_get.clear()
         st.session_state.pop(state_key, None)
-        for k in list(st.session_state.keys()):
-            if isinstance(k, str) and "st_" in k:
-                del st.session_state[k]
+        st.session_state["__sync_widgets"] = True
         st.rerun()
 
 
@@ -527,22 +541,26 @@ with tab_about:
         "Status covers the whole brand across all markets: one conversation, all markets.")
 
 
+def _sync_brand_widgets(bid, label, except_key=None):
+    """SÄTT systerwidgets för samma brand till nya värdet — radera ALDRIG nycklarna.
+    Raderade nycklar gör att klientens kvarvarande widget skickar in sitt GAMLA
+    värde vid nästa interaktion (t.ex. ett filterklick) -> on_change felaktigt
+    -> statusen sparas tillbaka och raden 'försvinner' ur filtret."""
+    sfx = "st_" + slug(bid)
+    for k in list(st.session_state.keys()):
+        if isinstance(k, str) and k.endswith(sfx) and k != except_key:
+            st.session_state[k] = label
+
+
 def _status_changed(bid, brand_name, wkey):
-    """on_change-callback: sparar BARA när användaren faktiskt ändrat widgeten.
-    (Jämförelse-baserad spar i varje rerun kunde auto-revertera status när en
-    parallell widget för samma brand låg kvar med gammalt värde i widget-state.)"""
+    """on_change-callback: sparar BARA när användaren faktiskt ändrat widgeten."""
     new = st.session_state.get(wkey)
     e = entry(bid)
     if new is None or STATUS_KEY.get(new) == e.get("status"):
         return
     e["status"] = STATUS_KEY[new]
     save_state(f"{branch}: {brand_name} -> {new}")
-    # rensa systerwidgets för samma brand (andra flikar/grupper) så de
-    # återskapas med nya statusen i stället för att visa - eller spara - gammal
-    suffix = "st_" + slug(bid)
-    for k in list(st.session_state.keys()):
-        if k != wkey and isinstance(k, str) and k.endswith(suffix):
-            del st.session_state[k]
+    _sync_brand_widgets(bid, new, except_key=wkey)
 
 
 def render_brand_row(b, key_prefix):
@@ -559,10 +577,12 @@ def render_brand_row(b, key_prefix):
         st.markdown(f"<div class='dim'>Route in: {route_in(b)}</div>", unsafe_allow_html=True)
     with c3:
         wkey = f"{key_prefix}st_{slug(b['id'])}"
-        st.selectbox("Status", STATUSES, index=STATUSES.index(brand_status(b)),
-                     key=wkey, disabled=READONLY,
+        kwargs = {}
+        if wkey not in st.session_state:
+            kwargs["index"] = STATUSES.index(brand_status(b))
+        st.selectbox("Status", STATUSES, key=wkey, disabled=READONLY,
                      on_change=_status_changed, args=(b["id"], b["brand"], wkey),
-                     label_visibility="collapsed")
+                     label_visibility="collapsed", **kwargs)
     with c4:
         dept = derived_dept(b)
         st.markdown(f"<span class='badge' style='background:{DEPT_COLOR[dept]}'>{dept}</span>",
@@ -639,10 +659,7 @@ with tab_merchant:
                 for b in bs:
                     if entry(b["id"])["status"] == "ny":
                         entry(b["id"])["status"] = "kontaktad"
-                        sfx = "st_" + slug(b["id"])
-                        for k in list(st.session_state.keys()):
-                            if isinstance(k, str) and k.endswith(sfx):
-                                del st.session_state[k]
+                        _sync_brand_widgets(b["id"], "Contacted")
                 save_state(f"{branch}: contacted all via {name}")
                 st.rerun()
             with bc2:
