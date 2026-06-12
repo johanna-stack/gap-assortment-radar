@@ -70,6 +70,11 @@ st.markdown("""
 [data-testid="stToolbar"], [data-testid="stDecoration"],
 [class*="viewerBadge"], [data-testid="stStatusWidget"],
 a[href*="streamlit.io"] {display: none !important; visibility: hidden !important;}
+/* Nedre högra hörnet: Streamlit Cloud-badge, profil-avatar och Manage app-knappen */
+[class*="_profileContainer"], [class*="_profilePreview"],
+[class*="_container_gzau3"], [class*="_viewerBadge"],
+[data-testid="manage-app-button"], #ViewerBadge,
+iframe[title="app-creator-avatar"] {display: none !important; visibility: hidden !important;}
 .block-container {padding-top: 3rem;}
 .kpi-card {border: 1px solid rgba(128,128,128,.25); border-radius: 10px;
            padding: .65rem .9rem; text-align: center;}
