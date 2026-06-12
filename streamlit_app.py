@@ -45,7 +45,7 @@ KEY_STATUS = {v: k for k, v in STATUS_KEY.items()}
 LEGACY_RANK = {"gap": 0, "kontaktad": 1, "avvakta": 2, "live": 3}
 LEGACY_TO_NEW = {"gap": "ny", "kontaktad": "kontaktad", "avvakta": "avvaktar", "live": "live"}
 
-DEPARTMENTS = ["Merchant Acquisition", "Category Success", "Merchant Success"]
+DEPARTMENTS = ["Merchant Acquisition", "Merchant Success"]
 # Muted palette - easy on the eyes, still readable in both light and dark theme.
 STATUS_COLOR = {"New": "#b97a7f", "Contacted": "#c9a06a", "On hold": "#8d99ae", "Live": "#7f9c87"}
 
@@ -251,20 +251,17 @@ def brand_status(b):
     return KEY_STATUS.get(entry(b["id"]).get("status", "ny"), "New")
 
 
-DEPT_COLOR = {"Merchant Acquisition": "#b08c9d", "Category Success": "#8c9db0",
-              "Merchant Success": "#9dab8c"}
+DEPT_COLOR = {"Merchant Acquisition": "#b08c9d", "Merchant Success": "#9dab8c"}
 
 
 def derived_dept(b):
     """Automatisk routing - inget manuellt val:
-    - brandet finns redan i sortimentet på minst en marknad -> Category Success
-      (bredda befintligt sortiment till fler marknader)
-    - full gap men en BEFINTLIG merchant säljer det på egen sajt -> Merchant Success
-      (aktivera sortimentet hos merchanten)
-    - full gap och ingen merchant har det -> Merchant Acquisition (rekrytera)"""
-    if any(v == "in" for v in b["base"].values()):
-        return "Category Success"
-    return "Merchant Success" if b["merchants"] else "Merchant Acquisition"
+    - en befintlig merchant säljer brandet på egen sajt, ELLER det säljs redan
+      hos oss men saknas på någon marknad -> Merchant Success (aktivera/bredda)
+    - ingen har det -> Merchant Acquisition (rekrytera)"""
+    if any(v == "in" for v in b["base"].values()) or b["merchants"]:
+        return "Merchant Success"
+    return "Merchant Acquisition"
 
 
 def market_chips(b):
@@ -302,9 +299,9 @@ with st.sidebar:
     st.session_state["user"] = user
     st.header("Filter")
     f_dept = st.selectbox("Department", ["All"] + DEPARTMENTS,
-                          help="Auto-routed: in assortment somewhere = Category Success, "
-                               "existing merchant sells it = Merchant Success, "
-                               "no merchant has it = Merchant Acquisition")
+                          help="Auto-routed: an existing merchant has it (own site or "
+                               "already on our platform in some market) = Merchant Success, "
+                               "nobody has it = Merchant Acquisition")
     f_status = st.multiselect("Status", STATUSES, default=[])
     cats = sorted({b["category"] for b in brands.values()})
     f_cat = st.selectbox("Category", ["All"] + cats)
@@ -427,8 +424,8 @@ LEGEND_HTML = (
 with tab_work:
     st.caption("One row per brand - status applies to the whole brand since one merchant "
                "conversation covers all markets. Department routing is automatic: "
-               "in assortment somewhere = Category Success - existing merchant sells it "
-               "= Merchant Success - nobody has it = Merchant Acquisition.")
+               "an existing merchant has it (own site, or already on our platform but "
+               "missing in a market) = Merchant Success - nobody has it = Merchant Acquisition.")
     st.markdown(LEGEND_HTML, unsafe_allow_html=True)
     groups = {s: [] for s in STATUSES}
     for b in vis_brands:
