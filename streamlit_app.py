@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
-"""GAP Assortment Radar - Streamlit app (repo-backed read/write).
+"""GAP Assortment Radar — shared Nordic gap workspace (repo-backed read/write).
 
-Reads findings.json (gaps, pushed by Aurora) + state.json (status) from the GitHub repo
-johanna-stack/gap-assortment-radar, and writes status back to state.json via the
-GitHub Contents API using GAP_RADAR_PAT. No backend/Mac required.
+Three departments work here: Merchant Acquisition, Category Success, Merchant Success.
+Two branches, handled separately: CDON and Fyndiq (own findings + own status files).
 
-IMPORTANT: GAP_RADAR_PAT is scoped to ONLY this repo. cdon-trackers is never touched.
+Data files in the repo johanna-stack/gap-assortment-radar:
+  findings.json         CDON gaps    (pipeline writes, additive merge — never overwrites)
+  findings-fyndiq.json  Fyndiq gaps  (same model, separate pipeline)
+  state.json            CDON status/owner/comments   (THIS APP writes, pipeline never touches)
+  state-fyndiq.json     Fyndiq status/owner/comments
 
-Local:  export GAP_RADAR_PAT=...   &&  streamlit run streamlit_app.py
-Cloud:  set secret  GAP_RADAR_PAT = "github_pat_..."
-Without token: read-only against the bundled findings.json (status cannot be saved).
+Status is per BRAND (one conversation with a merchant covers all markets); the
+market breadth (SE/NO/DK/FI gap or in assortment) is shown as chips on the same row.
+
+Local:  export GAP_RADAR_PAT=...  &&  streamlit run streamlit_app.py
+Cloud:  set secret GAP_RADAR_PAT
+Without token: read-only against the bundled findings.json.
 """
 import os
 import re
@@ -24,27 +30,58 @@ import streamlit as st
 REPO = "johanna-stack/gap-assortment-radar"
 API = f"https://api.github.com/repos/{REPO}/contents"
 ACQ = "Merchant Acquisition"
-# Internal stored status keys (in state.json) stay unchanged for compatibility;
-# only the displayed labels are English.
-LABEL = {"gap": "GAP", "kontaktad": "Contacted", "avvakta": "On hold", "live": "Live"}
-INV = {v: k for k, v in LABEL.items()}
-GROUP_OF = {"GAP": "New", "Contacted": "Contacted", "On hold": "On hold", "Live": "Done"}
-STATUS_GROUPS = ["New", "Contacted", "On hold", "Done"]
-# Canonicalize the finding type to English (data may still carry the old Swedish values).
+
+BRANCHES = {
+    "CDON": {"findings": "findings.json", "state": "state.json",
+             "accent": "#0d6efd", "tagline": "Seasonal + merchant calendar driven"},
+    "Fyndiq": {"findings": "findings-fyndiq.json", "state": "state-fyndiq.json",
+               "accent": "#9333ea", "tagline": "Own seasonal calendar - fast on viral trends"},
+}
+
+STATUSES = ["New", "Contacted", "On hold", "Live"]
+STATUS_KEY = {"New": "ny", "Contacted": "kontaktad", "On hold": "avvaktar", "Live": "live"}
+KEY_STATUS = {v: k for k, v in STATUS_KEY.items()}
+# legacy per-market keys from the old app -> brand-level status, strongest wins
+LEGACY_RANK = {"gap": 0, "kontaktad": 1, "avvakta": 2, "live": 3}
+LEGACY_TO_NEW = {"gap": "ny", "kontaktad": "kontaktad", "avvakta": "avvaktar", "live": "live"}
+
+DEPARTMENTS = ["Merchant Acquisition", "Category Success", "Merchant Success"]
+STATUS_COLOR = {"New": "#dc3545", "Contacted": "#fd7e14", "On hold": "#6c757d", "Live": "#198754"}
+
 TYP_CANON = {
     "Kategori-uppstickare": "Category up-and-comer",
     "Peak-modell": "Peak model",
     "Category up-and-comer": "Category up-and-comer",
     "Peak model": "Peak model",
 }
-TYP_ORDER = ["Category up-and-comer", "Peak model"]
 
 
 def canon_typ(t):
     return TYP_CANON.get((t or "").strip(), (t or "").strip() or "Category up-and-comer")
 
 
-st.set_page_config(page_title="GAP Assortment Radar", layout="wide")
+st.set_page_config(page_title="GAP Assortment Radar", layout="wide", page_icon=None)
+
+st.markdown("""
+<style>
+.block-container {padding-top: 1.6rem;}
+.kpi-card {border: 1px solid rgba(128,128,128,.25); border-radius: 10px;
+           padding: .65rem .9rem; text-align: center;}
+.kpi-card .v {font-size: 1.55rem; font-weight: 700; line-height: 1.2;}
+.kpi-card .l {font-size: .72rem; opacity: .65; text-transform: uppercase; letter-spacing: .05em;}
+.mkt {display: inline-block; min-width: 2.4em; text-align: center; padding: .1em .35em;
+      border-radius: 6px; font-size: .74rem; font-weight: 700; margin-right: .25em;}
+.mkt-gapdemand {background: #dc3545; color: #fff;}
+.mkt-gap {background: #ffc107; color: #1a1a1a;}
+.mkt-in {background: #198754; color: #fff;}
+.mkt-na {background: rgba(128,128,128,.15); color: #888;}
+.badge {display: inline-block; padding: .12em .55em; border-radius: 999px;
+        font-size: .72rem; font-weight: 700; color: #fff;}
+.brand-line {font-size: 1.02rem; font-weight: 700;}
+.dim {opacity: .6; font-size: .8rem;}
+.signal {color: #e8590c; font-weight: 600; font-size: .8rem;}
+</style>
+""", unsafe_allow_html=True)
 
 
 def _token():
@@ -92,23 +129,7 @@ def slug(s):
     return re.sub(r"[^a-z0-9]+", "-", (s or "x").lower()).strip("-")[:40]
 
 
-def _norm(x):
-    """Normalize a cell value for comparison: NaN/None -> "". Otherwise empty
-    Comment cells (NaN in data_editor) would always differ from "" and trigger an
-    infinite save->rerun loop."""
-    if x is None:
-        return ""
-    try:
-        if pd.isna(x):
-            return ""
-    except (TypeError, ValueError):
-        pass
-    return str(x).strip()
-
-
 def signal_rank(s):
-    """Numeric strength of a trend signal, for ranking (highest = hottest).
-    Breakout is the strongest Google Trends label, then the rising percentage."""
     s = (s or "").strip().lower()
     if not s:
         return -1.0
@@ -123,34 +144,82 @@ def signal_rank(s):
     return 0.0
 
 
-# --- findings (gaps) ---
+# ---------------- branch switch ----------------
+hdr_l, hdr_r = st.columns([3, 2])
+with hdr_l:
+    st.title("GAP Assortment Radar")
+with hdr_r:
+    branch = st.radio("Branch", list(BRANCHES), horizontal=True, label_visibility="collapsed")
+B = BRANCHES[branch]
+st.markdown(
+    f"<span class='badge' style='background:{B['accent']}'>{branch}</span> "
+    f"<span class='dim'>{B['tagline']}</span>", unsafe_allow_html=True)
+
+# ---------------- data ----------------
 findings_doc = None
 if TOKEN:
     try:
-        findings_doc, _ = gh_get("findings.json")
+        findings_doc, _ = gh_get(B["findings"])
     except Exception as e:  # noqa: BLE001
-        st.warning(f"Could not read findings.json from repo: {e}")
-if findings_doc is None:
+        st.warning(f"Could not read {B['findings']} from repo: {e}")
+if findings_doc is None and branch == "CDON":
     try:
-        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "findings.json"), encoding="utf-8") as fh:
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "findings.json"),
+                  encoding="utf-8") as fh:
             findings_doc = json.load(fh)
     except Exception:  # noqa: BLE001
-        findings_doc = {"markets": ["SE", "NO", "DK", "FI"], "category": "", "findings": []}
+        findings_doc = None
+if findings_doc is None:
+    findings_doc = {"markets": ["SE", "NO", "DK", "FI"], "category": "", "findings": []}
 
 markets = findings_doc.get("markets") or ["SE", "NO", "DK", "FI"]
 
-# --- state (status) in session ---
-if "state" not in st.session_state:
+state_key = f"state::{branch}"
+if state_key not in st.session_state:
     s, sha = ({}, None)
     if TOKEN:
         try:
-            s, sha = gh_get("state.json")
+            s, sha = gh_get(B["state"])
             s = s or {}
         except Exception:  # noqa: BLE001
             s, sha = {}, None
-    st.session_state.state = s
-    st.session_state.state_sha = sha
-STATE = st.session_state.state
+    st.session_state[state_key] = s
+    st.session_state[state_key + "::sha"] = sha
+STATE = st.session_state[state_key]
+
+
+def entry(bid):
+    """State record for a brand, migrating the old per-market model on first touch.
+    Old: {markets: {SE: 'kontaktad', ...}, comment: 'text'}
+    New: {status: 'kontaktad', owner: '', comments: [{user, ts, text}]}"""
+    e = STATE.setdefault(bid, {})
+    if "status" not in e:
+        legacy = e.get("markets") or {}
+        best = max(legacy.values(), key=lambda v: LEGACY_RANK.get(v, 0), default="gap")
+        e["status"] = LEGACY_TO_NEW.get(best, "ny")
+    if "owner" not in e:
+        e["owner"] = ""
+    if "comments" not in e:
+        old = (e.get("comment") or "").strip()
+        e["comments"] = ([{"user": "earlier note", "ts": "", "text": old}] if old else [])
+    return e
+
+
+def save_state(message):
+    try:
+        st.session_state[state_key + "::sha"] = gh_put(
+            B["state"], STATE, st.session_state[state_key + "::sha"], message)
+        gh_get.clear()
+        st.toast("Saved to shared source (repo)")
+    except requests.HTTPError as e:
+        code = e.response.status_code if e.response is not None else None
+        if code in (409, 422):
+            st.error("Save conflict - someone saved at the same time. Reloading, please try again.")
+            del st.session_state[state_key]
+            st.rerun()
+        else:
+            st.error(f"Could not save: {e}")
+
 
 # pivot findings -> one record per (category, brand)
 brands = {}
@@ -159,7 +228,8 @@ for f in findings_doc.get("findings", []):
     key = f"{catn}␟{f['brand']}"
     b = brands.setdefault(key, {"id": key, "brand": f["brand"], "category": catn,
                                 "base": {}, "note": "", "signal": "", "merchants": [],
-                                "demand": set(), "typ": "Category up-and-comer"})
+                                "demand": set(), "typ": "Category up-and-comer",
+                                "first_seen": f.get("first_seen", "")})
     b["base"][f["market"]] = "in" if f.get("in_cdon") else "gap"
     if f.get("demand"):
         b["demand"].add(f["market"])
@@ -169,233 +239,263 @@ for f in findings_doc.get("findings", []):
         b["signal"] = f["signal"]
     if not b["note"] and f.get("note"):
         b["note"] = f["note"]
+    if f.get("first_seen", "") > b["first_seen"]:
+        b["first_seen"] = f.get("first_seen", "")
     for m in f.get("merchants_selling", []):
         b["merchants"].append({**m, "market": f["market"]})
 
 
-def cell_state(b, m):
-    if b["base"].get(m) == "in":
-        return "in"
-    if b["base"].get(m) != "gap":
-        return "na"
-    return STATE.get(b["id"], {}).get("markets", {}).get(m, "gap")
+def brand_status(b):
+    return KEY_STATUS.get(entry(b["id"]).get("status", "ny"), "New")
 
 
-def comment_of(b):
-    return STATE.get(b["id"], {}).get("comment", "")
-
-
-def set_status(bid, market, status):
-    STATE.setdefault(bid, {"markets": {}, "comment": ""})["markets"][market] = status
-
-
-def set_comment(bid, comment):
-    STATE.setdefault(bid, {"markets": {}, "comment": ""})["comment"] = comment
-
-
-def save_state(message):
-    try:
-        st.session_state.state_sha = gh_put("state.json", STATE, st.session_state.state_sha, message)
-        gh_get.clear()
-        st.toast("Saved to shared source (repo)")
-    except requests.HTTPError as e:
-        code = e.response.status_code if e.response is not None else None
-        if code == 409:
-            st.error("Status conflict - someone saved at the same time. Reloading, please try again.")
-            del st.session_state["state"]; st.rerun()
+def market_chips(b):
+    parts = []
+    for m in markets:
+        base = b["base"].get(m)
+        if base == "in":
+            cls, tip = "mkt-in", "in assortment"
+        elif base == "gap" and m in b["demand"]:
+            cls, tip = "mkt-gapdemand", "GAP + rising demand"
+        elif base == "gap":
+            cls, tip = "mkt-gap", "GAP (no trend signal yet)"
         else:
-            st.error(f"Could not save status: {e}")
+            cls, tip = "mkt-na", "not checked"
+        parts.append(f"<span class='mkt {cls}' title='{m}: {tip}'>{m}</span>")
+    return "".join(parts)
 
 
-# --- Sidebar ---
-if st.sidebar.button("Refresh data", use_container_width=True,
-                     help="Fetch the latest findings + status from the repo (see others' changes)"):
-    gh_get.clear()
-    st.session_state.pop("state", None)
-    st.rerun()
-st.sidebar.header("Filter")
-view = st.sidebar.radio("View", ["Trends", "By merchant", "Market breadth"])
-mkt = st.sidebar.selectbox("Market", ["All"] + markets)
-cats = sorted({b["category"] for b in brands.values()})
-cat = st.sidebar.selectbox("Category", ["All"] + cats)
-q = st.sidebar.text_input("Search merchant")
+def route_in(b):
+    sellers = sorted({x["merchant"] for x in b["merchants"]})
+    return ", ".join(sellers) if sellers else ACQ
 
-st.title("GAP Assortment Radar")
+
 mode = "read/write" if not READONLY else "read-only"
-st.caption(f"Shared source (repo {REPO}, {mode}) · {len(brands)} brands · markets {', '.join(markets)}"
-           + (f" · updated {findings_doc.get('updated')}" if findings_doc.get("updated") else ""))
+st.caption(f"Shared source: repo {REPO} ({mode}) - {len(brands)} brands - markets {', '.join(markets)}"
+           + (f" - last run {findings_doc.get('updated')}" if findings_doc.get("updated") else ""))
 if READONLY:
-    st.warning("Read-only: no GAP_RADAR_PAT secret set. Add the secret GAP_RADAR_PAT in Streamlit "
-               "(or env locally) to be able to save status to the repo.")
+    st.warning("Read-only: no GAP_RADAR_PAT secret set, status and comments cannot be saved.")
+
+# ---------------- sidebar ----------------
+with st.sidebar:
+    st.header("You")
+    user = st.text_input("Your name (for comments)", st.session_state.get("user", ""),
+                         placeholder="e.g. Johanna")
+    st.session_state["user"] = user
+    st.header("Filter")
+    f_dept = st.selectbox("Department", ["All"] + DEPARTMENTS + ["Unassigned"])
+    f_status = st.multiselect("Status", STATUSES, default=[])
+    cats = sorted({b["category"] for b in brands.values()})
+    f_cat = st.selectbox("Category", ["All"] + cats)
+    f_typ = st.selectbox("Type", ["All", "Category up-and-comer", "Peak model"])
+    f_q = st.text_input("Search brand / merchant")
+    if st.button("Refresh data", use_container_width=True,
+                 help="Fetch the latest findings + status from the repo"):
+        gh_get.clear()
+        st.session_state.pop(state_key, None)
+        st.rerun()
 
 
-def trends_view():
-    """Signal-first action list: the hottest rising gaps on top, with the route in.
-    This is the real value — spot the trend, see how to act, update the assortment."""
-    st.caption("Hottest trends on top. Each row is a brand that is missing from CDON in a market "
-               "with rising demand. 'Route in' = an existing merchant that already sells it, or "
-               "Merchant Acquisition. Handled (Live) items sink to the bottom.")
-    vis = markets if mkt == "All" else [mkt]
-    rows = []
-    for b in brands.values():
-        if cat != "All" and b["category"] != cat:
-            continue
-        for m in vis:
-            if b["base"].get(m) != "gap" or m not in b.get("demand", set()):
-                continue  # only GAP+trend (where it is BOTH missing and demand is rising)
-            sellers = sorted({x["merchant"] for x in b["merchants"] if x["market"] == m})
-            slabel = LABEL[cell_state(b, m)]
-            rows.append({"id": b["id"], "Market_key": m,
-                         "_rank": signal_rank(b.get("signal", "")),
-                         "_done": 1 if slabel == "Live" else 0,
-                         "Signal": b.get("signal", "") or "-", "Brand": b["brand"],
-                         "Category": b["category"], "Market": m,
-                         "Type": b.get("typ", "Category up-and-comer"),
-                         "Route in": ", ".join(sellers) or ACQ,
-                         "Status": slabel, "Comment": comment_of(b)})
-    if not rows:
-        st.info("No trending gaps for the selected filter.")
-        return
-    df = pd.DataFrame(rows).sort_values(
-        ["_done", "_rank", "Brand"], ascending=[True, False, True]).reset_index(drop=True)
-    c1, c2, c3 = st.columns(3)
-    c1.metric("Trending gaps", len(df))
-    c2.metric("Breakout", int((df["Signal"].str.lower() == "breakout").sum()))
-    c3.metric("With ready merchant", int((df["Route in"] != ACQ).sum()))
-    edited = st.data_editor(
-        df, hide_index=True, use_container_width=True, key="trends", disabled=READONLY,
-        column_config={
-            "id": None, "Market_key": None, "_rank": None, "_done": None,
-            "Signal": st.column_config.TextColumn("Signal", disabled=True,
-                                                  help="Rising search trend; Breakout = strongest"),
-            "Brand": st.column_config.TextColumn(disabled=True),
-            "Category": st.column_config.TextColumn(disabled=True),
-            "Market": st.column_config.TextColumn(disabled=True),
-            "Type": st.column_config.TextColumn(disabled=True),
-            "Route in": st.column_config.TextColumn("Route in", disabled=True,
-                                                    help="Existing merchant that already sells it, or Merchant Acquisition"),
-            "Status": st.column_config.SelectboxColumn("Status", options=list(LABEL.values()), required=True),
-        },
-    )
-    if not READONLY:
-        dirty = False
-        for i in range(len(df)):
-            o, n = df.iloc[i], edited.iloc[i]
-            if _norm(n["Status"]) != _norm(o["Status"]):
-                set_status(o["id"], o["Market_key"], INV[n["Status"]]); dirty = True
-            if _norm(n["Comment"]) != _norm(o["Comment"]):
-                set_comment(o["id"], _norm(n["Comment"])); dirty = True
-        if dirty:
-            save_state("status update"); st.rerun()
-    st.download_button("Export All CSV",
-                       df.drop(columns=["id", "Market_key", "_rank", "_done"]).to_csv(index=False).encode("utf-8"),
-                       file_name=f"gap_radar_trends_{datetime.date.today()}.csv", mime="text/csv")
+def visible(b):
+    if f_cat != "All" and b["category"] != f_cat:
+        return False
+    if f_typ != "All" and b["typ"] != f_typ:
+        return False
+    if f_status and brand_status(b) not in f_status:
+        return False
+    if f_dept != "All":
+        own = entry(b["id"]).get("owner", "")
+        if f_dept == "Unassigned" and own:
+            return False
+        if f_dept in DEPARTMENTS and own != f_dept:
+            return False
+    if f_q:
+        hay = b["brand"].lower() + " " + " ".join(x["merchant"].lower() for x in b["merchants"])
+        if f_q.lower() not in hay:
+            return False
+    return True
 
 
-def merchant_view():
-    groups = {}
-    for b in brands.values():
-        if cat != "All" and b["category"] != cat:
-            continue
-        for m in markets:
-            if b["base"].get(m) != "gap" or m not in b.get("demand", set()):
-                continue  # only GAP+trend in the work view
-            sellers = [x for x in b["merchants"] if x["market"] == m]
-            if sellers:
-                for s in sellers:
-                    groups.setdefault(s["merchant"], {"site": s.get("site", ""), "lines": []})["lines"].append((b, m))
-            else:
-                groups.setdefault(ACQ, {"site": "", "lines": []})["lines"].append((b, m))
-    names = sorted(groups, key=lambda n: (n == ACQ, n.lower()))
-    if q:
-        names = [n for n in names if q.lower() in n.lower()]
-    if not names:
-        st.info("No merchant matches.")
-        return
-    for name in names:
-        g = groups[name]
-        with st.expander(f"{name}  ({len(g['lines'])})", expanded=bool(q)):
-            if g["site"]:
-                st.caption(g["site"])
-            df = pd.DataFrame([{
-                "id": b["id"], "Market_key": m,
-                "Brand": b["brand"], "Type": b.get("typ", "Category up-and-comer"),
-                "Category": b["category"], "Signal": b.get("signal", ""), "Market": m,
-                "Status": LABEL[cell_state(b, m)], "Comment": comment_of(b),
-            } for b, m in g["lines"]])
-            # Editable status/comment PER ROW (per individual brand/market)
-            edited = st.data_editor(
-                df, hide_index=True, use_container_width=True, key="me_" + slug(name),
-                disabled=READONLY,
-                column_config={
-                    "id": None, "Market_key": None,
-                    "Status": st.column_config.SelectboxColumn("Status", options=list(LABEL.values()), required=True),
-                    "Brand": st.column_config.TextColumn(disabled=True),
-                    "Type": st.column_config.TextColumn(disabled=True),
-                    "Category": st.column_config.TextColumn(disabled=True),
-                    "Signal": st.column_config.TextColumn(disabled=True),
-                    "Market": st.column_config.TextColumn(disabled=True),
-                },
-            )
+vis_brands = [b for b in brands.values() if visible(b)]
+
+# ---------------- KPI row ----------------
+last_run = findings_doc.get("updated", "")
+counts = {s: 0 for s in STATUSES}
+new_this_run = 0
+for b in brands.values():
+    counts[brand_status(b)] += 1
+    if b["first_seen"] and b["first_seen"] == last_run:
+        new_this_run += 1
+
+k = st.columns(6)
+kpis = [("Brands", len(brands)), ("New in last run", new_this_run),
+        ("New (untouched)", counts["New"]), ("Contacted", counts["Contacted"]),
+        ("On hold", counts["On hold"]), ("Live", counts["Live"])]
+for col, (label, val) in zip(k, kpis):
+    color = STATUS_COLOR.get(label.replace(" (untouched)", ""), B["accent"])
+    col.markdown(f"<div class='kpi-card'><div class='v' style='color:{color}'>{val}</div>"
+                 f"<div class='l'>{label}</div></div>", unsafe_allow_html=True)
+
+st.write("")
+
+if not brands:
+    if branch == "Fyndiq":
+        st.info("No Fyndiq findings yet. The Fyndiq pipeline run is not activated - "
+                "it needs the Fyndiq seasonal calendar as scoping source and a Steep gap-check "
+                "against the fyndiq branch. The workspace (status, comments, departments) "
+                "is ready and will populate automatically once the pipeline lands findings-fyndiq.json.")
+    else:
+        st.info("No findings for this branch yet.")
+    st.stop()
+
+tab_work, tab_merchant, tab_viral, tab_matrix = st.tabs(
+    ["Workspace", "By merchant", "Viral radar", "Market matrix"])
+
+
+def render_brand_row(b, key_prefix):
+    e = entry(b["id"])
+    c1, c2, c3, c4, c5 = st.columns([3.2, 2.0, 1.6, 1.7, 1.3])
+    with c1:
+        st.markdown(f"<div class='brand-line'>{b['brand']}</div>"
+                    f"<div class='dim'>{b['category']} - {b['typ']}</div>",
+                    unsafe_allow_html=True)
+        if b["signal"]:
+            st.markdown(f"<span class='signal'>{b['signal']}</span>", unsafe_allow_html=True)
+    with c2:
+        st.markdown(market_chips(b), unsafe_allow_html=True)
+        st.markdown(f"<div class='dim'>Route in: {route_in(b)}</div>", unsafe_allow_html=True)
+    with c3:
+        cur = brand_status(b)
+        new = st.selectbox("Status", STATUSES, index=STATUSES.index(cur),
+                           key=f"{key_prefix}st_{slug(b['id'])}", disabled=READONLY,
+                           label_visibility="collapsed")
+        if not READONLY and new != cur:
+            e["status"] = STATUS_KEY[new]
+            save_state(f"{branch}: {b['brand']} -> {new}")
+            st.rerun()
+    with c4:
+        own_opts = ["Unassigned"] + DEPARTMENTS
+        cur_own = e.get("owner") or "Unassigned"
+        new_own = st.selectbox("Owner", own_opts, index=own_opts.index(cur_own),
+                               key=f"{key_prefix}ow_{slug(b['id'])}", disabled=READONLY,
+                               label_visibility="collapsed")
+        if not READONLY and new_own != cur_own:
+            e["owner"] = "" if new_own == "Unassigned" else new_own
+            save_state(f"{branch}: {b['brand']} owner -> {new_own}")
+            st.rerun()
+    with c5:
+        n = len(e["comments"])
+        with st.popover(f"Comments ({n})", use_container_width=True):
+            for c in e["comments"]:
+                who = c.get("user") or "?"
+                ts = (c.get("ts") or "")[:10]
+                st.markdown(f"**{who}** <span class='dim'>{ts}</span><br>{c.get('text', '')}",
+                            unsafe_allow_html=True)
+                st.divider()
             if not READONLY:
-                dirty = False
-                for i in range(len(df)):
-                    o, n = df.iloc[i], edited.iloc[i]
-                    if _norm(n["Status"]) != _norm(o["Status"]):
-                        set_status(o["id"], o["Market_key"], INV[n["Status"]]); dirty = True
-                    if _norm(n["Comment"]) != _norm(o["Comment"]):
-                        set_comment(o["id"], _norm(n["Comment"])); dirty = True
-                if dirty:
-                    save_state(f"status: {name}"); st.rerun()
-            c1, c2 = st.columns(2)
-            if not READONLY and c1.button("Mark ALL as Contacted", key="k_" + slug(name)):
-                for b, m in g["lines"]:
-                    if cell_state(b, m) == "gap":
-                        set_status(b["id"], m, "kontaktad")
-                save_state(f"contacted all: {name}"); st.rerun()
-            c2.download_button("Download Merchant",
-                               df.drop(columns=["id", "Market_key"]).to_csv(index=False).encode("utf-8"),
-                               file_name=f"gap_radar_{slug(name)}_{datetime.date.today()}.csv",
-                               mime="text/csv", key="d_" + slug(name))
+                txt = st.text_area("New comment", key=f"{key_prefix}cm_{slug(b['id'])}",
+                                   placeholder="What was said / agreed / next step")
+                if st.button("Add comment", key=f"{key_prefix}cb_{slug(b['id'])}"):
+                    if txt.strip():
+                        e["comments"].append({
+                            "user": st.session_state.get("user") or "anonymous",
+                            "ts": datetime.datetime.now().isoformat(timespec="seconds"),
+                            "text": txt.strip()})
+                        save_state(f"{branch}: comment on {b['brand']}")
+                        st.rerun()
+    st.divider()
 
 
-def breadth_cell(b, m):
-    base = b["base"].get(m)
-    if base == "in":
-        return "in CDON"
-    if base == "gap":
-        return "GAP+trend" if m in b.get("demand", set()) else "GAP"
-    return "-"
-
-
-def breadth_view():
-    st.caption("in CDON = in the assortment  ·  GAP+trend = missing + rising demand (act)  ·  "
-               "GAP = missing but no trend yet (breadth potential)")
-    rows = []
-    for b in brands.values():
-        if cat != "All" and b["category"] != cat:
+with tab_work:
+    st.caption("One row per brand - status applies to the whole brand since one merchant "
+               "conversation covers all markets. Chips: red = GAP + rising demand, "
+               "yellow = GAP, green = in assortment.")
+    groups = {s: [] for s in STATUSES}
+    for b in vis_brands:
+        groups[brand_status(b)].append(b)
+    for s in STATUSES:
+        if not groups[s]:
             continue
-        r = {"Brand": b["brand"], "Category": b["category"], "Signal": b.get("signal", "")}
+        color = STATUS_COLOR[s]
+        st.markdown(f"<span class='badge' style='background:{color}'>{s} - {len(groups[s])}</span>",
+                    unsafe_allow_html=True)
+        for b in sorted(groups[s], key=lambda x: (-signal_rank(x["signal"]), x["brand"])):
+            render_brand_row(b, f"w{slug(s)}_")
+
+with tab_merchant:
+    st.caption("Gaps grouped by the merchant who already sells the brand outside our platform - "
+               "the warm route in. One click marks the whole conversation as contacted.")
+    mgroups = {}
+    for b in vis_brands:
+        sellers = sorted({x["merchant"] for x in b["merchants"]})
+        if sellers:
+            for s in sellers:
+                mgroups.setdefault(s, []).append(b)
+        else:
+            mgroups.setdefault(ACQ, []).append(b)
+    names = sorted(mgroups, key=lambda n: (n == ACQ, n.lower()))
+    for name in names:
+        bs = mgroups[name]
+        sites = sorted({x.get("site", "") for b in bs for x in b["merchants"]
+                        if x["merchant"] == name and x.get("site")})
+        with st.expander(f"{name}  ({len(bs)} brands)", expanded=bool(f_q)):
+            if sites:
+                st.caption(" - ".join(sites))
+            if not READONLY and name != ACQ and st.button(
+                    f"Mark all as Contacted", key=f"all_{slug(name)}"):
+                for b in bs:
+                    if entry(b["id"])["status"] == "ny":
+                        entry(b["id"])["status"] = "kontaktad"
+                save_state(f"{branch}: contacted all via {name}")
+                st.rerun()
+            for b in bs:
+                render_brand_row(b, f"m{slug(name)}_")
+
+with tab_viral:
+    st.caption("Hottest signals first - Breakout is Google Trends' strongest label. "
+               + ("Fyndiq's edge is speed: activate before the trend peaks."
+                  if branch == "Fyndiq" else
+                  "For CDON these feed seasonal assortment; for fast activation check the Fyndiq branch."))
+    rows = []
+    for b in vis_brands:
+        if signal_rank(b["signal"]) <= 0:
+            continue
+        rows.append({"Signal": b["signal"], "Brand": b["brand"], "Category": b["category"],
+                     "Type": b["typ"],
+                     "Demand in": ", ".join(sorted(b["demand"])) or "-",
+                     "Gap in": ", ".join(m for m in markets if b["base"].get(m) == "gap") or "-",
+                     "Route in": route_in(b), "Status": brand_status(b),
+                     "_rank": signal_rank(b["signal"])})
+    if rows:
+        df = (pd.DataFrame(rows).sort_values("_rank", ascending=False)
+              .drop(columns=["_rank"]).reset_index(drop=True))
+        st.dataframe(df, hide_index=True, use_container_width=True)
+        st.download_button("Export CSV", df.to_csv(index=False).encode("utf-8"),
+                           file_name=f"viral_radar_{branch.lower()}_{datetime.date.today()}.csv",
+                           mime="text/csv")
+    else:
+        st.info("No trend signals for the selected filter.")
+
+with tab_matrix:
+    st.caption("Market breadth per brand. in = in assortment - GAP+trend = missing with rising "
+               "demand (act) - GAP = missing, no trend yet (breadth potential).")
+    rows = []
+    for b in vis_brands:
+        r = {"Brand": b["brand"], "Category": b["category"], "Status": brand_status(b),
+             "Owner": entry(b["id"]).get("owner") or "-"}
         for m in markets:
-            r[m] = breadth_cell(b, m)
-        r["GAP+trend (count)"] = sum(1 for m in markets if r[m] == "GAP+trend")
+            base = b["base"].get(m)
+            r[m] = ("in" if base == "in"
+                    else ("GAP+trend" if base == "gap" and m in b["demand"]
+                          else ("GAP" if base == "gap" else "-")))
+        r["Gaps"] = sum(1 for m in markets if r[m].startswith("GAP"))
         rows.append(r)
-    if not rows:
+    if rows:
+        df = pd.DataFrame(rows).sort_values(["Gaps", "Brand"],
+                                            ascending=[False, True]).reset_index(drop=True)
+        st.dataframe(df, hide_index=True, use_container_width=True)
+        st.download_button("Export CSV", df.to_csv(index=False).encode("utf-8"),
+                           file_name=f"market_matrix_{branch.lower()}_{datetime.date.today()}.csv",
+                           mime="text/csv")
+    else:
         st.info("No brands for the selected filter.")
-        return
-    df = pd.DataFrame(rows).sort_values(
-        ["GAP+trend (count)", "Brand"], ascending=[False, True]).reset_index(drop=True)
-    c1, c2 = st.columns(2)
-    c1.metric("Brands", len(df))
-    c2.metric("Broad (GAP+trend in ≥2 markets)", int((df["GAP+trend (count)"] >= 2).sum()))
-    st.dataframe(df, hide_index=True, use_container_width=True)
-    st.download_button("Export market breadth CSV", df.to_csv(index=False).encode("utf-8"),
-                       file_name=f"gap_radar_breadth_{datetime.date.today()}.csv", mime="text/csv")
-
-
-if view == "Trends":
-    trends_view()
-elif view == "By merchant":
-    merchant_view()
-else:
-    breadth_view()
