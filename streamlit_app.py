@@ -33,9 +33,9 @@ ACQ = "Merchant Acquisition"
 
 BRANCHES = {
     "CDON": {"findings": "findings.json", "state": "state.json",
-             "accent": "#0d6efd", "tagline": "Seasonal + merchant calendar driven"},
+             "accent": "#5b8db8", "tagline": "Seasonal + merchant calendar driven"},
     "Fyndiq": {"findings": "findings-fyndiq.json", "state": "state-fyndiq.json",
-               "accent": "#9333ea", "tagline": "Own seasonal calendar - fast on viral trends"},
+               "accent": "#a08bba", "tagline": "Own seasonal calendar - fast on viral trends"},
 }
 
 STATUSES = ["New", "Contacted", "On hold", "Live"]
@@ -46,7 +46,8 @@ LEGACY_RANK = {"gap": 0, "kontaktad": 1, "avvakta": 2, "live": 3}
 LEGACY_TO_NEW = {"gap": "ny", "kontaktad": "kontaktad", "avvakta": "avvaktar", "live": "live"}
 
 DEPARTMENTS = ["Merchant Acquisition", "Category Success", "Merchant Success"]
-STATUS_COLOR = {"New": "#dc3545", "Contacted": "#fd7e14", "On hold": "#6c757d", "Live": "#198754"}
+# Muted palette - easy on the eyes, still readable in both light and dark theme.
+STATUS_COLOR = {"New": "#b97a7f", "Contacted": "#c9a06a", "On hold": "#8d99ae", "Live": "#7f9c87"}
 
 TYP_CANON = {
     "Kategori-uppstickare": "Category up-and-comer",
@@ -71,15 +72,16 @@ st.markdown("""
 .kpi-card .l {font-size: .72rem; opacity: .65; text-transform: uppercase; letter-spacing: .05em;}
 .mkt {display: inline-block; min-width: 2.4em; text-align: center; padding: .1em .35em;
       border-radius: 6px; font-size: .74rem; font-weight: 700; margin-right: .25em;}
-.mkt-gapdemand {background: #dc3545; color: #fff;}
-.mkt-gap {background: #ffc107; color: #1a1a1a;}
-.mkt-in {background: #198754; color: #fff;}
+.mkt-gapdemand {background: #b97a7f; color: #fff;}
+.mkt-gap {background: #d9c08f; color: #3a3325;}
+.mkt-in {background: #7f9c87; color: #fff;}
 .mkt-na {background: rgba(128,128,128,.15); color: #888;}
 .badge {display: inline-block; padding: .12em .55em; border-radius: 999px;
         font-size: .72rem; font-weight: 700; color: #fff;}
 .brand-line {font-size: 1.02rem; font-weight: 700;}
 .dim {opacity: .6; font-size: .8rem;}
-.signal {color: #e8590c; font-weight: 600; font-size: .8rem;}
+.signal {color: #c07a50; font-weight: 600; font-size: .8rem;}
+.legend {font-size: .78rem; opacity: .85; margin: .2rem 0 .6rem 0;}
 </style>
 """, unsafe_allow_html=True)
 
@@ -340,10 +342,9 @@ st.write("")
 
 if not brands:
     if branch == "Fyndiq":
-        st.info("No Fyndiq findings yet. The Fyndiq pipeline run is not activated - "
-                "it needs the Fyndiq seasonal calendar as scoping source and a Steep gap-check "
-                "against the fyndiq branch. The workspace (status, comments, departments) "
-                "is ready and will populate automatically once the pipeline lands findings-fyndiq.json.")
+        st.info("No Fyndiq findings yet. The Fyndiq pipeline is activated (own seasonal "
+                "calendar + Steep gap-check against the fyndiq branch) and runs every Monday - "
+                "this workspace populates automatically after the first run.")
     else:
         st.info("No findings for this branch yet.")
     st.stop()
@@ -406,10 +407,18 @@ def render_brand_row(b, key_prefix):
     st.divider()
 
 
+LEGEND_HTML = (
+    "<div class='legend'>"
+    "<span class='mkt mkt-gapdemand'>SE</span> gap + rising demand (act now) &nbsp; "
+    "<span class='mkt mkt-gap'>SE</span> gap, no trend signal yet (breadth potential) &nbsp; "
+    "<span class='mkt mkt-in'>SE</span> already in assortment &nbsp; "
+    "<span class='mkt mkt-na'>SE</span> not checked"
+    "</div>")
+
 with tab_work:
     st.caption("One row per brand - status applies to the whole brand since one merchant "
-               "conversation covers all markets. Chips: red = GAP + rising demand, "
-               "yellow = GAP, green = in assortment.")
+               "conversation covers all markets.")
+    st.markdown(LEGEND_HTML, unsafe_allow_html=True)
     groups = {s: [] for s in STATUSES}
     for b in vis_brands:
         groups[brand_status(b)].append(b)
