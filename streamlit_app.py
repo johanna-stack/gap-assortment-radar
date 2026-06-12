@@ -26,6 +26,7 @@ import datetime
 import requests
 import pandas as pd
 import streamlit as st
+import streamlit.components.v1 as components
 
 REPO = "johanna-stack/gap-assortment-radar"
 API = f"https://api.github.com/repos/{REPO}/contents"
@@ -104,6 +105,28 @@ header[data-testid="stHeader"], .stAppHeader, [data-testid="stAppToolbar"],
 .legend {font-size: .78rem; opacity: .85; margin: .2rem 0 .6rem 0;}
 </style>
 """, unsafe_allow_html=True)
+
+
+# Streamlit Clouds badge (avatar + krona) monteras utanför appens stylebara DOM
+# (shadow DOM/host-lager) — CSS når den inte. Plocka bort den med JS i stället.
+components.html("""
+<script>
+const SEL = '[data-testid="appCreatorAvatar"], [class*="_profilePreview"], ' +
+            '[class*="_profileContainer"], [class*="viewerBadge"], ' +
+            '[class*="_viewerBadge"], a[href*="share.streamlit.io"]';
+const zap = () => {
+  try {
+    const doc = window.parent.document;
+    doc.querySelectorAll(SEL).forEach(e => e.remove());
+    doc.querySelectorAll('*').forEach(el => {
+      if (el.shadowRoot) el.shadowRoot.querySelectorAll(SEL).forEach(e => e.remove());
+    });
+  } catch (e) {}
+};
+zap();
+setInterval(zap, 1500);
+</script>
+""", height=0)
 
 
 def _token():
