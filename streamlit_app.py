@@ -96,7 +96,9 @@ def _token():
 
 
 TOKEN = _token()
-READONLY = TOKEN is None
+# Lokal test-mode: GAP_LOCAL_STATE=<fil> läser/skriver status lokalt i stället för repot.
+LOCAL_STATE = os.environ.get("GAP_LOCAL_STATE")
+READONLY = TOKEN is None and not LOCAL_STATE
 
 
 def _headers():
@@ -179,7 +181,12 @@ markets = findings_doc.get("markets") or ["SE", "NO", "DK", "FI"]
 state_key = f"state::{branch}"
 if state_key not in st.session_state:
     s, sha = ({}, None)
-    if TOKEN:
+    if LOCAL_STATE:
+        try:
+            s = json.loads(open(LOCAL_STATE + "." + branch.lower(), encoding="utf-8").read())
+        except Exception:  # noqa: BLE001
+            s = {}
+    elif TOKEN:
         try:
             s, sha = gh_get(B["state"])
             s = s or {}
@@ -208,6 +215,11 @@ def entry(bid):
 
 
 def save_state(message):
+    if LOCAL_STATE:
+        with open(LOCAL_STATE + "." + branch.lower(), "w", encoding="utf-8") as fh:
+            json.dump(STATE, fh, ensure_ascii=False, indent=2)
+        st.toast("Saved locally (test mode)")
+        return
     try:
         st.session_state[state_key + "::sha"] = gh_put(
             B["state"], STATE, st.session_state[state_key + "::sha"], message)
@@ -311,6 +323,9 @@ with st.sidebar:
                  help="Fetch the latest findings + status from the repo"):
         gh_get.clear()
         st.session_state.pop(state_key, None)
+        for k in list(st.session_state.keys()):
+            if isinstance(k, str) and "st_" in k:
+                del st.session_state[k]
         st.rerun()
 
 
@@ -400,6 +415,12 @@ tab_about, tab_work, tab_merchant, tab_viral, tab_matrix = st.tabs(
 
 with tab_about:
     st.subheader("What is the GAP Assortment Radar?")
+    upd = findings_doc.get("updated") or "no run yet"
+    st.markdown(
+        f"<div style='padding:.5rem .8rem; border-radius:8px; background: rgba(128,128,128,.08); "
+        f"display:inline-block;'><b>Data last fetched ({branch}):</b> {upd} &nbsp;·&nbsp; "
+        f"new run every Monday ~06:45 &nbsp;·&nbsp; status and comments save instantly</div>",
+        unsafe_allow_html=True)
     st.markdown(
         "Every Monday morning the radar finds **brands and products that consumers are "
         "searching for right now, but that are missing from our assortment** - and shows "
@@ -445,6 +466,24 @@ with tab_about:
         "- Every section can be **exported to CSV**.")
 
 
+def _status_changed(bid, brand_name, wkey):
+    """on_change-callback: sparar BARA när användaren faktiskt ändrat widgeten.
+    (Jämförelse-baserad spar i varje rerun kunde auto-revertera status när en
+    parallell widget för samma brand låg kvar med gammalt värde i widget-state.)"""
+    new = st.session_state.get(wkey)
+    e = entry(bid)
+    if new is None or STATUS_KEY.get(new) == e.get("status"):
+        return
+    e["status"] = STATUS_KEY[new]
+    save_state(f"{branch}: {brand_name} -> {new}")
+    # rensa systerwidgets för samma brand (andra flikar/grupper) så de
+    # återskapas med nya statusen i stället för att visa - eller spara - gammal
+    suffix = "st_" + slug(bid)
+    for k in list(st.session_state.keys()):
+        if k != wkey and isinstance(k, str) and k.endswith(suffix):
+            del st.session_state[k]
+
+
 def render_brand_row(b, key_prefix):
     e = entry(b["id"])
     c1, c2, c3, c4, c5 = st.columns([3.2, 2.0, 1.6, 1.7, 1.3])
@@ -458,14 +497,11 @@ def render_brand_row(b, key_prefix):
         st.markdown(market_chips(b), unsafe_allow_html=True)
         st.markdown(f"<div class='dim'>Route in: {route_in(b)}</div>", unsafe_allow_html=True)
     with c3:
-        cur = brand_status(b)
-        new = st.selectbox("Status", STATUSES, index=STATUSES.index(cur),
-                           key=f"{key_prefix}st_{slug(b['id'])}", disabled=READONLY,
-                           label_visibility="collapsed")
-        if not READONLY and new != cur:
-            e["status"] = STATUS_KEY[new]
-            save_state(f"{branch}: {b['brand']} -> {new}")
-            st.rerun()
+        wkey = f"{key_prefix}st_{slug(b['id'])}"
+        st.selectbox("Status", STATUSES, index=STATUSES.index(brand_status(b)),
+                     key=wkey, disabled=READONLY,
+                     on_change=_status_changed, args=(b["id"], b["brand"], wkey),
+                     label_visibility="collapsed")
     with c4:
         dept = derived_dept(b)
         st.markdown(f"<span class='badge' style='background:{DEPT_COLOR[dept]}'>{dept}</span>",
@@ -506,13 +542,16 @@ with tab_work:
         if not groups[s]:
             continue
         color = STATUS_COLOR[s]
+        st.markdown(f"<div style='margin-top:1.6rem; padding:.5rem .8rem; border-radius:8px; "
+                    f"border-left: 5px solid {color}; background: rgba(128,128,128,.07);'>"
+                    f"<span style='font-size:1.15rem; font-weight:800;'>{s}</span> "
+                    f"<span class='badge' style='background:{color}; margin-left:.5rem;'>"
+                    f"{len(groups[s])} brands</span></div>", unsafe_allow_html=True)
         gh_l, gh_r = st.columns([5, 1.4])
-        gh_l.markdown(f"<span class='badge' style='background:{color}'>{s} - {len(groups[s])}</span>",
-                      unsafe_allow_html=True)
         with gh_r:
             section_export(groups[s], s, key=f"exp_w_{slug(s)}")
         for b in sorted(groups[s], key=lambda x: (-signal_rank(x["signal"]), x["brand"])):
-            render_brand_row(b, f"w{slug(s)}_")
+            render_brand_row(b, "w_")   # stabil key oavsett statusgrupp
 
 with tab_merchant:
     st.caption("Gaps grouped by the merchant who already sells the brand outside our platform - "
@@ -539,6 +578,10 @@ with tab_merchant:
                 for b in bs:
                     if entry(b["id"])["status"] == "ny":
                         entry(b["id"])["status"] = "kontaktad"
+                        sfx = "st_" + slug(b["id"])
+                        for k in list(st.session_state.keys()):
+                            if isinstance(k, str) and k.endswith(sfx):
+                                del st.session_state[k]
                 save_state(f"{branch}: contacted all via {name}")
                 st.rerun()
             with bc2:
