@@ -65,6 +65,11 @@ st.set_page_config(page_title="GAP Assortment Radar", layout="wide", page_icon=N
 
 st.markdown("""
 <style>
+/* Intern delning: dölj Streamlits verktygsrad, meny, footer och viewer-badge */
+#MainMenu, footer, header [data-testid="stToolbar"],
+[data-testid="stToolbar"], [data-testid="stDecoration"],
+[class*="viewerBadge"], [data-testid="stStatusWidget"],
+a[href*="streamlit.io"] {display: none !important; visibility: hidden !important;}
 .block-container {padding-top: 3rem;}
 .kpi-card {border: 1px solid rgba(128,128,128,.25); border-radius: 10px;
            padding: .65rem .9rem; text-align: center;}

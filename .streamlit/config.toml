@@ -6,3 +6,7 @@ secondaryBackgroundColor = "#141b30"
 
 [server]
 headless = true
+
+[client]
+# Dölj utvecklarverktygen (Fork / GitHub / meny) för betraktare — appen delas internt.
+toolbarMode = "minimal"
