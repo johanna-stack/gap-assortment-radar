@@ -65,7 +65,7 @@ st.set_page_config(page_title="GAP Assortment Radar", layout="wide", page_icon=N
 
 st.markdown("""
 <style>
-.block-container {padding-top: 1.6rem;}
+.block-container {padding-top: 3rem;}
 .kpi-card {border: 1px solid rgba(128,128,128,.25); border-radius: 10px;
            padding: .65rem .9rem; text-align: center;}
 .kpi-card .v {font-size: 1.55rem; font-weight: 700; line-height: 1.2;}
@@ -361,8 +361,88 @@ if not brands:
         st.info("No findings for this branch yet.")
     st.stop()
 
-tab_work, tab_merchant, tab_viral, tab_matrix = st.tabs(
-    ["Workspace", "By merchant", "Viral radar", "Market matrix"])
+LEGEND_HTML = (
+    "<div class='legend'>"
+    "<span class='mkt mkt-gapdemand'>SE</span> gap + rising demand (act now) &nbsp; "
+    "<span class='mkt mkt-gap'>SE</span> gap, no trend signal yet (breadth potential) &nbsp; "
+    "<span class='mkt mkt-in'>SE</span> already in assortment &nbsp; "
+    "<span class='mkt mkt-na'>SE</span> not checked"
+    "</div>")
+
+
+def brands_df(bs):
+    """Export-tabell för en sektion — samma kolumner överallt."""
+    rows = []
+    for b in bs:
+        e = entry(b["id"])
+        r = {"Brand": b["brand"], "Category": b["category"], "Type": b["typ"],
+             "Signal": b["signal"], "Status": brand_status(b),
+             "Department": derived_dept(b), "Route in": route_in(b)}
+        for m in markets:
+            base = b["base"].get(m)
+            r[m] = ("in" if base == "in"
+                    else ("GAP+trend" if base == "gap" and m in b["demand"]
+                          else ("GAP" if base == "gap" else "-")))
+        r["Latest comment"] = e["comments"][-1]["text"] if e["comments"] else ""
+        rows.append(r)
+    return pd.DataFrame(rows)
+
+
+def section_export(bs, label, key):
+    st.download_button(f"Export {label} (CSV)",
+                       brands_df(bs).to_csv(index=False).encode("utf-8"),
+                       file_name=f"gap_radar_{slug(label)}_{branch.lower()}_{datetime.date.today()}.csv",
+                       mime="text/csv", key=key)
+
+
+tab_about, tab_work, tab_merchant, tab_viral, tab_matrix = st.tabs(
+    ["About", "Workspace", "By merchant", "Viral radar", "Market matrix"])
+
+with tab_about:
+    st.subheader("What is the GAP Assortment Radar?")
+    st.markdown(
+        "Every Monday morning the radar finds **brands and products that consumers are "
+        "searching for right now, but that are missing from our assortment** - and shows "
+        "the fastest route to getting them in. No manual analysis needed: the workspace "
+        "is pre-sorted, routed to the right department and ready to act on.")
+    st.markdown("#### How it works, step by step")
+    s1, s2, s3 = st.columns(3)
+    s1.markdown(
+        "**1. Pick the right categories**\n\n"
+        "The seasonal calendar (own one per branch - CDON and Fyndiq) tells us which "
+        "categories are in their peak window right now. We only scan where the demand is.\n\n"
+        "**2. Catch rising demand**\n\n"
+        "Google Trends gives us the fastest-rising search terms per category and market "
+        "(SE, NO, DK, FI). *Breakout* is the strongest signal there is.")
+    s2.markdown(
+        "**3. Keep only real brands**\n\n"
+        "AI filters out noise ('best in test', generic phrases) and keeps genuine brands "
+        "and product models.\n\n"
+        "**4. Check our own shelves**\n\n"
+        "Each candidate is checked against our actual sales data - per market. "
+        "In assortment, or a gap?")
+    s3.markdown(
+        "**5. Find the route in**\n\n"
+        "For every gap: does one of our existing merchants already sell it in their own "
+        "webshop? We only check merchants that sell similar assortment with us.\n\n"
+        "**6. Route to the right team**\n\n"
+        "An existing merchant has it = **Merchant Success** activates it. "
+        "Nobody has it = **Merchant Acquisition** recruits.")
+    st.markdown("#### Reading the market chips")
+    st.markdown(LEGEND_HTML, unsafe_allow_html=True)
+    st.markdown(
+        "One row = one brand, all four markets on the same line - because one merchant "
+        "conversation covers all markets at once.")
+    st.markdown("#### Working in the radar")
+    st.markdown(
+        "- **Status** per brand: New -> Contacted -> On hold -> Live. Set it on the row; "
+        "the brand moves to its status group automatically.\n"
+        "- **Comments** are saved with name and date - the full history stays on the brand.\n"
+        "- **Nothing is ever overwritten.** New runs only add new findings; your status "
+        "and comments survive every run. Duplicates are blocked automatically.\n"
+        "- **CDON and Fyndiq are separate workspaces** - switch at the top. Fyndiq's edge "
+        "is speed on viral trends (see the Viral radar tab).\n"
+        "- Every section can be **exported to CSV**.")
 
 
 def render_brand_row(b, key_prefix):
@@ -413,14 +493,6 @@ def render_brand_row(b, key_prefix):
     st.divider()
 
 
-LEGEND_HTML = (
-    "<div class='legend'>"
-    "<span class='mkt mkt-gapdemand'>SE</span> gap + rising demand (act now) &nbsp; "
-    "<span class='mkt mkt-gap'>SE</span> gap, no trend signal yet (breadth potential) &nbsp; "
-    "<span class='mkt mkt-in'>SE</span> already in assortment &nbsp; "
-    "<span class='mkt mkt-na'>SE</span> not checked"
-    "</div>")
-
 with tab_work:
     st.caption("One row per brand - status applies to the whole brand since one merchant "
                "conversation covers all markets. Department routing is automatic: "
@@ -434,8 +506,11 @@ with tab_work:
         if not groups[s]:
             continue
         color = STATUS_COLOR[s]
-        st.markdown(f"<span class='badge' style='background:{color}'>{s} - {len(groups[s])}</span>",
-                    unsafe_allow_html=True)
+        gh_l, gh_r = st.columns([5, 1.4])
+        gh_l.markdown(f"<span class='badge' style='background:{color}'>{s} - {len(groups[s])}</span>",
+                      unsafe_allow_html=True)
+        with gh_r:
+            section_export(groups[s], s, key=f"exp_w_{slug(s)}")
         for b in sorted(groups[s], key=lambda x: (-signal_rank(x["signal"]), x["brand"])):
             render_brand_row(b, f"w{slug(s)}_")
 
@@ -458,15 +533,25 @@ with tab_merchant:
         with st.expander(f"{name}  ({len(bs)} brands)", expanded=bool(f_q)):
             if sites:
                 st.caption(" - ".join(sites))
-            if not READONLY and name != ACQ and st.button(
+            bc1, bc2 = st.columns([1.2, 1])
+            if not READONLY and name != ACQ and bc1.button(
                     f"Mark all as Contacted", key=f"all_{slug(name)}"):
                 for b in bs:
                     if entry(b["id"])["status"] == "ny":
                         entry(b["id"])["status"] = "kontaktad"
                 save_state(f"{branch}: contacted all via {name}")
                 st.rerun()
-            for b in bs:
-                render_brand_row(b, f"m{slug(name)}_")
+            with bc2:
+                section_export(bs, name, key=f"exp_m_{slug(name)}")
+            # grupperat per status — ändrad status flyttar raden till sin grupp
+            for s in STATUSES:
+                sb = [b for b in bs if brand_status(b) == s]
+                if not sb:
+                    continue
+                st.markdown(f"<span class='badge' style='background:{STATUS_COLOR[s]}'>"
+                            f"{s} - {len(sb)}</span>", unsafe_allow_html=True)
+                for b in sb:
+                    render_brand_row(b, f"m{slug(name)}_")
 
 with tab_viral:
     st.caption("Hottest signals first - Breakout is Google Trends' strongest label. "
