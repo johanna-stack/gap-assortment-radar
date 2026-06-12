@@ -75,6 +75,9 @@ a[href*="streamlit.io"] {display: none !important; visibility: hidden !important
 [class*="_container_gzau3"], [class*="_viewerBadge"],
 [data-testid="manage-app-button"], #ViewerBadge,
 iframe[title="app-creator-avatar"] {display: none !important; visibility: hidden !important;}
+/* App creator-avataren (länk till share.streamlit.io-profilen) */
+[data-testid="appCreatorAvatar"], [class*="_profileImage"],
+a[href*="share.streamlit.io"] {display: none !important; visibility: hidden !important;}
 /* Övre högra hörnet: dölj HELA headern (Fork / GitHub / meny ligger där) */
 header[data-testid="stHeader"], .stAppHeader, [data-testid="stAppToolbar"],
 [data-testid="stToolbarActions"], [data-testid="stMainMenu"],
