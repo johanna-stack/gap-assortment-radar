@@ -320,7 +320,15 @@ def market_chips(b):
 
 def route_in(b):
     sellers = sorted({x["merchant"] for x in b["merchants"]})
-    return ", ".join(sellers) if sellers else ACQ
+    if sellers:
+        return ", ".join(sellers)
+    # No external seller named. If the brand is already on our platform in some
+    # market it is still Merchant Success (broaden the existing merchant into the
+    # gap markets) — it must never read Merchant Acquisition, which would
+    # contradict the Department label. Only a brand nobody carries routes to ACQ.
+    if any(v == "in" for v in b["base"].values()):
+        return "Merchant Success (broaden existing)"
+    return ACQ
 
 
 # Håll status-widgetnycklar vid liv även när raden är bortfiltrerad — annars
