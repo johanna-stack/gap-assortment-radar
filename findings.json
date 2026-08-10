@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated": "2026-08-03",
+  "updated": "2026-08-10",
   "category": "Seasonal Aug, Sep",
   "markets": [
     "DK",
@@ -837,7 +837,7 @@
       "cdon_source": "steep",
       "merchants_selling": [],
       "first_seen": "2026-06-09",
-      "last_seen": "2026-07-06"
+      "last_seen": "2026-08-10"
     },
     {
       "brand": "Mammotion",
@@ -851,7 +851,7 @@
       "cdon_source": "steep",
       "merchants_selling": [],
       "first_seen": "2026-06-09",
-      "last_seen": "2026-07-06"
+      "last_seen": "2026-08-10"
     },
     {
       "brand": "Mammotion",
@@ -865,7 +865,7 @@
       "cdon_source": "steep",
       "merchants_selling": [],
       "first_seen": "2026-06-09",
-      "last_seen": "2026-07-06"
+      "last_seen": "2026-08-10"
     },
     {
       "brand": "Mammotion",
@@ -891,7 +891,7 @@
         }
       ],
       "first_seen": "2026-06-09",
-      "last_seen": "2026-07-06"
+      "last_seen": "2026-08-10"
     },
     {
       "brand": "Russell Hobbs",
@@ -948,7 +948,7 @@
         }
       ],
       "first_seen": "2026-07-06",
-      "last_seen": "2026-07-06"
+      "last_seen": "2026-08-10"
     },
     {
       "brand": "Russell Hobbs",
@@ -962,7 +962,7 @@
       "cdon_source": "steep",
       "merchants_selling": [],
       "first_seen": "2026-07-06",
-      "last_seen": "2026-07-06"
+      "last_seen": "2026-08-10"
     },
     {
       "brand": "Russell Hobbs",
@@ -976,7 +976,7 @@
       "cdon_source": "steep",
       "merchants_selling": [],
       "first_seen": "2026-07-06",
-      "last_seen": "2026-07-06"
+      "last_seen": "2026-08-10"
     },
     {
       "brand": "Russell Hobbs",
@@ -990,7 +990,7 @@
       "cdon_source": "steep",
       "merchants_selling": [],
       "first_seen": "2026-07-06",
-      "last_seen": "2026-07-06"
+      "last_seen": "2026-08-10"
     },
     {
       "brand": "Nordic Sense",
@@ -1004,7 +1004,7 @@
       "cdon_source": "steep",
       "merchants_selling": [],
       "first_seen": "2026-07-06",
-      "last_seen": "2026-07-06"
+      "last_seen": "2026-08-10"
     },
     {
       "brand": "Nordic Sense",
@@ -1018,7 +1018,7 @@
       "cdon_source": "steep",
       "merchants_selling": [],
       "first_seen": "2026-07-06",
-      "last_seen": "2026-07-06"
+      "last_seen": "2026-08-10"
     },
     {
       "brand": "Nordic Sense",
@@ -1032,7 +1032,7 @@
       "cdon_source": "steep",
       "merchants_selling": [],
       "first_seen": "2026-07-06",
-      "last_seen": "2026-07-06"
+      "last_seen": "2026-08-10"
     },
     {
       "brand": "Nordic Sense",
@@ -1046,7 +1046,7 @@
       "cdon_source": "steep",
       "merchants_selling": [],
       "first_seen": "2026-07-06",
-      "last_seen": "2026-07-06"
+      "last_seen": "2026-08-10"
     },
     {
       "brand": "Yuasa",
@@ -1060,7 +1060,7 @@
       "cdon_source": "steep",
       "merchants_selling": [],
       "first_seen": "2026-07-06",
-      "last_seen": "2026-07-06"
+      "last_seen": "2026-08-10"
     },
     {
       "brand": "Yuasa",
@@ -1074,7 +1074,7 @@
       "cdon_source": "steep",
       "merchants_selling": [],
       "first_seen": "2026-07-06",
-      "last_seen": "2026-07-06"
+      "last_seen": "2026-08-10"
     },
     {
       "brand": "Yuasa",
@@ -1088,7 +1088,7 @@
       "cdon_source": "steep",
       "merchants_selling": [],
       "first_seen": "2026-07-06",
-      "last_seen": "2026-07-06"
+      "last_seen": "2026-08-10"
     },
     {
       "brand": "Yuasa",
@@ -1102,7 +1102,7 @@
       "cdon_source": "steep",
       "merchants_selling": [],
       "first_seen": "2026-07-06",
-      "last_seen": "2026-07-06"
+      "last_seen": "2026-08-10"
     },
     {
       "brand": "Optima",
@@ -1924,172 +1924,491 @@
       "last_seen": "2026-07-06"
     },
     {
-      "brand": "Pop Mart",
+      "brand": "Barum",
       "market": "SE",
-      "category": "Labubu",
-      "typ": "Category up-and-comer",
-      "signal": "Breakout",
-      "demand": true,
-      "note": "Collectible character/toy phenomenon across all Nordic markets",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": [],
-      "first_seen": "2026-08-03",
-      "last_seen": "2026-08-03"
-    },
-    {
-      "brand": "Pop Mart",
-      "market": "NO",
-      "category": "Labubu",
-      "typ": "Category up-and-comer",
-      "signal": "Breakout",
-      "demand": true,
-      "note": "Collectible character/toy phenomenon across all Nordic markets",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": [],
-      "first_seen": "2026-08-03",
-      "last_seen": "2026-08-03"
-    },
-    {
-      "brand": "Pop Mart",
-      "market": "DK",
-      "category": "Labubu",
-      "typ": "Category up-and-comer",
-      "signal": "Breakout",
-      "demand": true,
-      "note": "Collectible character/toy phenomenon across all Nordic markets",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": [],
-      "first_seen": "2026-08-03",
-      "last_seen": "2026-08-03"
-    },
-    {
-      "brand": "Pop Mart",
-      "market": "FI",
-      "category": "Labubu",
-      "typ": "Category up-and-comer",
-      "signal": "Breakout",
-      "demand": true,
-      "note": "Collectible character/toy phenomenon across all Nordic markets",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": [],
-      "first_seen": "2026-08-03",
-      "last_seen": "2026-08-03"
-    },
-    {
-      "brand": "Beliani",
-      "market": "SE",
-      "category": "Sängramar",
-      "typ": "Category up-and-comer",
-      "signal": "",
-      "demand": false,
-      "note": "Furniture brand breaking out in Danish market",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": [],
-      "first_seen": "2026-08-03",
-      "last_seen": "2026-08-03"
-    },
-    {
-      "brand": "Beliani",
-      "market": "NO",
-      "category": "Sängramar",
-      "typ": "Category up-and-comer",
-      "signal": "",
-      "demand": false,
-      "note": "Furniture brand breaking out in Danish market",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": [],
-      "first_seen": "2026-08-03",
-      "last_seen": "2026-08-03"
-    },
-    {
-      "brand": "Beliani",
-      "market": "DK",
-      "category": "Sängramar",
-      "typ": "Category up-and-comer",
-      "signal": "+300%",
-      "demand": true,
-      "note": "Furniture brand breaking out in Danish market",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": [],
-      "first_seen": "2026-08-03",
-      "last_seen": "2026-08-03"
-    },
-    {
-      "brand": "Beliani",
-      "market": "FI",
-      "category": "Sängramar",
-      "typ": "Category up-and-comer",
-      "signal": "",
-      "demand": false,
-      "note": "Furniture brand breaking out in Danish market",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": [],
-      "first_seen": "2026-08-03",
-      "last_seen": "2026-08-03"
-    },
-    {
-      "brand": "Haibike",
-      "market": "SE",
-      "category": "Elcykel Mountainbike",
-      "typ": "Category up-and-comer",
-      "signal": "",
-      "demand": false,
-      "note": "E-mountain bike brand growing in Finland",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": [],
-      "first_seen": "2026-08-03",
-      "last_seen": "2026-08-03"
-    },
-    {
-      "brand": "Haibike",
-      "market": "NO",
-      "category": "Elcykel Mountainbike",
-      "typ": "Category up-and-comer",
-      "signal": "",
-      "demand": false,
-      "note": "E-mountain bike brand growing in Finland",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": [],
-      "first_seen": "2026-08-03",
-      "last_seen": "2026-08-03"
-    },
-    {
-      "brand": "Haibike",
-      "market": "DK",
-      "category": "Elcykel Mountainbike",
-      "typ": "Category up-and-comer",
-      "signal": "",
-      "demand": false,
-      "note": "E-mountain bike brand growing in Finland",
-      "in_cdon": false,
-      "cdon_source": "steep",
-      "merchants_selling": [],
-      "first_seen": "2026-08-03",
-      "last_seen": "2026-08-03"
-    },
-    {
-      "brand": "Haibike",
-      "market": "FI",
-      "category": "Elcykel Mountainbike",
+      "category": "Däck för motorfordon",
       "typ": "Category up-and-comer",
       "signal": "+130%",
       "demand": true,
-      "note": "E-mountain bike brand growing in Finland",
+      "note": "Budget tire brand gaining market interest",
       "in_cdon": false,
       "cdon_source": "steep",
       "merchants_selling": [],
-      "first_seen": "2026-08-03",
-      "last_seen": "2026-08-03"
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Barum",
+      "market": "NO",
+      "category": "Däck för motorfordon",
+      "typ": "Category up-and-comer",
+      "signal": "",
+      "demand": false,
+      "note": "Budget tire brand gaining market interest",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Barum",
+      "market": "DK",
+      "category": "Däck för motorfordon",
+      "typ": "Category up-and-comer",
+      "signal": "",
+      "demand": false,
+      "note": "Budget tire brand gaining market interest",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Barum",
+      "market": "FI",
+      "category": "Däck för motorfordon",
+      "typ": "Category up-and-comer",
+      "signal": "",
+      "demand": false,
+      "note": "Budget tire brand gaining market interest",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Anthbot",
+      "market": "SE",
+      "category": "Robotic lawn mowers",
+      "typ": "Category up-and-comer",
+      "signal": "",
+      "demand": false,
+      "note": "Genie series emerging competitor with multiple SKUs",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Anthbot",
+      "market": "NO",
+      "category": "Robotic lawn mowers",
+      "typ": "Category up-and-comer",
+      "signal": "",
+      "demand": false,
+      "note": "Genie series emerging competitor with multiple SKUs",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Anthbot",
+      "market": "DK",
+      "category": "Robotic lawn mowers",
+      "typ": "Category up-and-comer",
+      "signal": "Breakout",
+      "demand": true,
+      "note": "Genie series emerging competitor with multiple SKUs",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [
+        {
+          "merchant": "INF Company AB",
+          "site": "infshop.dk",
+          "hits": 9,
+          "links": [
+            "https://www.bilka.dk/brands/anthbot/pl/anthbot/?srsltid=AfmBOor967XMvdQ_Ted3zy71JZYpc8nKAuZIqkID5eKeUigiBrKkNf3R",
+            "https://robotstovsugeren.dk/collections/anthbot?srsltid=AfmBOopBbZYD0qEM2bkW0NdtKEWM4JuZlDfQ8v7qZjYJuex7Pp-SIFLv",
+            "https://dk.trustpilot.com/review/anthbot.com"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "Tech Stop",
+          "site": "stockly.ai",
+          "hits": 7,
+          "links": [
+            "https://www.bauhaus.se/varumarken/anthbot",
+            "https://outl1.se/robotgrasklippare-utan-slinga-3600m-full-band-rtk-4-ai-kameror-anthbot-genie-3000",
+            "https://grilltorget.se/products/robotgrasklippare-anthbot-genie-3000?srsltid\\u003dAfmBOorEGwzzZbzObcFSF7PMgQigQDjRZuj5CKmhIzphRuUDjUmeePaD"
+          ],
+          "manager": "TBD"
+        }
+      ],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Anthbot",
+      "market": "FI",
+      "category": "Robotic lawn mowers",
+      "typ": "Category up-and-comer",
+      "signal": "",
+      "demand": false,
+      "note": "Genie series emerging competitor with multiple SKUs",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Hâws",
+      "market": "SE",
+      "category": "Espresso machines",
+      "typ": "Category up-and-comer",
+      "signal": "",
+      "demand": false,
+      "note": "Emerging espresso machine brand in Denmark",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Hâws",
+      "market": "NO",
+      "category": "Espresso machines",
+      "typ": "Category up-and-comer",
+      "signal": "",
+      "demand": false,
+      "note": "Emerging espresso machine brand in Denmark",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Hâws",
+      "market": "DK",
+      "category": "Espresso machines",
+      "typ": "Category up-and-comer",
+      "signal": "+130%",
+      "demand": true,
+      "note": "Emerging espresso machine brand in Denmark",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Hâws",
+      "market": "FI",
+      "category": "Espresso machines",
+      "typ": "Category up-and-comer",
+      "signal": "",
+      "demand": false,
+      "note": "Emerging espresso machine brand in Denmark",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Labubu",
+      "market": "SE",
+      "category": "Labubi",
+      "typ": "Category up-and-comer",
+      "signal": "Breakout",
+      "demand": true,
+      "note": "Pop Mart Labubu collectible figures breakout trend across Nordics",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.no",
+          "hits": 1,
+          "links": [
+            "https://www.csmegastore.no/i/24673405/pop-mart-labubu-the-monsters-big-into-energy?srsltid=AfmBOor-DhGy1_I-C0UGwnHJSKNFyFMWtkG1auL_3FG6vwyIcsrRVDH1"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "INF Company AB",
+          "site": "inf.se",
+          "hits": 5,
+          "links": [
+            "https://inf.se/frvaring/188622-inf-transparent-skyddsfodral-fr-labubu-3-e-generationens-figurer-7314281083663.html",
+            "https://inf.se/frvaring/188623-inf-klart-skyddsfodral-fr-labubu-2nd-gen-sittande-figur-7314281239619.html",
+            "https://inf.se/frvaring/188624-inf-transparent-skyddsfodral-fr-labubu-gen-1-figurer-7314281241247.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "e-ville.com",
+          "site": "www.e-ville.com",
+          "hits": 4,
+          "links": [
+            "https://www.e-ville.com/sv/3046889-leksaksfigurer-lekset/990615-popmart-labubu-the-monsters-spelset-med-spelscener-sammelfigur.html",
+            "https://www.e-ville.com/sv/3046889-leksaksfigurer-lekset/1000160-popmart-labubu-the-monsters-almost-hidden-series-samlarfigur.html",
+            "https://www.e-ville.com/fi/3046889-leluhahmot-ja-leikkisetit-e-villecom/990615-popmart-labubu-the-monsters-playing-games-scene-sets-kerailyhahmo.html"
+          ],
+          "manager": "TBD"
+        }
+      ],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Labubu",
+      "market": "NO",
+      "category": "Labubi",
+      "typ": "Category up-and-comer",
+      "signal": "Breakout",
+      "demand": true,
+      "note": "Pop Mart Labubu collectible figures breakout trend across Nordics",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.no",
+          "hits": 1,
+          "links": [
+            "https://www.csmegastore.no/i/24673405/pop-mart-labubu-the-monsters-big-into-energy?srsltid=AfmBOor-DhGy1_I-C0UGwnHJSKNFyFMWtkG1auL_3FG6vwyIcsrRVDH1"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "INF Company AB",
+          "site": "inf.se",
+          "hits": 5,
+          "links": [
+            "https://inf.se/frvaring/188622-inf-transparent-skyddsfodral-fr-labubu-3-e-generationens-figurer-7314281083663.html",
+            "https://inf.se/frvaring/188623-inf-klart-skyddsfodral-fr-labubu-2nd-gen-sittande-figur-7314281239619.html",
+            "https://inf.se/frvaring/188624-inf-transparent-skyddsfodral-fr-labubu-gen-1-figurer-7314281241247.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "e-ville.com",
+          "site": "www.e-ville.com",
+          "hits": 4,
+          "links": [
+            "https://www.e-ville.com/sv/3046889-leksaksfigurer-lekset/990615-popmart-labubu-the-monsters-spelset-med-spelscener-sammelfigur.html",
+            "https://www.e-ville.com/sv/3046889-leksaksfigurer-lekset/1000160-popmart-labubu-the-monsters-almost-hidden-series-samlarfigur.html",
+            "https://www.e-ville.com/fi/3046889-leluhahmot-ja-leikkisetit-e-villecom/990615-popmart-labubu-the-monsters-playing-games-scene-sets-kerailyhahmo.html"
+          ],
+          "manager": "TBD"
+        }
+      ],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Labubu",
+      "market": "DK",
+      "category": "Labubi",
+      "typ": "Category up-and-comer",
+      "signal": "Breakout",
+      "demand": true,
+      "note": "Pop Mart Labubu collectible figures breakout trend across Nordics",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.no",
+          "hits": 1,
+          "links": [
+            "https://www.csmegastore.no/i/24673405/pop-mart-labubu-the-monsters-big-into-energy?srsltid=AfmBOor-DhGy1_I-C0UGwnHJSKNFyFMWtkG1auL_3FG6vwyIcsrRVDH1"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "INF Company AB",
+          "site": "inf.se",
+          "hits": 5,
+          "links": [
+            "https://inf.se/frvaring/188622-inf-transparent-skyddsfodral-fr-labubu-3-e-generationens-figurer-7314281083663.html",
+            "https://inf.se/frvaring/188623-inf-klart-skyddsfodral-fr-labubu-2nd-gen-sittande-figur-7314281239619.html",
+            "https://inf.se/frvaring/188624-inf-transparent-skyddsfodral-fr-labubu-gen-1-figurer-7314281241247.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "e-ville.com",
+          "site": "www.e-ville.com",
+          "hits": 4,
+          "links": [
+            "https://www.e-ville.com/sv/3046889-leksaksfigurer-lekset/990615-popmart-labubu-the-monsters-spelset-med-spelscener-sammelfigur.html",
+            "https://www.e-ville.com/sv/3046889-leksaksfigurer-lekset/1000160-popmart-labubu-the-monsters-almost-hidden-series-samlarfigur.html",
+            "https://www.e-ville.com/fi/3046889-leluhahmot-ja-leikkisetit-e-villecom/990615-popmart-labubu-the-monsters-playing-games-scene-sets-kerailyhahmo.html"
+          ],
+          "manager": "TBD"
+        }
+      ],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Labubu",
+      "market": "FI",
+      "category": "Labubi",
+      "typ": "Category up-and-comer",
+      "signal": "Breakout",
+      "demand": true,
+      "note": "Pop Mart Labubu collectible figures breakout trend across Nordics",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [
+        {
+          "merchant": "CS MEGASTORE",
+          "site": "csmegastore.no",
+          "hits": 1,
+          "links": [
+            "https://www.csmegastore.no/i/24673405/pop-mart-labubu-the-monsters-big-into-energy?srsltid=AfmBOor-DhGy1_I-C0UGwnHJSKNFyFMWtkG1auL_3FG6vwyIcsrRVDH1"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "INF Company AB",
+          "site": "inf.se",
+          "hits": 5,
+          "links": [
+            "https://inf.se/frvaring/188622-inf-transparent-skyddsfodral-fr-labubu-3-e-generationens-figurer-7314281083663.html",
+            "https://inf.se/frvaring/188623-inf-klart-skyddsfodral-fr-labubu-2nd-gen-sittande-figur-7314281239619.html",
+            "https://inf.se/frvaring/188624-inf-transparent-skyddsfodral-fr-labubu-gen-1-figurer-7314281241247.html"
+          ],
+          "manager": "TBD"
+        },
+        {
+          "merchant": "e-ville.com",
+          "site": "www.e-ville.com",
+          "hits": 4,
+          "links": [
+            "https://www.e-ville.com/sv/3046889-leksaksfigurer-lekset/990615-popmart-labubu-the-monsters-spelset-med-spelscener-sammelfigur.html",
+            "https://www.e-ville.com/sv/3046889-leksaksfigurer-lekset/1000160-popmart-labubu-the-monsters-almost-hidden-series-samlarfigur.html",
+            "https://www.e-ville.com/fi/3046889-leluhahmot-ja-leikkisetit-e-villecom/990615-popmart-labubu-the-monsters-playing-games-scene-sets-kerailyhahmo.html"
+          ],
+          "manager": "TBD"
+        }
+      ],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Skullpanda",
+      "market": "SE",
+      "category": "Labubi",
+      "typ": "Category up-and-comer",
+      "signal": "",
+      "demand": false,
+      "note": "Pop Mart Skullpanda series collectible emerging",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Skullpanda",
+      "market": "NO",
+      "category": "Labubi",
+      "typ": "Category up-and-comer",
+      "signal": "Breakout",
+      "demand": true,
+      "note": "Pop Mart Skullpanda series collectible emerging",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Skullpanda",
+      "market": "DK",
+      "category": "Labubi",
+      "typ": "Category up-and-comer",
+      "signal": "",
+      "demand": false,
+      "note": "Pop Mart Skullpanda series collectible emerging",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Skullpanda",
+      "market": "FI",
+      "category": "Labubi",
+      "typ": "Category up-and-comer",
+      "signal": "",
+      "demand": false,
+      "note": "Pop Mart Skullpanda series collectible emerging",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Sigenergy",
+      "market": "SE",
+      "category": "Batterier för allmänt bruk",
+      "typ": "Category up-and-comer",
+      "signal": "+190%",
+      "demand": true,
+      "note": "Energy storage battery brand emerging",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Sigenergy",
+      "market": "NO",
+      "category": "Batterier för allmänt bruk",
+      "typ": "Category up-and-comer",
+      "signal": "",
+      "demand": false,
+      "note": "Energy storage battery brand emerging",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Sigenergy",
+      "market": "DK",
+      "category": "Batterier för allmänt bruk",
+      "typ": "Category up-and-comer",
+      "signal": "",
+      "demand": false,
+      "note": "Energy storage battery brand emerging",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
+    },
+    {
+      "brand": "Sigenergy",
+      "market": "FI",
+      "category": "Batterier för allmänt bruk",
+      "typ": "Category up-and-comer",
+      "signal": "",
+      "demand": false,
+      "note": "Energy storage battery brand emerging",
+      "in_cdon": false,
+      "cdon_source": "steep",
+      "merchants_selling": [],
+      "first_seen": "2026-08-10",
+      "last_seen": "2026-08-10"
     }
   ]
 }
