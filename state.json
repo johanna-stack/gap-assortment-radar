@@ -2,7 +2,13 @@
   "Airfryers␟Ninja": {
     "status": "ny",
     "owner": "",
-    "comments": []
+    "comments": [
+      {
+        "user": "vesa",
+        "ts": "2026-08-20T09:50:44",
+        "text": "Test"
+      }
+    ]
   },
   "Airfryers␟WILFA": {
     "status": "ny",
